@@ -1,0 +1,121 @@
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  background-color: lighten($secondary, 53);
+  color: $secondary;
+  font-size: 14px;
+  position: relative;
+
+  .footer-top {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 80px 0;
+
+    h3 {
+      font-size: 36px;
+      font-weight: 700;
+      color: $secondary;
+      position: relative;
+      font-family: $font-secondary;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    p {
+      font-size: 15;
+      font-style: italic;
+      margin: 30px 0 0 0;
+      padding: 0;
+    }
+
+    .footer-newsletter {
+      text-align: center;
+      font-size: 15px;
+      margin-top: 30px;
+  
+      form {
+        background: #fff;
+        padding: 6px 10px;
+        position: relative;
+        border-radius: 4px;
+        text-align: left;
+        border: 1px solid  lighten($secondary, 48);
+  
+        input[type="email"] {
+          border: 0;
+          padding: 4px 8px;
+          width: calc(100% - 100px);
+        }
+  
+        input[type="submit"] {
+          position: absolute;
+          top: -1px;
+          right: -1px;
+          bottom:-1px;
+          border: 0;
+          background: none;
+          font-size: 16px;
+          padding: 0 20px;
+          background: $primary;
+          color: $white;
+          transition: 0.3s;
+          border-radius: 0 4px 4px 0;
+          box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.10);
+          &:hover {
+            background: $tertiary;
+          }
+        }
+      }
+    }
+
+    .social-links {
+      margin-top: 30px;
+      a {
+        font-size: 18px;
+        display: inline-block;
+        background: lighten($secondary, 50);
+        color: $secondary;
+        line-height: 1;
+        padding: 8px 0;
+        margin-right: 4px;
+        border-radius: 4px;
+        text-align: center;
+        width: 36px;
+        height: 36px;
+        transition: 0.3s;
+        &:hover {
+          background: $primary;
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+
+  }
+
+  .footer-bottom {
+    border-top: 1px solid lighten($secondary, 44);
+    z-index: 2;
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .copyright {
+    float: left;
+  }
+
+  .credits {
+    float: right;
+    font-size: 13px;
+  }
+
+  @media (max-width: 992px) {
+    .copyright, .credits {
+      float: none;
+      text-align-last: center;
+    }
+  }
+}
