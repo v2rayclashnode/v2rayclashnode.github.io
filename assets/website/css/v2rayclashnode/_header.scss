@@ -1,0 +1,36 @@
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+  background: $white;
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 20px 0;
+
+  &.header-scrolled {
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.10);
+    padding: 12px 0;
+  }
+
+  .logo {
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+
+    a {
+      color: $secondary;
+    }
+
+    img {
+      max-height: 40px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    padding: 12px 0;
+  }
+
+}
