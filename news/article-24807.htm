@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-24807.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Goland proto文件 File Watch 自动生成</title>
+        <meta name="description" content="使用的是Kratos的项目模板生成的项目，目录结构如下：每次编写完Proto文件都要手动输入命令来生成go文件，使用Goland的File Watch监听文件改变，然后执行生成命令。 需要有File " />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <span class="logo"><a href="/">V2ray Clash Node</a></span>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>Goland proto文件 File Watch 自动生成</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				<div id="content_views" class="markdown_views prism-github-gist"> <p>使用的是Kratos的项目模板生成的项目，目录结构如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230128/61d3d5f6014a83a94229f86aa4e40136.jpg" alt="Goland proto文件 File Watch 自动生成">每次编写完Proto文件都要手动输入命令来生成go文件，使用Goland的File Watch监听文件改变，然后执行生成命令。</p> <p>需要有File Watch这个插件<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230128/54f7ddb5ab2a795cfe8dcff1b38ef0dc.jpg" alt="Goland proto文件 File Watch 自动生成"><br /> 配置：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230128/0cc415f169b5168eedbf2cd13e78970e.jpg" alt="Goland proto文件 File Watch 自动生成"><br /> 直接把命令行的参数替换成变量就行了。<br /> 生成使用的工具是protoc.exe</p> <p><strong>生成Proto</strong><br /> *.pb.go是生成的接口代码<br /> *_grpc.pb.go是grpc服务端接口</p> <p>生成*.pb.go的目录为proto文件的option go_package = “post/internal/conf;conf”;<br /> 生成选项:proto路径(包括引用的package路径),使用–proto_path或-I命令行标志指定;<br /> 输出路径,使用–go_out指定*.pb.go(会跟上面的option go_package一起使用)、–go-grpc_out指定*_grpc.pb.go</p> <p>生成proto源码:<br /><code>kratos proto client api/post/v1/post.proto</code> =&gt;生成 *_grpc.pb.go、*.pb.go</p> <p>项目目录下运行: <code>protoc --go_out=.. --go-grpc_out=.\api\server\v1 --go-grpc_opt=paths=source_relative -I=".\third_party" -I=".\third_party\google" -I=".\api\server\v1" HatService.proto </code> =&gt;生成 <em>_grpc.pb.go、</em>.pb.go</p> <pre><code class="prism language-shell">--go_out<span class="token operator">=</span><span class="token variable">$ProjectFileDir</span>$<span class="token punctuation">\</span><span class="token punctuation">..</span> --go-grpc_out<span class="token operator">=</span><span class="token variable">$FileDir</span>$ --go-grpc_opt<span class="token operator">=</span>paths<span class="token operator">=</span>source_relative -I<span class="token operator">=</span><span class="token string">"<span class="token variable">$ProjectFileDir</span>$<span class="token entity" title="\t">\t</span>hird_party"</span> -I<span class="token operator">=</span><span class="token string">"<span class="token variable">$ProjectFileDir</span>$<span class="token entity" title="\t">\t</span>hird_party\google"</span> -I<span class="token operator">=</span><span class="token string">"<span class="token variable">$ProjectFileDir</span>$<span class="token entity" title="\a">\a</span>pi\server<span class="token entity" title="\v">\v</span>1"</span> <span class="token variable">$FilePath</span>$ </code></pre> <p>$ProjectFileDir$ 是项目的目录<br /> $FilePath$ 是监控到变更文件的路径<br /> -I参数是添加包proto文件依赖</p> <p>show console可以改为always来查看日志。<br /> 保存配置后每次修改都会自动生成go文件</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-24546.htm">合肥宠物狗领养地址（合肥宠物狗领养地址在哪里）</a></p>
+                                        <p>下一个：<a href="/news/article-24808.htm">动物疫苗接种方法视频 动物疫苗接种方法视频教程</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-22-free-node-subscribe-links.htm" title="「9月22日」最高速度22.5M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「9月22日」最高速度22.5M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-clash-node.htm" title="「10月23日」最高速度18.1M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「10月23日」最高速度18.1M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-20-clash-node-daily-updates.htm" title="「10月20日」最高速度19.1M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「10月20日」最高速度19.1M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-4-node-share-links.htm" title="「8月4日」最高速度19.7M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「8月4日」最高速度19.7M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-15-free-node-subscribe.htm" title="「8月15日」最高速度22M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「8月15日」最高速度22M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-1-shadowrocket-node.htm" title="「11月1日」最高速度19.7M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接">「11月1日」最高速度19.7M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-12-free-v2ray.htm" title="「8月12日」最高速度18.5M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「8月12日」最高速度18.5M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-15-node-share-links.htm" title="「6月15日」最高速度19.3M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「6月15日」最高速度19.3M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19292.htm" title="动物疫苗的生产原料有哪些呢英文（动物疫苗的种类和制备原理）">动物疫苗的生产原料有哪些呢英文（动物疫苗的种类和制备原理）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-25-free-subscribe-node.htm" title="「10月25日」最高速度18.7M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「10月25日」最高速度18.7M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
