@@ -2,11 +2,12 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-24807.htm" />
+        <link rel="canonical" href="https://v2rayclashnode.github.io" />
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Goland proto文件 File Watch 自动生成</title>
-        <meta name="description" content="使用的是Kratos的项目模板生成的项目，目录结构如下：每次编写完Proto文件都要手动输入命令来生成go文件，使用Goland的File Watch监听文件改变，然后执行生成命令。 需要有File " />
+    <title>2024-12归档 - V2rayClashNode节点订阅站</title>
+        <meta name="keywords" content="2024-12归档" />
+        <meta name="description" content="2024-12归档" />
         <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -31,7 +32,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="detail">
+<body data-page="category">
         <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
@@ -54,16 +55,13 @@
         <section class="breadcrumbs">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
-                    <div class="row">
-                        <h1>Goland proto文件 File Watch 自动生成</h1>
-                    </div>
+                    <h1>2024-12 归档</h1>
                 </div>
             </div>
             <div class="container">
                 <ol>
                     <li><a href="/">首页</a></li>
-                    <li><a href="/news/">新闻资讯</a></li>
-                    <li>正文</li>
+                    <li>2024-12 归档</li>
                 </ol>
             </div>
         </section><!-- End Breadcrumbs -->
@@ -71,13 +69,39 @@
         <section id="about" class="about">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9">
-                                          				  				  				<div id="content_views" class="markdown_views prism-github-gist"> <p>使用的是Kratos的项目模板生成的项目，目录结构如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230128/61d3d5f6014a83a94229f86aa4e40136.jpg" alt="Goland proto文件 File Watch 自动生成">每次编写完Proto文件都要手动输入命令来生成go文件，使用Goland的File Watch监听文件改变，然后执行生成命令。</p> <p>需要有File Watch这个插件<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230128/54f7ddb5ab2a795cfe8dcff1b38ef0dc.jpg" alt="Goland proto文件 File Watch 自动生成"><br /> 配置：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230128/0cc415f169b5168eedbf2cd13e78970e.jpg" alt="Goland proto文件 File Watch 自动生成"><br /> 直接把命令行的参数替换成变量就行了。<br /> 生成使用的工具是protoc.exe</p> <p><strong>生成Proto</strong><br /> *.pb.go是生成的接口代码<br /> *_grpc.pb.go是grpc服务端接口</p> <p>生成*.pb.go的目录为proto文件的option go_package = “post/internal/conf;conf”;<br /> 生成选项:proto路径(包括引用的package路径),使用–proto_path或-I命令行标志指定;<br /> 输出路径,使用–go_out指定*.pb.go(会跟上面的option go_package一起使用)、–go-grpc_out指定*_grpc.pb.go</p> <p>生成proto源码:<br /><code>kratos proto client api/post/v1/post.proto</code> =&gt;生成 *_grpc.pb.go、*.pb.go</p> <p>项目目录下运行: <code>protoc --go_out=.. --go-grpc_out=.\api\server\v1 --go-grpc_opt=paths=source_relative -I=".\third_party" -I=".\third_party\google" -I=".\api\server\v1" HatService.proto </code> =&gt;生成 <em>_grpc.pb.go、</em>.pb.go</p> <pre><code class="prism language-shell">--go_out<span class="token operator">=</span><span class="token variable">$ProjectFileDir</span>$<span class="token punctuation">\</span><span class="token punctuation">..</span> --go-grpc_out<span class="token operator">=</span><span class="token variable">$FileDir</span>$ --go-grpc_opt<span class="token operator">=</span>paths<span class="token operator">=</span>source_relative -I<span class="token operator">=</span><span class="token string">"<span class="token variable">$ProjectFileDir</span>$<span class="token entity" title="\t">\t</span>hird_party"</span> -I<span class="token operator">=</span><span class="token string">"<span class="token variable">$ProjectFileDir</span>$<span class="token entity" title="\t">\t</span>hird_party\google"</span> -I<span class="token operator">=</span><span class="token string">"<span class="token variable">$ProjectFileDir</span>$<span class="token entity" title="\a">\a</span>pi\server<span class="token entity" title="\v">\v</span>1"</span> <span class="token variable">$FilePath</span>$ </code></pre> <p>$ProjectFileDir$ 是项目的目录<br /> $FilePath$ 是监控到变更文件的路径<br /> -I参数是添加包proto文件依赖</p> <p>show console可以改为always来查看日志。<br /> 保存配置后每次修改都会自动生成go文件</p> </p></div> 			                <div class="clearfix"></div>
-                <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/news/article-24546.htm">合肥宠物狗领养地址（合肥宠物狗领养地址在哪里）</a></p>
-                                        <p>下一个：<a href="/news/article-24808.htm">动物疫苗接种方法视频 动物疫苗接种方法视频教程</a></p>
-                                    </div>
-                                    </div>
+                    <div class="col-md-9 xcblog-blog-list">
+                                                <div class="row item xcblog-blog-item" data-date="2024-12-01">
+                            <div class="col-lg-3">
+                                <a href="/news/article-19749.htm" class="xcblog-blog-url">
+                                    <img src="/uploads/20240531/dfd32b18c6323ee39ebfaf01e2abdd96.webp" class="img-fluid" alt="动物防疫所 动物防疫所是干嘛的">
+                                </a>
+                            </div>
+                            <div class="col-lg-9 content">
+                                <a href="/news/article-19749.htm" class="xcblog-blog-url">
+                                    <h3 class="xcblog-blog-title">
+                                        动物防疫所 动物防疫所是干嘛的                                    </h3>
+                                </a>
+                                <p>
+                                    摘要：       大家好，今天小编关注到一个比较有意思的话题，就是关于动物防疫所的问题，于是小编就整理了5个相关介绍动物防疫所的解答，让我们一起看看吧。动物卫生监督所、动物疫病防控中心和畜牧站什么关                                </p>
+                            </div>
+                        </div>
+                                                <div class="row item xcblog-blog-item" data-date="2024-12-01">
+                            <div class="col-lg-3">
+                                <a href="/free-nodes/2024-12-1-free-subscribe-node.htm" class="xcblog-blog-url">
+                                    <img src="/uploads/20240531/3c11e83fd5bb3a9d1c0665eff5c49ee7.webp" class="img-fluid" alt="「12月1日」最高速度22.1M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">
+                                </a>
+                            </div>
+                            <div class="col-lg-9 content">
+                                <a href="/free-nodes/2024-12-1-free-subscribe-node.htm" class="xcblog-blog-url">
+                                    <h3 class="xcblog-blog-title">
+                                        「12月1日」最高速度22.1M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接                                    </h3>
+                                </a>
+                                <p>
+                                    这一次的节点更新覆盖了加拿大、日本、新加坡、美国、韩国、香港、欧洲等地区,最高速度可达22.1 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。                                </p>
+                            </div>
+                        </div>
+                        
+                        <ul class="pagination"><li><a href="/date/2024-12/page-4.htm">&laquo;</a></li> <li><a href="/date/2024-12/">1</a></li><li><a href="/date/2024-12/page-2.htm">2</a></li><li><a href="/date/2024-12/page-3.htm">3</a></li><li><a href="/date/2024-12/page-4.htm">4</a></li><li class="active"><span>5</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                    </div>
                     <div class="col-md-3">
                         <div class="panel panel-default">
     <div class="panel-heading">
@@ -85,16 +109,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-7-8-free-ssr-node.htm" title="「7月8日」最高速度18M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「7月8日」最高速度18M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-21579.htm" title="重庆领养宠物在哪领养好呢多少钱（重庆领养宠物在哪领养好呢多少钱一个月）">重庆领养宠物在哪领养好呢多少钱（重庆领养宠物在哪领养好呢多少钱一个月）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-clash.htm" title="「11月21日」最高速度18.7M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「11月21日」最高速度18.7M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-19292.htm" title="动物疫苗的生产原料有哪些呢英文（动物疫苗的种类和制备原理）">动物疫苗的生产原料有哪些呢英文（动物疫苗的种类和制备原理）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-clash.htm" title="「11月26日」最高速度22M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「11月26日」最高速度22M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-13-clash-windows.htm" title="「6月13日」最高速度22.6M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接">「6月13日」最高速度22.6M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-clash.htm" title="「12月13日」最高速度20.9M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接">「12月13日」最高速度20.9M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-free-clash-subscribe.htm" title="「10月18日」最高速度22.2M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「10月18日」最高速度22.2M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-free-node-subscribe-links.htm" title="「11月12日」最高速度21.9M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「11月12日」最高速度21.9M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-14-free-ssr-subscribe.htm" title="「6月14日」最高速度20M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「6月14日」最高速度20M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-8-20-clash-node.htm" title="「8月20日」最高速度19.2M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「8月20日」最高速度19.2M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-16-node-share-links.htm" title="「11月16日」最高速度22.5M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「11月16日」最高速度22.5M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-21-free-node-subscribe-links.htm" title="「9月21日」最高速度22.4M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「9月21日」最高速度22.4M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-3-shadowrocket-node.htm" title="「6月3日」最高速度22.8M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接">「6月3日」最高速度22.8M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-22-free-high-speed-nodes.htm" title="「7月22日」最高速度22.9M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「7月22日」最高速度22.9M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-12-free-ssr-node.htm" title="「10月12日」最高速度18.7M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「10月12日」最高速度18.7M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-20-free-node-subscribe-links.htm" title="「7月20日」最高速度19.4M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接">「7月20日」最高速度19.4M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-ssr-node.htm" title="「11月27日」最高速度22.1M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「11月27日」最高速度22.1M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-24-clash-v2ray-ss-ssr.htm" title="「7月24日」最高速度19.9M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「7月24日」最高速度19.9M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
