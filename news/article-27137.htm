@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-27137.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>异步复位同步释放在实际项目中的应用</title>
+        <meta name="description" content="1 引言 最近看了“How do I reset my FPGA?”和一些时序分析的内容，发现之前ov5640图像采集项目中的几个问题： 问题1：用了全局时钟复位，全局复位一般具有高扇出（需要驱动的后" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <span class="logo"><a href="/">V2ray Clash Node</a></span>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>异步复位同步释放在实际项目中的应用</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				</h1> <h2>1 引言</h2> <p>最近看了“How do I reset my FPGA?”和一些时序分析的内容，发现之前ov5640图像采集项目中的几个问题：</p> <p>问题1：用了全局时钟复位，全局复位一般具有高扇出（需要驱动的后级逻辑信号多），因为它需要扩展到设计中的每一个触发器。这样会消耗大量的布线资源，对器件的利用率和时序性能造成不利影响。</p> <p>问题2：设计全采用了异步复位，对毛刺敏感且复位结束会处于亚稳态。</p> <p>问题3：在locked1，locked2为低时，时钟是不稳定的，此时送入后续模块的是不稳定的时钟，触发器可能出现功能错误。</p> <p>那么我们是否需要重构全部的代码呢？其实也没有必要。重构代码很麻烦，需要对所有18个模块进行代码修改，然后重新仿真十八次。</p> <p>这里我们选择在顶层模块进行复位模块局部化的划分，若实现送入每一个模块的都是异步复位同步释放后的复位信号，保证信号已经同步，本质上也是一样的。而且打两拍之后的复位信号送到时，一方面信号对毛刺不敏感，不会受到脉冲干扰，另外一方面，也相当于复位信号延后了一个或两个clock,最后一个clock时两个locked信号均已稳定，保证系统正常工作。</p> <h2>2 代码</h2> <h3>2.1 时钟模块</h3> <p>首先，我们需要确定项目中各模块工作的时钟域。此处有一点注意事项，我们pll2中的输入时钟为pll1生成的100Mhz时钟而非外部时钟，因此调用ip核时需要选用"no buffer"否则会报错。我们调用的两个pll代码如下：</p> <pre><code class="language-verilog">//复位模块复位信号 assign  rst_n = locked1 &amp;&amp; locked2 &amp;&amp; sys_rst_n; //时钟模块1例化 clk_gen clk_gen_inst (     .clk_125m            (clk_125m           ),     // output sdram clk     .clk_shift_125m      (clk_shift_125m     ),     // output sdram output clk     .clk_50m             (clk_50m            ),     // output ov5640 clk     .clk_100m            (clk_100m           ),     // output pll2 clk     .clk_24m             (clk_24m            ),     // output ov5640 output clk     .reset               (~pll_rst_n1        ),     // input      .locked              (locked1            ),     // output     .sys_clk             (sys_clk            )      // input sys_clk ); //时钟模块2例化 clk_gen_hdmi clk_gen_hdmi_inst (     .clk_74m             (clk_74m            ),     // output vga clk     .clk_371m            (clk_371m           ),     // output hdmi tmds clk     .reset               (~pll_rst_n2        ),     // input      .locked              (locked2            ),     // output      .clk_100m            (clk_100m           )      // input clk_100m pll1 output clk_100Mhz );</code></pre> <p>此处我们会发现一个问题，我们后续模块的复位信号是在时钟稳定的情况下基础上生成的，而实际上pll本身也有复位信号，为了保障整个工程的稳定性，我们需要对pll的复位信号也进行异步复位同步释放</p> <p>图1 结果时序图</p> <h3>2.2 复位模块</h3> <p>下面是我们设置的复位模块代码，在时钟稳定后， 将工作时钟，外部输入复位信号送入模块后，在各模块时钟下同步后的复位信号输出至各模块</p> <p>那么这里有个问题，如果在时钟没稳定前，如果有复位信号输入本模块会不会出现亚稳态的问题呢，实际上是不会的，我们可以看复位模块的复位信号，在时钟信号没稳定下，locked1，locked2常为0，不存在信号变化也就不存在亚稳态的问题了。</p> <p>复位模块复位信号代码如下：</p> <pre><code class="language-verilog">//复位模块复位信号 assign  rst_n = locked1 &amp;&amp; locked2 &amp;&amp; sys_rst_n;</code></pre> <p>复位模块代码如下：</p> <pre><code class="language-verilog">//************************************************************************** // *** 名称 : sys_reset.v // *** 作者 : 吃豆熊 // *** 日期 : 2021-4-1 // *** 描述 : 异步复位同步释放模块 //**************************************************************************  module sys_reset //========================&lt; 端口 &gt;========================================== (     input   wire                sys_clk,                  //系统时钟     input   wire                pll_clk1,      input   wire                pll_clk2,      input   wire                vga_clk,       input   wire                sdram_clk,     input   wire                hdmi_clk,       input   wire                sys_rst_n,                //外界输入复位     input   wire                rst_n,                    //两级时钟pll稳定后复位      output   wire               pll_rst_n1,               //第一级pll复位    异步复位同步释放后复位     output   wire               pll_rst_n2,               //第二级pll复位     output   wire               camera_rst_n,             //摄像头模块复位     output   wire               vga_rst_n,                //vga模块复位     output   wire               sdram_rst_n,              //sdram模块复位     output   wire               hdmi_rst_n                //hdmi模块复位 );  //========================&lt; 信号 &gt;========================================== //第一级pll复位 reg                         pll_rst_n_reg1; reg                         pll_rst_n_reg2; //第二级pll复位 reg                         pll_rst_n_reg3; reg                         pll_rst_n_reg4; //摄像头复位 reg                         camera_rst_n_reg1; reg                         camera_rst_n_reg2; //sdram复位 reg                         sdram_rst_n_reg1; reg                         sdram_rst_n_reg2; //vga复位 reg                         vga_rst_n_reg1; reg                         vga_rst_n_reg2; //hdmi复位 reg                         hdmi_rst_n_reg1; reg                         hdmi_rst_n_reg2;  //========================================================================== //==    信号生成 //========================================================================== //第一级pll复位信号 always@(posedge pll_clk1 or negedge sys_rst_n )begin     if(sys_rst_n == 1'b0)begin         pll_rst_n_reg1 &lt;= 1'b0;         pll_rst_n_reg2 &lt;= 1'b0;    end   else begin         pll_rst_n_reg1 &lt;= 1'b1;         pll_rst_n_reg2 &lt;= pll_rst_n_reg1;     end end  assign pll_rst_n1 = pll_rst_n_reg2; //第二级pll复位信号  always@(posedge pll_clk2 or negedge sys_rst_n )begin     if(sys_rst_n == 1'b0)begin         pll_rst_n_reg3 &lt;= 1'b0;         pll_rst_n_reg4 &lt;= 1'b0;    end   else begin         pll_rst_n_reg3 &lt;= 1'b1;         pll_rst_n_reg4 &lt;= pll_rst_n_reg3;     end end  assign pll_rst_n2 = pll_rst_n_reg4;  //摄像头复位信号 always@(posedge pll_clk2 or negedge rst_n )begin     if(rst_n == 1'b0)begin         camera_rst_n_reg1 &lt;= 1'b0;         camera_rst_n_reg2 &lt;= 1'b0;    end   else begin         camera_rst_n_reg1 &lt;= 1'b1;         camera_rst_n_reg2 &lt;= camera_rst_n_reg1;     end end  assign camera_rst_n = camera_rst_n_reg2;   //sdram复位信号 always@(posedge sdram_clk or negedge rst_n )begin     if(rst_n == 1'b0)begin         sdram_rst_n_reg1 &lt;= 1'b0;         sdram_rst_n_reg2 &lt;= 1'b0;    end   else begin         sdram_rst_n_reg1 &lt;= 1'b1;         sdram_rst_n_reg2 &lt;= sdram_rst_n_reg1;     end end  assign sdram_rst_n = sdram_rst_n_reg2;   //vga复位信号 always@(posedge vga_clk or negedge rst_n )begin     if(rst_n == 1'b0)begin         vga_rst_n_reg1 &lt;= 1'b0;         vga_rst_n_reg2 &lt;= 1'b0;    end   else begin         vga_rst_n_reg1 &lt;= 1'b1;         vga_rst_n_reg2 &lt;= vga_rst_n_reg1;     end end  assign vga_rst_n = vga_rst_n_reg2;   //hdmi复位信号 always@(posedge hdmi_clk or negedge rst_n )begin     if(rst_n == 1'b0)begin         hdmi_rst_n_reg1 &lt;= 1'b0;         hdmi_rst_n_reg2 &lt;= 1'b0;    end   else begin         hdmi_rst_n_reg1 &lt;= 1'b1;         hdmi_rst_n_reg2 &lt;= hdmi_rst_n_reg1;     end end  assign hdmi_rst_n = hdmi_rst_n_reg2;  endmodule</code></pre> <p>最后是我们的顶层模块例化代码：</p> <pre><code class="language-verilog">//局部复位划分模块 sys_reset sys_reset_inst (     .sys_clk             (sys_clk            ),     .pll_clk1            (sys_clk            ),     .pll_clk2            (clk_100m           ),     .vga_clk             (clk_74m            ),     .sdram_clk           (clk_125m           ),     .hdmi_clk            (clk_74m            ),     //输入复位            .sys_rst_n           (sys_rst_n          ),     .rst_n               (rst_n              ),     //输出异步复位同步释放后复位信号         .pll_rst_n1          (pll_rst_n1         ),     .pll_rst_n2          (pll_rst_n2         ),     .camera_rst_n        (camera_rst_n       ),     .vga_rst_n           (vga_rst_n          ),     .sdram_rst_n         (sdram_rst_n        ),     .hdmi_rst_n          (hdmi_rst_n         ) );</code></pre> <p>随后我们就可以将输出的复位信号输入各个模块使用，且理论上由于均为wire型，因此与在每个模块内进行同步毫无区别。同时也避免了需要在顶层模块进行时钟复位信号的同步，保证了顶层模块的简洁。</p> <p>、、、</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-27136.htm">python基础知识-pycharm版 第七天</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-14-node-share-links.htm" title="「10月14日」最高速度19.6M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「10月14日」最高速度19.6M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-8-clash-node.htm" title="「8月8日」最高速度19.6M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接">「8月8日」最高速度19.6M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-18656.htm" title="宠物领养合同违约金3000元合法吗知乎文章（宠物领养合同属于合同法吗）">宠物领养合同违约金3000元合法吗知乎文章（宠物领养合同属于合同法吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-23-node-share.htm" title="「9月23日」最高速度18.9M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「9月23日」最高速度18.9M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-29-free-high-speed-nodes.htm" title="「7月29日」最高速度19.6M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「7月29日」最高速度19.6M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-23-node-share.htm" title="「8月23日」最高速度19.9M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「8月23日」最高速度19.9M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-19-free-clash.htm" title="「7月19日」最高速度18.5M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「7月19日」最高速度18.5M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-clash.htm" title="「12月2日」最高速度18.4M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「12月2日」最高速度18.4M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-10-clash-node.htm" title="「6月10日」最高速度18.6M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「6月10日」最高速度18.6M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-30-shadowrocket-node.htm" title="「7月30日」最高速度21.2M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「7月30日」最高速度21.2M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
