@@ -72,7 +72,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                                          				  				  				<div id="content_views" class="markdown_views prism-github-gist"> <p>使用的是Kratos的项目模板生成的项目，目录结构如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230128/61d3d5f6014a83a94229f86aa4e40136.jpg" alt="Goland proto文件 File Watch 自动生成">每次编写完Proto文件都要手动输入命令来生成go文件，使用Goland的File Watch监听文件改变，然后执行生成命令。</p> <p>需要有File Watch这个插件<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230128/54f7ddb5ab2a795cfe8dcff1b38ef0dc.jpg" alt="Goland proto文件 File Watch 自动生成"><br /> 配置：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230128/0cc415f169b5168eedbf2cd13e78970e.jpg" alt="Goland proto文件 File Watch 自动生成"><br /> 直接把命令行的参数替换成变量就行了。<br /> 生成使用的工具是protoc.exe</p> <p><strong>生成Proto</strong><br /> *.pb.go是生成的接口代码<br /> *_grpc.pb.go是grpc服务端接口</p> <p>生成*.pb.go的目录为proto文件的option go_package = “post/internal/conf;conf”;<br /> 生成选项:proto路径(包括引用的package路径),使用–proto_path或-I命令行标志指定;<br /> 输出路径,使用–go_out指定*.pb.go(会跟上面的option go_package一起使用)、–go-grpc_out指定*_grpc.pb.go</p> <p>生成proto源码:<br /><code>kratos proto client api/post/v1/post.proto</code> =&gt;生成 *_grpc.pb.go、*.pb.go</p> <p>项目目录下运行: <code>protoc --go_out=.. --go-grpc_out=.\api\server\v1 --go-grpc_opt=paths=source_relative -I=".\third_party" -I=".\third_party\google" -I=".\api\server\v1" HatService.proto </code> =&gt;生成 <em>_grpc.pb.go、</em>.pb.go</p> <pre><code class="prism language-shell">--go_out<span class="token operator">=</span><span class="token variable">$ProjectFileDir</span>$<span class="token punctuation">\</span><span class="token punctuation">..</span> --go-grpc_out<span class="token operator">=</span><span class="token variable">$FileDir</span>$ --go-grpc_opt<span class="token operator">=</span>paths<span class="token operator">=</span>source_relative -I<span class="token operator">=</span><span class="token string">"<span class="token variable">$ProjectFileDir</span>$<span class="token entity" title="\t">\t</span>hird_party"</span> -I<span class="token operator">=</span><span class="token string">"<span class="token variable">$ProjectFileDir</span>$<span class="token entity" title="\t">\t</span>hird_party\google"</span> -I<span class="token operator">=</span><span class="token string">"<span class="token variable">$ProjectFileDir</span>$<span class="token entity" title="\a">\a</span>pi\server<span class="token entity" title="\v">\v</span>1"</span> <span class="token variable">$FilePath</span>$ </code></pre> <p>$ProjectFileDir$ 是项目的目录<br /> $FilePath$ 是监控到变更文件的路径<br /> -I参数是添加包proto文件依赖</p> <p>show console可以改为always来查看日志。<br /> 保存配置后每次修改都会自动生成go文件</p> </p></div> 			                <div class="clearfix"></div>
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-github-gist"> <p>使用的是Kratos的项目模板生成的项目，目录结构如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230128/61d3d5f6014a83a94229f86aa4e40136.jpg" alt="Goland proto文件 File Watch 自动生成">每次编写完Proto文件都要手动输入命令来生成go文件，使用Goland的File Watch监听文件改变，然后执行生成命令。</p> <p>需要有File Watch这个插件<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230128/54f7ddb5ab2a795cfe8dcff1b38ef0dc.jpg" alt="Goland proto文件 File Watch 自动生成"><br /> 配置：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230128/0cc415f169b5168eedbf2cd13e78970e.jpg" alt="Goland proto文件 File Watch 自动生成"><br /> 直接把命令行的参数替换成变量就行了。<br /> 生成使用的工具是protoc.exe</p> <p><strong>生成Proto</strong><br /> *.pb.go是生成的接口代码<br /> *_grpc.pb.go是grpc服务端接口</p> <p>生成*.pb.go的目录为proto文件的option go_package = “post/internal/conf;conf”;<br /> 生成选项:proto路径(包括引用的package路径),使用–proto_path或-I命令行标志指定;<br /> 输出路径,使用–go_out指定*.pb.go(会跟上面的option go_package一起使用)、–go-grpc_out指定*_grpc.pb.go</p> <p>生成proto源码:<br /><code>kratos proto client api/post/v1/post.proto</code> =&gt;生成 *_grpc.pb.go、*.pb.go</p> <p>项目目录下运行: <code>protoc --go_out=.. --go-grpc_out=.\api\server\v1 --go-grpc_opt=paths=source_relative -I=".\third_party" -I=".\third_party\google" -I=".\api\server\v1" HatService.proto </code> =&gt;生成 <em>_grpc.pb.go、</em>.pb.go</p> <pre><code class="prism language-shell">--go_out<span class="token operator">=</span><span class="token variable">$ProjectFileDir</span>$<span class="token punctuation">\</span><span class="token punctuation">..</span> --go-grpc_out<span class="token operator">=</span><span class="token variable">$FileDir</span>$ --go-grpc_opt<span class="token operator">=</span>paths<span class="token operator">=</span>source_relative -I<span class="token operator">=</span><span class="token string">"<span class="token variable">$ProjectFileDir</span>$<span class="token entity" title="\t">\t</span>hird_party"</span> -I<span class="token operator">=</span><span class="token string">"<span class="token variable">$ProjectFileDir</span>$<span class="token entity" title="\t">\t</span>hird_party\google"</span> -I<span class="token operator">=</span><span class="token string">"<span class="token variable">$ProjectFileDir</span>$<span class="token entity" title="\a">\a</span>pi\server<span class="token entity" title="\v">\v</span>1"</span> <span class="token variable">$FilePath</span>$ </code></pre> <p>$ProjectFileDir$ 是项目的目录<br /> $FilePath$ 是监控到变更文件的路径<br /> -I参数是添加包proto文件依赖</p> <p>show console可以改为always来查看日志。<br /> 保存配置后每次修改都会自动生成go文件</p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-24546.htm">合肥宠物狗领养地址（合肥宠物狗领养地址在哪里）</a></p>
                                         <p>下一个：<a href="/news/article-24808.htm">动物疫苗接种方法视频 动物疫苗接种方法视频教程</a></p>
@@ -85,16 +86,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-7-8-free-ssr-node.htm" title="「7月8日」最高速度18M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「7月8日」最高速度18M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-21579.htm" title="重庆领养宠物在哪领养好呢多少钱（重庆领养宠物在哪领养好呢多少钱一个月）">重庆领养宠物在哪领养好呢多少钱（重庆领养宠物在哪领养好呢多少钱一个月）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-clash.htm" title="「11月21日」最高速度18.7M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「11月21日」最高速度18.7M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-31-clash-v2ray-ss-ssr.htm" title="「8月31日」最高速度18M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接">「8月31日」最高速度18M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-14-free-ssr-subscribe.htm" title="「6月14日」最高速度20M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「6月14日」最高速度20M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22045.htm" title="我所在的城市有一家宠物医院的英语作文 我所在的城市有一家宠物医院的英语作文怎么写">我所在的城市有一家宠物医院的英语作文 我所在的城市有一家宠物医院的英语作文怎么写</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-10-clash-node.htm" title="「6月10日」最高速度18.6M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「6月10日」最高速度18.6M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/news/article-19292.htm" title="动物疫苗的生产原料有哪些呢英文（动物疫苗的种类和制备原理）">动物疫苗的生产原料有哪些呢英文（动物疫苗的种类和制备原理）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-clash.htm" title="「11月26日」最高速度22M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「11月26日」最高速度22M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-13-clash-windows.htm" title="「6月13日」最高速度22.6M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接">「6月13日」最高速度22.6M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-clash.htm" title="「12月13日」最高速度20.9M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接">「12月13日」最高速度20.9M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-20-clash-node.htm" title="「8月20日」最高速度19.2M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「8月20日」最高速度19.2M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-16-node-share-links.htm" title="「11月16日」最高速度22.5M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「11月16日」最高速度22.5M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-21-free-node-subscribe-links.htm" title="「9月21日」最高速度22.4M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「9月21日」最高速度22.4M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-1-shadowrocket-node.htm" title="「6月1日」最高速度20.2M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「6月1日」最高速度20.2M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-21-clash-v2ray-ss-ssr.htm" title="「7月21日」最高速度22.9M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「7月21日」最高速度22.9M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26675.htm" title="宠物粮食加工厂设备有哪些品牌的呢 宠物粮食加工厂设备有哪些品牌的呢图片">宠物粮食加工厂设备有哪些品牌的呢 宠物粮食加工厂设备有哪些品牌的呢图片</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-clash-node-daily-updates.htm" title="「11月22日」最高速度18.2M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「11月22日」最高速度18.2M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-6-free-subscribe-node.htm" title="「7月6日」最高速度21.6M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「7月6日」最高速度21.6M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -106,7 +107,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -144,6 +145,15 @@
     <footer id="footer">
         <div class="container footer-bottom clearfix">
             <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                 V2rayClashNode节点订阅站 版权所有
                 <br />
                 Powered by WordPress
