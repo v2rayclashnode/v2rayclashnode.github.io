@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-31272.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Redis 主从同步原理解析</title>
+        <meta name="description" content="文章目录    前言 增量同步 快照同步 无盘复制 Wait 指令     前言 Redis 同步支持主从同步和从从同步，从从同步功能是Redis 后续版本增加的功能，为了减轻主库的同步负担。这里我们" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <span class="logo"><a href="/">V2ray Clash Node</a></span>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>Redis 主从同步原理解析</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-github-gist"> <div class="toc"> <h3>文章目录</h3> <ul> <li> <ul> <li><a href="#_1" rel="nofollow">前言</a></li> <li><a href="#_4" rel="nofollow">增量同步</a></li> <li><a href="#_9" rel="nofollow">快照同步</a></li> <li><a href="#_15" rel="nofollow">无盘复制</a></li> <li><a href="#Wait__18" rel="nofollow">Wait 指令</a></li> </ul> </li> </ul> </div> <h2><a id="_1" rel="nofollow"></a>前言</h2> <p>Redis 同步支持主从同步和从从同步，从从同步功能是Redis 后续版本增加的功能，为了减轻主库的同步负担。这里我们主要讨论主从同步。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/421c824bb4e9b9379c82dc769c279c04.jpg" alt="Redis 主从同步原理解析"></p> <h2><a id="_4" rel="nofollow"></a>增量同步</h2> <p>Redis 同步的是指令流，主节点会将那些对自己的状态产生修改性影响的指令记录在本地的内存 buffer 中，然后异步将 buffer 中的指令同步到从节点，从节点一边执行同步的指令流来达到和主节点一样的状态，一遍向主节点反馈自己同步到哪里了(偏移量)。<br /> 因为内存的 buffer 是有限的，所以 Redis 主库不能将所有的指令都记录在内存 buffer 中。Redis 的复制内存 buffer 是一个定长的环形数组，如果数组内容满了，就会从头开始覆盖前面的内容。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/9c1b59d59134480250c58a7a5c540e45.jpg" alt="Redis 主从同步原理解析"><br /> 如果因为网络状况不好，从节点在短时间内无法和主节点进行同步，那么当网络状况恢复时，Redis 的主节点中那些没有同步的指令在 buffer 中有可能已经被后续的指令覆盖掉了，从节点将无法直接通过指令流来进行同步，这个时候就需要用到更加复杂的同步机制——快照同步。</p> <h2><a id="_9" rel="nofollow"></a>快照同步</h2> <p>快照同步是一个非常耗费资源的操作，它首先需要在主库上进行一次 bgsave 将当前内存的数据全部快照到磁盘文件中，然后再将快照文件的内容全部传送到从节点。从节点将快照文件接受完毕后，立即执行一次全量加载，加载之前先要将当前内存的数据清空。加载完毕后通知主节点继续进行增量同步。<br /> 在整个快照同步进行的过程中，主节点的复制 buffer 还在不停的往前移动，如果快照同步的时间过长或者复制 buffer 太小，都会导致同步期间的增量指令在复制 buffer 中被覆盖，这样就会导致快照同步完成后无法进行增量复制，然后会再次发起快照同步，如此极有可能会陷入快照同步的死循环。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/d8fbf4abb8a09c5f678a57d15d26d1f2.jpg" alt="Redis 主从同步原理解析"><br /> 所以务必配置一个合适的复制 buffer 大小参数，避免快照复制的死循环。<br /> 当从节点刚刚加入到集群时，它必须先要进行一次快照同步，同步完成后再继续进行增量同步。</p> <h2><a id="_15" rel="nofollow"></a>无盘复制</h2> <p>主节点在进行快照同步时，会进行很重的文件 IO 操作，特别是对于非 SSD 磁盘存储时，快照会对系统的负载产生较大影响。特别是当系统正在进行 AOF 的 fsync 操作时如果发生快照，fsync 将会被推迟执行，这就会严重影响主节点的服务效率。<br /> 所以从 Redis 2.8.18 版开始支持无盘复制。所谓无盘复制是指主服务器直接通过 SOCKET 将快照内容发送到从节点，生成快照是一个遍历的过程，主节点会一边遍历内存，一遍将序列化的内容发送到从节点，从节点还是跟之前一样，先将接收到的内容存储到磁盘文件中，再进行一次性加载。</p> <h2><a id="Wait__18" rel="nofollow"></a>Wait 指令</h2> <p>Redis 的复制是异步进行的，wait 指令可以让异步复制变身同步复制，确保系统的强一致性(不严格)。wait 指令是Redis3.0 版本以后才出现的。<br /> wait 提供两个参数，第一个参数是从库的数量 N，第二个参数是时间 t，以毫秒为单位。它表示等待 wait 指令之前的所有写操作同步到 N 个从库(也就是确保 N 个从库的同步没有滞后)，最多等待时间 t。如果时间 t=0，表示无限等待直到 N 个从库同步完成达成一致。<br /> 假设此时出现了网络分区，wait 指令第二个参数时间 t=0，主从同步无法继续进行，wait 指令会永远阻塞，Redis 服务器将丧失可用性。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-30884.htm">宠物用品批发进货渠道宠物用品优选倔强的尾巴（宠物用品批发商）</a></p>
+                                        <p>下一个：<a href="/news/article-31273.htm">动物疫苗价格查询表图片高清大全集（动物疫苗有哪些种类）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-6-16-free-clash.htm" title="「6月16日」最高速度22.5M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「6月16日」最高速度22.5M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-16-clash-v2ray-ss-ssr.htm" title="「10月16日」最高速度21.4M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「10月16日」最高速度21.4M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-10-clash-node.htm" title="「6月10日」最高速度18.6M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「6月10日」最高速度18.6M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26674.htm" title="中国农大动物医院（中国农大动物医院官网预约）">中国农大动物医院（中国农大动物医院官网预约）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-23-node-share-links.htm" title="「6月23日」最高速度18.6M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「6月23日」最高速度18.6M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19291.htm" title="动物疫苗规定最新版（动物疫苗的使用方法及注意事项）">动物疫苗规定最新版（动物疫苗的使用方法及注意事项）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-25-clash-windows.htm" title="「12月25日」最高速度20.9M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「12月25日」最高速度20.9M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-v2ray-subscribe.htm" title="「11月11日」最高速度18.2M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「11月11日」最高速度18.2M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25274.htm" title="同安哪里有宠物医院最好（同安宠物狗店）">同安哪里有宠物医院最好（同安宠物狗店）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-ssr-node.htm" title="「11月13日」最高速度22.2M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「11月13日」最高速度22.2M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
