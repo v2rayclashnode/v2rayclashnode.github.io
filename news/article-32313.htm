@@ -76,6 +76,7 @@
                   				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p>上两篇文章我们介绍了过滤器Filter和拦截器Intercepter，其功能都是对请求进行拦截并对请求过滤，本篇文章就介绍一下两者的区别</p> </h1> <ol> <li>过滤器和拦截器触发时机不一样，过滤器是在请求进入容器后，但请求进入servlet之前进行预处理的。请求结束返回也是，是在servlet处理完后，返回给前端之前。</li> <li>拦截器可以获取IOC容器中的各个bean，而过滤器就不行，因为拦截器是spring提供并管理的，spring的功能可以被拦截器使用，在拦截器里注入一个service，可以调用业务逻辑。而过滤器是JavaEE标准，只需依赖servlet<br /> api ，不需要依赖spring。</li> <li>过滤器的实现基于回调函数。而拦截器（代理模式）的实现基于反射</li> <li>Filter是依赖于Servlet容器，属于Servlet规范的一部分，而拦截器则是独立存在的，可以在任何情况下使用。</li> <li>Filter的执行由Servlet容器回调完成，而拦截器通常通过动态代理（反射）的方式来执行。</li> <li>Filter的生命周期由Servlet容器管理，而拦截器则可以通过IoC容器来管理，因此可以通过注入等方式来获取其他Bean的实例，因此使用会更方便。</li> </ol> <p>过滤器和拦截器非常相似，但是它们有很大的区别，最简单明了的区别就是<strong>过滤器可以修改request，而拦截器不能过滤器需要在servlet容器中实现，拦截器可以适用于javaEE，javaSE等各种环境拦截器可以调用IOC容器中的各种依赖，而过滤器不能过滤器只能在请求的前后使用，而拦截器可以详细到每个方法</strong></p> <p>总的来说<br /> 过滤器就是筛选出你要的东西，比如requeset中你要的那部分拦截器在做安全方面用的比较多，比如终止一些流程<br /> 网上有一张图片很不错，这里拷过来给大家看一下<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221117/b12b70354404b61305324c1c4055fff7.jpg" alt="Springboot过滤器和拦截器的区别"></p> <ul> <li>过滤器（Filter） ：可以拿到原始的http请求，但是拿不到你请求的控制器和请求控制器中的方法的信息。</li> <li>拦截器（Interceptor）：可以拿到你请求的控制器和方法，却拿不到请求方法的参数。</li> <li>切片（Aspect）: 可以拿到方法的参数，但是却拿不到http请求和响应的对象</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221117/fab049bc9a75471ea10e4a9e27e9ff20.jpg" alt="Springboot过滤器和拦截器的区别"></p> </h1> <p>拦截器是在DispatcherServlet这个servlet中执行的，因此所有的请求最先进入Filter，最后离开Filter。其顺序如下：<br /><strong>Filter -&gt; Interceptor.preHandle -&gt; Handler -&gt; Interceptor.postHandle<br /> -&gt; Interceptor.afterCompletion -&gt; Filter</strong></p> <h2><a id="21__29" rel="nofollow"></a>2.1 拦截器应用场景</h2> <p>拦截器本质上是面向切面编程（AOP），符合横切关注点的功能都可以放在拦截器中来实现，主要的应用场景包括：</p> <ul> <li>登录验证，判断用户是否登录。</li> <li>权限验证，判断用户是否有权限访问资源，如校验token</li> <li>日志记录，记录请求操作日志（用户ip，访问时间等），以便统计请求访问量。</li> <li>处理cookie、本地化、国际化、主题等。性能监控，监控请求处理时长等。</li> <li>通用行为：读取cookie得到用户信息并将用户对象放入请求，从而方便后续流程使用，还有如提取<br /> Locale、Theme信息等，只要是多个处理器都需要的即可使用拦截器实现） </li> </ul> <h2><a id="22__38" rel="nofollow"></a>2.2 过滤器应用场景</h2> <ul> <li>过滤敏感词汇（防止sql注入）</li> <li>设置字符编码</li> <li>URL级别的权限访问控制</li> <li>压缩响应信息</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221117/07851fb066db2a1c34872cd4ac88b4b7.jpg" alt="Springboot过滤器和拦截器的区别"></p> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-32312.htm">Java基础知识 29（同步代码块，同步方法，静态同步方法，Lock锁，死锁问题）</a></p>
+                                        <p>下一个：<a href="/news/article-32786.htm">重庆免费领养小猫（重庆免费领养小猫的地方）</a></p>
                                     </div>
                                     </div>
                     <div class="col-md-3">
@@ -85,16 +86,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-24546.htm" title="合肥宠物狗领养地址（合肥宠物狗领养地址在哪里）">合肥宠物狗领养地址（合肥宠物狗领养地址在哪里）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-21-free-ssr-subscribe.htm" title="「10月21日」最高速度22.1M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「10月21日」最高速度22.1M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-17-free-node-subscribe-links.htm" title="「10月17日」最高速度21M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「10月17日」最高速度21M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-21124.htm" title="新手养猫养什么比较合适（新手养猫要买什么物品）">新手养猫养什么比较合适（新手养猫要买什么物品）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-8-free-ssr-node.htm" title="「7月8日」最高速度18M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「7月8日」最高速度18M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-22961.htm" title="兽用疫苗运输与储存规范最新（兽用疫苗运输与储存规范最新版）">兽用疫苗运输与储存规范最新（兽用疫苗运输与储存规范最新版）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-v2ray-subscribe.htm" title="「11月11日」最高速度18.2M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「11月11日」最高速度18.2M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-15-free-clash.htm" title="「7月15日」最高速度22.5M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接">「7月15日」最高速度22.5M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-17-clash-windows.htm" title="「8月17日」最高速度20.3M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「8月17日」最高速度20.3M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-23875.htm" title="动物疫苗注射方法有哪些种类 动物疫苗注射方法有哪些种类图片">动物疫苗注射方法有哪些种类 动物疫苗注射方法有哪些种类图片</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-11-clash-node.htm" title="「6月11日」最高速度19.9M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「6月11日」最高速度19.9M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-32313.htm" title="Springboot过滤器和拦截器的区别">Springboot过滤器和拦截器的区别</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-clash-v2ray-ss-ssr.htm" title="「12月9日」最高速度19.9M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「12月9日」最高速度19.9M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-clash.htm" title="「11月26日」最高速度22M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「11月26日」最高速度22M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19291.htm" title="动物疫苗规定最新版（动物疫苗的使用方法及注意事项）">动物疫苗规定最新版（动物疫苗的使用方法及注意事项）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-2-free-ssr-node.htm" title="「6月2日」最高速度21.3M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接">「6月2日」最高速度21.3M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-22-free-node-subscribe-links.htm" title="「9月22日」最高速度22.5M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「9月22日」最高速度22.5M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-14-free-ssr-subscribe.htm" title="「6月14日」最高速度20M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「6月14日」最高速度20M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-free-ssr-node.htm" title="「11月27日」最高速度22.1M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「11月27日」最高速度22.1M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25742.htm" title="为什么一屋不养二猫（为什么一屋不养二猫迷信）">为什么一屋不养二猫（为什么一屋不养二猫迷信）</a></li>
                     </ul>
     </div>
 </div>
@@ -106,7 +107,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
