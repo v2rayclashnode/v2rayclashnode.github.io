@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-34949.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Java基础之浅谈异常与了解断言</title>
+        <meta name="description" content="用户输入错误 设备错误 物理限制 代码错误     在Java中异常对象都是派生于Throwable类的一个实例。 我们一般将异常分为两种：①Error和②Exception 如果你的程序出现了Err" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <span class="logo"><a href="/">V2ray Clash Node</a></span>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>Java基础之浅谈异常与了解断言</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <ul> <li>用户输入错误</li> <li>设备错误</li> <li>物理限制</li> <li>代码错误</li> </ul> </h1> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/82e07d110c22ef8e92a30e063641f7c0.jpg" alt="Java基础之浅谈异常与了解断言"></p> <ul> <li>在Java中异常对象都是派生于Throwable类的一个实例。</li> <li>我们一般将异常分为两种：①Error和②Exception</li> <li><strong>如果你的程序出现了Error</strong>：是程序无法处理的错误，表示运行应用程序中较严重问题。基本上躺平吧</li> <li><strong>如果你的程序出现了Exception</strong>：我们可以通过抛出异常并捕获异常来处理。</li> </ul> <h2 id="21引起异常的常见问题">2.1引起异常的常见问题</h2> <p><strong>派生于RuntimeException的异常包括一下问题：</strong></p> <ul> <li>错误的强制类型转换</li> <li>数组访问越界</li> <li>访问null指针</li> <li>出现这些问题，一定是你自己的问题</li> </ul> <p><strong>其它类异常包括：</strong></p> <ul> <li>试图超越文件末尾继续读取数据</li> <li>试图打开一个不存在的文件</li> <li>试图根据给定的字符串查找Class对象，而这个字符串表示的类并不存在。</li> </ul> <h2 id="22常见异常处理">2.2常见异常处理</h2> <ul> <li>过程一：“抛”：一旦出现异常，就会在异常代码处生成一个对应异常类的对象，并将此对象抛出。<br /> 一旦抛出对象后，其后的代码不在执行。(除非这个异常被捕获，这样后面的代码可以继续执行)</li> <li>过程二：“抓”：可以理解为异常处理方式：①try-catch-finally(自己解决)   ②throws(扔给别人解决)</li> </ul> </h1> <h2 id="31如何抛出异常">3.1如何抛出异常</h2> <ul> <li>首先我们抛出异常通常使用throws</li> </ul> <pre><code>public class Son {     public void run() throws Exception{         //若代码中，出现异常，我们可以将这个异常抛出，抛给调用者去解决这个问题。         //可以一层一层的抛出，但是终究我们还是要捕获这个异常，解决问题。         //有时候你也会认为，这是一个极其不负责任的做法。????     } }</code></pre> <h2 id="32创建异常类自定义异常">3.2创建异常类（自定义异常）</h2> <ul> <li>我们需要做的很简单，定义一个派生于(继承)Exception的类，或者是Exception的某个子类。</li> <li>自定义异常通常包含两个构造器，<strong>一个是默认构造器</strong>，一个是<strong>包含详细描述信息的构造器</strong>。</li> </ul> <pre><code>class 自定义异常类 extends Exception {     public 自定义异常类() {     }     public 自定义异常类(String message) {         super(message);     } }  public class Son {     int a = 0;     public void sum() throws 自定义异常类 {         if(a &lt; 0)              throw new 自定义异常类("a不能小于0");     } }</code></pre> <h2 id="33捕获异常try-catch-finally">3.3捕获异常try-catch-finally</h2> <pre><code>public void test() {         try {             //可能存在问题的歧义代码         }catch (Exception e) {             e.printStackTrace();         }finally {             System.out.println("一定会走的代码");         }     }</code></pre> <ul> <li>我们先走try里的代码，若遇到了异常，则进入catch，将异常处理后，继续执行finally语句</li> <li>若try语句中又return语句，我们仍然执行完try后继续执行finally。</li> <li>finally的语句块一定会被执行。(除非我们没有正确处理遇到的异常)</li> <li>若try语句块中没有任何异常，则跳过catch语句块。</li> </ul> <h2 id="34throw和throws区别">3.4throw和throws区别</h2> <p><strong>throws：</strong>throws关键字用来声明要产生的异常，通常在方法名字后面使用<code>public void run() throws Exception</code><br /><strong>throw：</strong>throw关键字通常抛出异常对象，作用就是抛出异常。<code>throw new 自定义异常类("a不能小于0");</code></p> </h1> <p><strong>assert关键字：</strong></p> <ul> <li><code>assert condition;</code>，<code>assert condition :expression;</code></li> <li>断言的作用一般都是debug时候使用，如果 assert x&gt;0；结果为true，程序继续执行，反之程序直接停止。</li> <li>了解即可，我这个层次接触用的较少。</li> </ul> </h1> <ul> <li>对于<strong>异常处理</strong>内容就总结这么多，若想深入学习等待后续更新，基础部分掌握这些足矣。如果有不足之处，希望大家多多包涵，多多支持。如果有不懂的地方可以直接私信问我，欢迎来访！</li> <li>我将会继续更新关于Java的学习知识，感兴趣的小伙伴可以关注一下。</li> <li>文章写得比较走心，用了很长时间，绝对不是copy过来的！</li> <li>尊重每一位学习知识的人，同时也尊重每一位分享知识的人。</li> </ul> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-34701.htm">宠物粮食代工（宠物粮食代工一吨2万一贵吗知乎）</a></p>
+                                        <p>下一个：<a href="/news/article-34950.htm">学生没钱怎么开网店（学生没钱怎么开网店买手工活）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-8-free-high-speed-nodes.htm" title="「10月8日」最高速度22.6M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接">「10月8日」最高速度22.6M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-9-clash-v2ray-ss-ssr.htm" title="「6月9日」最高速度21.4M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接">「6月9日」最高速度21.4M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-8-free-clash-subscribe.htm" title="「9月8日」最高速度18.3M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接">「9月8日」最高速度18.3M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-3-shadowrocket-node.htm" title="「11月3日」最高速度19.4M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「11月3日」最高速度19.4M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-27-free-v2ray.htm" title="「9月27日」最高速度20.9M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「9月27日」最高速度20.9M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-free-clash.htm" title="「12月12日」最高速度21.3M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接">「12月12日」最高速度21.3M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-20-free-clash.htm" title="「12月20日」最高速度22M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接">「12月20日」最高速度22M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26675.htm" title="宠物粮食加工厂设备有哪些品牌的呢 宠物粮食加工厂设备有哪些品牌的呢图片">宠物粮食加工厂设备有哪些品牌的呢 宠物粮食加工厂设备有哪些品牌的呢图片</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-9-clash-node-daily-updates.htm" title="「7月9日」最高速度18.9M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「7月9日」最高速度18.9M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-14-free-ssr-subscribe.htm" title="「6月14日」最高速度20M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「6月14日」最高速度20M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
