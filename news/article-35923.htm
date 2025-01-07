@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-35923.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Python Pytorch学习之图像检索实践_python</title>
+        <meta name="description" content="目录  背景 图像表现 搜索   随着电子商务和在线网站的出现，图像检索在我们的日常生活中的应用一直在增加。 亚马逊、阿里巴巴、Myntra等公司一直在大量利用图像检索技术。当然，只有当通常的信息检索" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <span class="logo"><a href="/">V2ray Clash Node</a></span>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>Python Pytorch学习之图像检索实践_python</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">背景</a></li> <li><a href="#_label1" rel="nofollow">图像表现</a></li> <li><a href="#_label2" rel="nofollow">搜索</a></li> </ul> </div> <p>随着电子商务和在线网站的出现，图像检索在我们的日常生活中的应用一直在增加。</p> <p>亚马逊、阿里巴巴、Myntra等公司一直在大量利用图像检索技术。当然，只有当通常的信息检索技术失败时，图像检索才会开始工作。</p> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>背景</h2> <p>图像检索的基本本质是根据查询图像的特征从集合或数据库中查找图像。</p> <p>大多数情况下，这种特征是图像之间简单的视觉相似性。在一个复杂的问题中，这种特征可能是两幅图像在风格上的相似性，甚至是互补性。</p> <p>由于原始形式的图像不会在基于像素的数据中反映这些特征，因此我们需要将这些像素数据转换为一个潜空间，在该空间中，图像的表示将反映这些特征。</p> <p>一般来说，在潜空间中，任何两个相似的图像都会相互靠近，而不同的图像则会相隔很远。这是我们用来训练我们的模型的基本管理规则。一旦我们这样做，检索部分只需搜索潜在空间，在给定查询图像表示的潜在空间中拾取最近的图像。大多数情况下，它是在最近邻搜索的帮助下完成的。</p> <p>因此，我们可以将我们的方法分为两部分：</p> <ul> <li>图像表现</li> <li>搜索</li> </ul> <p>我们将在Oxford 102 Flowers数据集上解决这两个部分。</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>图像表现</h2> <p>我们将使用一种叫做暹罗模型的东西，它本身并不是一种全新的模型，而是一种训练模型的技术。大多数情况下，这是与triplet loss一起使用的。这个技术的基本组成部分是三元组。</p> <p>三元组是3个独立的数据样本，比如A（锚点），B（阳性）和C（阴性）；其中A和B相似或具有相似的特征（可能是同一类），而C与A和B都不相似。这三个样本共同构成了训练数据的一个单元——三元组。</p> <p>注：任何图像检索任务的90%都体现在暹罗网络、triplet loss和三元组的创建中。如果你成功地完成了这些，那么整个努力的成功或多或少是有保证的。</p> <p>首先，我们将创建管道的这个组件——数据。下面我们将在PyTorch中创建一个自定义数据集和数据加载器，它将从数据集中生成三元组。</p> <div class="ay1code"> <pre class="brush:py;">class TripletData(Dataset):      def __init__(self, path, transforms, split="train"):             self.path = path          self.split = split    # train or valid          self.cats = 102       # number of categories          self.transforms = transforms                   def __getitem__(self, idx):             # our positive class for the triplet          idx = str(idx%self.cats + 1)             # choosing our pair of positive images (im1, im2)          positives = os.listdir(os.path.join(self.path, idx))          im1, im2 = random.sample(positives, 2)             # choosing a negative class and negative image (im3)          negative_cats = [str(x+1) for x in range(self.cats)]          negative_cats.remove(idx)          negative_cat = str(random.choice(negative_cats))          negatives = os.listdir(os.path.join(self.path, negative_cat))             im3 = random.choice(negatives)             im1,im2,im3 = os.path.join(self.path, idx, im1), os.path.join(self.path, idx, im2), os.path.join(self.path, negative_cat, im3)             im1 = self.transforms(Image.open(im1))             im2 = self.transforms(Image.open(im2))             im3 = self.transforms(Image.open(im3))             return [im1, im2, im3]               # we'll put some value that we want since there can be far too many triplets possible      # multiples of the number of images/ number of categories is a good choice      def __len__(self):          return self.cats*8  # Transforms  train_transforms = transforms.Compose([      transforms.Resize((224,224)),      transforms.RandomHorizontalFlip(),      transforms.ToTensor(),      transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),  ])  val_transforms = transforms.Compose([      transforms.Resize((224, 224)),      transforms.ToTensor(),      transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),  ])  # Datasets and Dataloaders  train_data = TripletData(PATH_TRAIN, train_transforms)  val_data = TripletData(PATH_VALID, val_transforms)  train_loader = torch.utils.data.DataLoader(dataset = train_data, batch_size=32, shuffle=True, num_workers=4)  val_loader = torch.utils.data.DataLoader(dataset = val_data, batch_size=32, shuffle=False, num_workers=4)</pre> </div> <p>现在我们有了数据，让我们转到暹罗网络。</p> <p>暹罗网络给人的印象是2个或3个模型，但是它本身是一个单一的模型。所有这些模型共享权重，即只有一个模型。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220420/0845c4c096613da33de40d869a0ddbd4.jpg"></p> <p>如前所述，将整个体系结构结合在一起的关键因素是triplet loss。triplet loss产生了一个目标函数，该函数迫使相似输入对（锚点和正）之间的距离小于不同输入对（锚点和负）之间的距离，并限定一定的阈值。</p> <p>下面我们来看看triplet loss以及训练管道实现。</p> <div class="ay1code"> <pre class="brush:py;">class TripletLoss(nn.Module):      def __init__(self, margin=1.0):                    super(TripletLoss, self).__init__()          self.margin = margin                          def calc_euclidean(self, x1, x2):          return (x1 - x2).pow(2).sum(1)                  # Distances in embedding space is calculated in euclidean      def forward(self, anchor, positive, negative):                    distance_positive = self.calc_euclidean(anchor, positive)                    distance_negative = self.calc_euclidean(anchor, negative)                    losses = torch.relu(distance_positive - distance_negative + self.margin)                    return losses.mean()             device = 'cuda'     # Our base model  model = models.resnet18().cuda()  optimizer = optim.Adam(model.parameters(), lr=0.001)  triplet_loss = TripletLoss()     # Training  for epoch in range(epochs):            model.train()      epoch_loss = 0.0            for data in tqdm(train_loader):                    optimizer.zero_grad()          x1,x2,x3 = data          e1 = model(x1.to(device))          e2 = model(x2.to(device))          e3 = model(x3.to(device))                     loss = triplet_loss(e1,e2,e3)          epoch_loss += loss          loss.backward()          optimizer.step()                print("Train Loss: {}".format(epoch_loss.item()))                 class TripletLoss(nn.Module):      def __init__(self, margin=1.0):                    super(TripletLoss, self).__init__()          self.margin = margin                          def calc_euclidean(self, x1, x2):          return (x1 - x2).pow(2).sum(1)                  # Distances in embedding space is calculated in euclidean      def forward(self, anchor, positive, negative):                    distance_positive = self.calc_euclidean(anchor, positive)                    distance_negative = self.calc_euclidean(anchor, negative)                    losses = torch.relu(distance_positive - distance_negative + self.margin)                    return losses.mean()             device = 'cuda'        # Our base model  model = models.resnet18().cuda()  optimizer = optim.Adam(model.parameters(), lr=0.001)  triplet_loss = TripletLoss()        # Training  for epoch in range(epochs):      model.train()      epoch_loss = 0.0      for data in tqdm(train_loader):             optimizer.zero_grad()                    x1,x2,x3 = data                    e1 = model(x1.to(device))          e2 = model(x2.to(device))          e3 = model(x3.to(device))                     loss = triplet_loss(e1,e2,e3)          epoch_loss += loss          loss.backward()          optimizer.step()                print("Train Loss: {}".format(epoch_loss.item()))</pre> </div> <p>到目前为止，我们的模型已经经过训练，可以将图像转换为一个嵌入空间。接下来，我们进入搜索部分。</p> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>搜索</h2> <p>我们可以很容易地使用Scikit Learn提供的最近邻搜索。我们将探索新的更好的东西，而不是走简单的路线。</p> <p>我们将使用Faiss。这比最近的邻居要快得多，如果我们有大量的图像，这种速度上的差异会变得更加明显。</p> <p>下面我们将演示如何在给定查询图像时，在存储的图像表示中搜索最近的图像。</p> <div class="ay1code"> <pre class="brush:py;">#!pip install faiss-gpu  import faiss                              faiss_index = faiss.IndexFlatL2(1000)   # build the index     # storing the image representations  im_indices = []     with torch.no_grad():      for f in glob.glob(os.path.join(PATH_TRAIN, '*/*')):                    im = Image.open(f)          im = im.resize((224,224))          im = torch.tensor([val_transforms(im).numpy()]).cuda()                preds = model(im)          preds = np.array([preds[0].cpu().numpy()])          faiss_index.add(preds) #add the representation to index          im_indices.append(f)   #store the image name to find it later on               # Retrieval with a query image  with torch.no_grad():      for f in os.listdir(PATH_TEST):                    # query/test image          im = Image.open(os.path.join(PATH_TEST,f))          im = im.resize((224,224))          im = torch.tensor([val_transforms(im).numpy()]).cuda()                test_embed = model(im).cpu().numpy()                    _, I = faiss_index.search(test_embed, 5)          print("Retrieved Image: {}".format(im_indices[I[0][0]]))</pre> </div> <p>这涵盖了基于现代深度学习的图像检索，但不会使其变得太复杂。大多数检索问题都可以通过这个基本管道解决。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-35465.htm">狗粮生产厂加盟费多少（狗粮加盟代理）</a></p>
+                                        <p>下一个：<a href="/news/article-35924.htm">给猫打狂犬疫苗去哪里（给猫打狂犬疫苗在哪个部位打）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-free-clash.htm" title="「12月12日」最高速度21.3M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接">「12月12日」最高速度21.3M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-25-clash-windows.htm" title="「12月25日」最高速度20.9M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「12月25日」最高速度20.9M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-26-clash-node-daily-updates.htm" title="「10月26日」最高速度18.3M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「10月26日」最高速度18.3M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-31832.htm" title="猫进屋十大预兆 猫进屋十大预兆黑色猫">猫进屋十大预兆 猫进屋十大预兆黑色猫</a></li>
+                        <li class="py-2"><a href="/news/article-34949.htm" title="Java基础之浅谈异常与了解断言">Java基础之浅谈异常与了解断言</a></li>
+                        <li class="py-2"><a href="/news/article-37111.htm" title="宠物领养的文案短句（宠物领养的文案短句怎么写）">宠物领养的文案短句（宠物领养的文案短句怎么写）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-free-clash-subscribe.htm" title="「1月4日」最高速度19.2M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「1月4日」最高速度19.2M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-clash.htm" title="「12月13日」最高速度20.9M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接">「12月13日」最高速度20.9M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-clash-v2ray-ss-ssr.htm" title="「12月9日」最高速度19.9M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「12月9日」最高速度19.9M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22045.htm" title="我所在的城市有一家宠物医院的英语作文 我所在的城市有一家宠物医院的英语作文怎么写">我所在的城市有一家宠物医院的英语作文 我所在的城市有一家宠物医院的英语作文怎么写</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

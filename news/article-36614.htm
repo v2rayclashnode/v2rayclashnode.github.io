@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-36614.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Windows环境下的NodeJS+NPM+Bower安装配置步骤</title>
+        <meta name="description" content="Windows下的NodeJS安装是比较方便的（v0.6.0版本之后，支持windows native），只需要登陆官网（http://nodejs.org/），便可以看到首页的“INSTALL”按钮" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <span class="logo"><a href="/">V2ray Clash Node</a></span>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>Windows环境下的NodeJS+NPM+Bower安装配置步骤</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div id="cnblogs_post_body" class="blogpost-body"> <p>Windows下的NodeJS安装是比较方便的（v0.6.0版本之后，支持windows native），只需要登陆官网（http://nodejs.org/），便可以看到首页的“INSTALL”按钮，直接点击就会自动下载安装。安装过程基本直接“NEXT”就可以了。（Windows的安装msi文件在过程中会直接添加path的系统变量，变量值是你的安装路径，<span style="color:#ff0000;"><strong>建议安装在“D:\Program Files\nodejs”[C盘有权限问题需要解决]</strong><span style="color:#000000;">）</span></span></p> <p>　　废话不多说，安装完成之后，我们先检测下NodeJS是否安装成功，cmd命令行中键入：</p> <pre><a name="baidusnap0" rel="nofollow"></a><strong>node</strong>&nbsp;-v</pre> <p>　　若出现版本提示，就说明安装成功了</p> <p><strong>npm</strong>的安装。由于新版的NodeJS已经集成了<strong>npm</strong>，所以之前<strong>npm</strong>也一并安装好了。同样可以使用cmd命令行中键入：</p> <pre><strong>npm</strong>&nbsp;-v</pre> <p>　　同样，若出现版本提示，就说明安装成功了</p> <p>　　这样，常规NodeJS的搭建到现在为止已经完成了，迫不及待的话你可以在cmd命令行中键入“<strong>node</strong>”进入<strong>node</strong>开发模式下，输入你的NodeJS第一句：”hello world“ – 输入：console.log(‘hello world’)。这里就不再多作演示了。</p> <p><strong>npm</strong>作为一个NodeJS的模块管理，之前我由于没有系统地看资料所以导致安装配置模块的时候走了一大段弯路，所以现在很有必要列出来记录下。我们要先配置<strong>npm</strong>的全局模块的存放路径以及cache的路径，例如我希望将以上两个文件夹放在NodeJS的主目录下，便在NodeJs下建立“<strong>node</strong>_global”及“<strong>node</strong>_cache”两个文件夹。我们就在cmd中键入两行命令：</p> <pre><strong>npm</strong>&nbsp;config&nbsp;set&nbsp;prefix&nbsp;"D:\Program&nbsp;Files\nodejs\<strong>node</strong>_global"</pre> <p>　　和</p> <pre><strong>npm</strong>&nbsp;config&nbsp;set&nbsp;cache&nbsp;"D:\Program&nbsp;Files\nodejs\<strong>node</strong>_cache"</pre> <p>　　请大家注意，因为我事先降NodeJS安装在了“D:\Program Files\nodejs”目录下，所以大家键入命令时请正确输入你们的NodeJS目录。</p> <p>　　现在我们来装个模块试试，选择express这个比较常用的模块。同样在cmd命令行里面，输入：</p> <pre><strong>npm</strong>&nbsp;install&nbsp;express&nbsp;-g</pre> <p>　　注意，这里“-g”这个参数意思是装到global目录下，也就是上面说设置的“D:\Program Files\nodejs\<strong>node</strong>_global”里面。待cmd里面的安装过程滚动完成后，会提示“express”装在了哪、版本还有它的目录结构是怎样（<span style="color:#ff0000;"><strong>如果出现：attempt to unlock express...的错误，多半是你安装在C盘了，需要文件夹相关的权限设置，因为国内资料太少，国外资料很多看不太明白，时间有限，没有去研究...</strong></span>）。</p> <p>　　下面这一步非常关键，我们需要设置系统变量。进入我的电脑→属性→高级→环境变量。在系统变量下新建“<strong>NODE</strong>_PATH”，输入“C:\Program Files\nodejs\<strong>node</strong>_global\<strong>node</strong>_modules”。</p> <p>　　如果以上步骤都OK的话，我们可以再次开启cmd命令行，键入：</p> <pre><strong>node</strong></pre> <p>　　待出现“&gt; ”标记后，在键入：</p> <pre>require('express')</pre> <p>　　用途是测试下<strong>node</strong>的模块全局路径是否配置正确了。正确的话cmd会列出express的相关信息。</p> <p>　　如出错一般都是<strong>NODE</strong>_PATH的配置不对，可以再次检查以确保正确。</p> <p>　　好了，现在我们已经安装配置好NodeJS+<strong>npm</strong>了，那么我们现在安装<strong>Bower</strong>就显得容易得多，和安装express一样，键入一行命令：</p> <pre><strong>npm</strong>&nbsp;install<strong>bower</strong>&nbsp;-g</pre> <p>　　若检测是否安装成功方法同express一样。</p> <p>　　结束语：</p> <p>　　以上便是本人在安装配置NodeJS的时候的操作，由于新手的缘故，借助了google查阅了很多资料，希望对刚开始接触NodeJS的朋友都有点帮助。我现在用的IDE是Sublime text 2 + NodeJS的插件这个组合，能够在Sublime里面直接编译<strong>node</strong>的程序，挺方便的</p> <p>引自：http://www.360doc.com/content/14/0723/11/6807641_396479633.shtml</p> </div> <p>转载于:https://www.cnblogs.com/Denny_Yang/p/4238151.html</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-35924.htm">给猫打狂犬疫苗去哪里（给猫打狂犬疫苗在哪个部位打）</a></p>
+                                        <p>下一个：<a href="/news/article-36615.htm">宠物用品批发店怎么样（宠物批发用品在哪里）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-28057.htm" title="动物打一针疫苗多少钱啊图片大全（小动物打疫苗多少钱一只）">动物打一针疫苗多少钱啊图片大全（小动物打疫苗多少钱一只）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-v2ray.htm" title="「11月24日」最高速度20.6M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「11月24日」最高速度20.6M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20668.htm" title="分布式缓存&#8211;缓存与数据库强一致场景下的方案">分布式缓存&#8211;缓存与数据库强一致场景下的方案</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-shadowrocket-node.htm" title="「11月4日」最高速度21.7M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「11月4日」最高速度21.7M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-node-subscribe.htm" title="「12月28日」最高速度19.2M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「12月28日」最高速度19.2M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe-links.htm" title="「11月20日」最高速度22M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「11月20日」最高速度22M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-subscribe-node.htm" title="「12月17日」最高速度20.8M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接">「12月17日」最高速度20.8M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-27-free-subscribe-node.htm" title="「12月27日」最高速度19.8M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「12月27日」最高速度19.8M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-30884.htm" title="宠物用品批发进货渠道宠物用品优选倔强的尾巴（宠物用品批发商）">宠物用品批发进货渠道宠物用品优选倔强的尾巴（宠物用品批发商）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-free-shadowrocket-node.htm" title="「12月15日」最高速度20.5M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「12月15日」最高速度20.5M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
