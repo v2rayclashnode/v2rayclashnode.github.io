@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-39564.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>FreeRTOS实时操作系统的任务通知方法_操作系统</title>
+        <meta name="description" content="目录  前言 1.发送通知-方法1  1.1函数描述 1.2参数描述 1.3返回值  2.发送通知-方法2  2.1函数描述 2.2参数描述 2.3用法举例  3.获取通知  3.1函数描述 3.2参" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="__ADDON__/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <span class="logo"><a href="/">V2ray Clash Node</a></span>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>FreeRTOS实时操作系统的任务通知方法_操作系统</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">前言</a></li> <li><a href="#_label1" rel="nofollow">1.发送通知-方法1</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_0" rel="nofollow">1.1函数描述</a></li> <li><a href="#_lab2_1_1" rel="nofollow">1.2参数描述</a></li> <li><a href="#_lab2_1_2" rel="nofollow">1.3返回值</a></li> </ul> <li><a href="#_label2" rel="nofollow">2.发送通知-方法2</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_2_3" rel="nofollow">2.1函数描述</a></li> <li><a href="#_lab2_2_4" rel="nofollow">2.2参数描述</a></li> <li><a href="#_lab2_2_5" rel="nofollow">2.3用法举例</a></li> </ul> <li><a href="#_label3" rel="nofollow">3.获取通知</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_3_6" rel="nofollow">3.1函数描述</a></li> <li><a href="#_lab2_3_7" rel="nofollow">3.2参数描述</a></li> <li><a href="#_lab2_3_8" rel="nofollow">3.3返回值</a></li> </ul> <li><a href="#_label4" rel="nofollow">4.等待通知</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_4_9" rel="nofollow">4.1函数描述</a></li> <li><a href="#_lab2_4_10" rel="nofollow">4.2参数描述</a></li> <li><a href="#_lab2_4_11" rel="nofollow">4.3返回值</a></li> <li><a href="#_lab2_4_12" rel="nofollow">4.4用法举例</a></li> </ul> <li><a href="#_label5" rel="nofollow">5.任务通知并查询</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_5_13" rel="nofollow">5.1函数描述</a></li> <li><a href="#_lab2_5_14" rel="nofollow">5.2参数描述</a></li> <li><a href="#_lab2_5_15" rel="nofollow">5.3返回值</a></li> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>前言</h2> <p>注：本文介绍任务通知的基础知识，详细源码分析见<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.jb51.net/article/243786.htm"   target="_blank" rel="nofollow">FreeRTOS进阶任务通知示例分析</a></p> <p>每个RTOS任务都有一个32位的通知值，任务创建时，这个值被初始化为0。RTOS任务通知相当于直接向任务发送一个事件，接收到通知的任务可以解除阻塞状态，前提是这个阻塞事件是因等待通知而引起的。发送通知的同时，也可以可选的改变接收任务的通知值。</p> <p>可以通过下列方法向接收任务更新通知：</p> <ul> <li>不覆盖接收任务的通知值</li> <li>覆盖接收任务的通知值</li> <li>设置接收任务通知值的某些位</li> <li>增加接收任务的通知值</li> </ul> <p>相对于用前必须分别创建队列、二进制信号量、计数信号量或事件组的情况，使用任务通知显然更灵活。更好的是，相比于使用信号量解除任务阻塞，使用任务通知可以快45%、使用更少的RAM（使用GCC编译器，-o2优化级别）。</p> <p>使用API函数xTaskNotify()和xTaskNotifyGive()（中断保护等价函数为xTaskNotifyFromISR()和vTaskNotifyGiveFromISR()）发送通知，在接收RTOS任务调用API函数xTaskNotifyWait()或ulTaskNotifyTake()之前，这个通知都被保持着。如果接收RTOS任务已经因为等待通知而进入阻塞状态，则接收到通知后任务解除阻塞并清除通知。</p> <p>RTOS任务通知功能默认是使能的，可以通过在文件FreeRTOSConfig.h中设置宏configUSE_TASK_NOTIFICATIONS为0来禁止这个功能，禁止后每个任务节省8字节内存。</p> <p>虽然RTOS任务通知速度更快并且占用内存更少，但它也有一些限制：</p> <p>只能有一个任务接收通知事件。</p> <p>接收通知的任务可以因为等待通知而进入阻塞状态，但是发送通知的任务即便不能立即完成通知发送也不能进入阻塞状态。</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>1.发送通知-方法1</h2> <p class="maodian"><a name="_lab2_1_0" rel="nofollow"></a></p> <h3>1.1函数描述</h3> <div class="ay1code"> <pre class="brush:cpp;">         BaseType_t xTaskNotify( TaskHandle_txTaskToNotify,                           uint32_t ulValue,                           eNotifyAction eAction);</pre> </div> <p>向指定任务发送指定的通知值。如果打算使用RTOS任务通知实现轻量级的二进制或计数信号量，推荐使用API函数xTaskNotifyGive()来代替本函数。</p> <p>此函数不可以在中断服务例程中调用，中断保护等价函数为xTaskNotifyFromISR()。</p> <p class="maodian"><a name="_lab2_1_1" rel="nofollow"></a></p> <h3>1.2参数描述</h3> <p><code>xTaskToNotify</code>：被通知的任务句柄。</p> <p><code>ulValue</code>：通知更新值eAction：枚举类型，指明更新通知值的方法</p> <p>枚举变量成员以及作用如下表所示。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220427/8dbe779fcc90d1553d6a0c8c0dd2e883.jpg"></p> <p class="maodian"><a name="_lab2_1_2" rel="nofollow"></a></p> <h3>1.3返回值</h3> <p>参数eAction为eSetValueWithoutOverwrite时，如果被通知任务还没取走上一个通知，又接收到了一个通知，则这次通知值未能更新并返回pdFALSE，否则返回pdPASS。</p> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>2.发送通知-方法2</h2> <p class="maodian"><a name="_lab2_2_3" rel="nofollow"></a></p> <h3>2.1函数描述</h3> <blockquote> <p>BaseType_t xTaskNotifyGive(TaskHandle_t xTaskToNotify );</p> </blockquote> <p>其实这是一个宏，本质上相当于xTaskNotify( ( xTaskToNotify ), ( 0 ), eIncrement )。可以使用该API函数代替二进制或计数信号量，但速度更快。在这种情况下，应该使用API函数ulTaskNotifyTake()来等待通知，而不应该使用API函数xTaskNotifyWait()。</p> <p>此函数不可以在中断服务例程中调用，中断保护等价函数为vTaskNotifyGiveFromISR()。</p> <p class="maodian"><a name="_lab2_2_4" rel="nofollow"></a></p> <h3>2.2参数描述</h3> <p>xTaskToNotify：被通知的任务句柄。</p> <p class="maodian"><a name="_lab2_2_5" rel="nofollow"></a></p> <h3>2.3用法举例</h3> <div class="ay1code"> <pre class="brush:cpp;">staticvoid prvTask1( void *pvParameters );  staticvoid prvTask2( void *pvParameters );  /* 保存任务句柄 */  staticTaskHandle_t xTask1 = NULL, xTask2 = NULL;  /* 创建两个任务，它们之间反复发送通知，启动RTOS调度器*/  voidmain( void )  {      xTaskCreate( prvTask1, "Task1",200, NULL, tskIDLE_PRIORITY, &amp;xTask1 );      xTaskCreate( prvTask2, "Task2",200, NULL, tskIDLE_PRIORITY, &amp;xTask2 );      vTaskStartScheduler();  }  /*-----------------------------------------------------------*/  staticvoid prvTask1( void *pvParameters )  {      for( ;; )      {          /*向prvTask2(),发送通知，使其解除阻塞状态 */          xTaskNotifyGive( xTask2 );             /* 等待prvTask2()的通知，进入阻塞 */          ulTaskNotifyTake( pdTRUE, portMAX_DELAY);      }  }  /*-----------------------------------------------------------*/  staticvoid prvTask2( void *pvParameters )  {      for( ;; )      {          /* 等待prvTask1()的通知，进入阻塞 */          ulTaskNotifyTake( pdTRUE, portMAX_DELAY);          /*向prvTask1(),发送通知，使其解除阻塞状态 */          xTaskNotifyGive( xTask1 );      }  }</pre> </div> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>3.获取通知</h2> <p class="maodian"><a name="_lab2_3_6" rel="nofollow"></a></p> <h3>3.1函数描述</h3> <div class="ay1code"> <pre class="brush:cpp;">         uint32_t ulTaskNotifyTake( BaseType_txClearCountOnExit,                              TickType_txTicksToWait );</pre> </div> <p>ulTaskNotifyTake()是专门为使用更轻量级更快的方法来代替二进制或计数信号量而量身打造的。FreeRTOS获取信号量的API函数为xSemaphoreTake()，可以使用ulTaskNotifyTake()函数等价代替。</p> <p>当一个任务使用通知值来实现二进制或计数信号量时，其它任务或者中断要使用API函数xTaskNotifyGive()或者使用参数eAction为eIncrement的API函数xTaskNotify()。推荐使用xTaskNotifyGive()函数（其实是个宏，我们这里把它看作一个API函数）。另外需要注意的是，如果在中断中使用，要使用它们的中断保护等价函数：vTaskNotifyGiveFromISR()和xTaskNotifyFromISR()。</p> <p>API函数xTaskNotifyTake()有两种方法处理任务的通知值，一种方法是在函数退出时将通知值清零，这种方法适用于实现二进制信号量；另外一种方法是在函数退出时将通知值减1，这种方法适用于实现计数信号量。</p> <p>如果RTOS任务的通知值为0，使用xTaskNotifyTake()可以可选的使任务进入阻塞状态，直到该任务的通知值不为0。进入阻塞的任务不消耗CPU时间。</p> <p class="maodian"><a name="_lab2_3_7" rel="nofollow"></a></p> <h3>3.2参数描述</h3> <p><code>xClearCountOnExit</code>：如果该参数设置为pdFALSE，则API函数xTaskNotifyTake()退出前，将任务的通知值减1；如果该参数设置为pdTRUE，则API函数xTaskNotifyTake()退出前，将任务通知值清零。</p> <p><code>xTicksToWait</code>：因等待通知而进入阻塞状态的最大时间。时间单位为系统节拍周期。宏pdMS_TO_TICKS用于将指定的毫秒时间转化为相应的系统节拍数。</p> <p class="maodian"><a name="_lab2_3_8" rel="nofollow"></a></p> <h3>3.3返回值</h3> <p>返回任务的当前通知值，为0或者为调用API函数xTaskNotifyTake()之前的通知值减1。</p> <p>3.4用法举例</p> <div class="ay1code"> <pre class="brush:cpp;">/* 中断处理程序。*/  voidvANInterruptHandler( void )  {  BaseType_txHigherPriorityTaskWoken;      prvClearInterruptSource();       /* xHigherPriorityTaskWoken必须被初始化为pdFALSE。如果调用vTaskNotifyGiveFromISR()会解除vHandlingTask任务的阻塞状态，并且vHandlingTask任务的优先级高于当前处于运行状态的任务，则xHigherPriorityTaskWoken将会自动被设置为pdTRUE。*/      xHigherPriorityTaskWoken = pdFALSE;      /*向一个任务发送通知，xHandlingTask是该任务的句柄。*/      vTaskNotifyGiveFromISR( xHandlingTask,&amp;xHigherPriorityTaskWoken );      /* 如果xHigherPriorityTaskWoken为pdTRUE，则强制上下文切换。这个宏的实现取决于移植层，可能会调用portEND_SWITCHING_ISR */      portYIELD_FROM_ISR(xHigherPriorityTaskWoken );  }  /*---------------------------------------------------------------------------------------------------*/  /* 一个因为等待通知而阻塞的任务。*/  voidvHandlingTask( void *pvParameters )  {  BaseType_txEvent;      for( ;; )      {          /*等待通知，无限期阻塞。参数pdTRUE表示函数退出前会清零通知值。这显然是用于替代二进制信号量的用法。需要注意的是，真实的程序一般不会无限期阻塞。*/          ulTaskNotifyTake( pdTRUE, portMAX_DELAY);          /* 当处理完所有事件后，仍然等待下一个通知*/          do          {              xEvent = xQueryPeripheral();              if( xEvent != NO_MORE_EVENTS )              {                  vProcessPeripheralEvent( xEvent);              }          } while( xEvent != NO_MORE_EVENTS );      }  }</pre> </div> <p class="maodian"><a name="_label4" rel="nofollow"></a></p> <h2>4.等待通知</h2> <p class="maodian"><a name="_lab2_4_9" rel="nofollow"></a></p> <h3>4.1函数描述</h3> <div class="ay1code"> <pre class="brush:cpp;">         BaseType_t xTaskNotifyWait( uint32_tulBitsToClearOnEntry,                               uint32_tulBitsToClearOnExit,                               uint32_t*pulNotificationValue,                               TickType_txTicksToWait );</pre> </div> <p>如果打算使用RTOS任务通知实现轻量级的二进制或计数信号量，推荐使用API函数ulTaskNotifyTake()来代替本函数。</p> <p class="maodian"><a name="_lab2_4_10" rel="nofollow"></a></p> <h3>4.2参数描述</h3> <p><code>ulBitsToClearOnEntry</code>：在使用通知之前，先将任务的通知值与参数ulBitsToClearOnEntry的按位取反值按位与操作。设置参数ulBitsToClearOnEntry为0xFFFFFFFF(ULONG_MAX)，表示清零任务通知值。</p> <p><code>ulBitsToClearOnExit</code>：在函数xTaskNotifyWait()退出前，将任务的通知值与参数ulBitsToClearOnExit的按位取反值按位与操作。</p> <p>设置参数ulBitsToClearOnExit为0xFFFFFFFF(ULONG_MAX)，表示清零任务通知值。</p> <p><code>pulNotificationValue</code>：用于向外回传任务的通知值。这个通知值在参数ulBitsToClearOnExit起作用前将通知值拷贝到*pulNotificationValue中。如果不需要返回任务的通知值，这里设置成NULL。</p> <p><code>xTicksToWait</code>：因等待通知而进入阻塞状态的最大时间。时间单位为系统节拍周期。宏pdMS_TO_TICKS用于将指定的毫秒时间转化为相应的系统节拍数。</p> <p class="maodian"><a name="_lab2_4_11" rel="nofollow"></a></p> <h3>4.3返回值</h3> <p>如果接收到通知，返回pdTRUE，如果API函数xTaskNotifyWait()等待超时，返回pdFALSE。</p> <p class="maodian"><a name="_lab2_4_12" rel="nofollow"></a></p> <h3>4.4用法举例</h3> <div class="ay1code"> <pre class="brush:cpp;">/*这个任务使用任务通知值的位来传递不同的事件，这在某些情况下可以代替事件组。*/  voidvAnEventProcessingTask( void *pvParameters )  {  uint32_tulNotifiedValue;      for( ;; )      {          /*等待通知，无限期阻塞（没有超时，所以不用检查函数返回值）。其它任务或者中断设置的通知值中的不同位表示不同的事件。参数0x00表示使用通知前不清除任务的通知值位，参数ULONG_MAX 表示函数xTaskNotifyWait()退出前将任务通知值设置为0*/          xTaskNotifyWait( 0x00, ULONG_MAX,&amp;ulNotifiedValue, portMAX_DELAY );             /*根据通知值处理事件*/          if( ( ulNotifiedValue &amp; 0x01 ) != 0)          {              prvProcessBit0Event();          }          if( ( ulNotifiedValue &amp; 0x02 ) != 0)          {              prvProcessBit1Event();          }          if( ( ulNotifiedValue &amp; 0x04 ) != 0)          {              prvProcessBit2Event();          }          /* ……*/      }  }</pre> </div> <p class="maodian"><a name="_label5" rel="nofollow"></a></p> <h2>5.任务通知并查询</h2> <p class="maodian"><a name="_lab2_5_13" rel="nofollow"></a></p> <h3>5.1函数描述</h3> <div class="ay1code"> <pre class="brush:cpp;">         BaseType_t xTaskNotifyAndQuery(TaskHandle_t xTaskToNotify,                                   uint32_tulValue,                                   eNotifyActioneAction,                                   uint32_t*pulPreviousNotifyValue );</pre> </div> <p>此函数与任务通知API函数xTaskNotify()非常像，只不过此函数具有一个附加参数，用来回传任务当前的通知值，然后根据参数ulValue和eAction更新任务的通知值。</p> <p>此函数不能在中断服务例程中使用，在中断服务例程中使用xTaskNotifyAndQueryFromISR()函数。</p> <p class="maodian"><a name="_lab2_5_14" rel="nofollow"></a></p> <h3>5.2参数描述</h3> <p><code>xTaskToNotify</code>：被通知的任务句柄。</p> <p><code>ulValue</code>：通知更新值</p> <p><code>eAction</code>：枚举类型，指明更新通知值的方法，枚举变量成员以及作用见xTaskNotify()一节。</p> <p><code>pulPreviousNotifyValue</code>：回传未被更新的任务通知值。如果不需要回传未被更新的任务通知值，这里设置为NULL，这样就等价于调用xTaskNotify()函数。</p> <p class="maodian"><a name="_lab2_5_15" rel="nofollow"></a></p> <h3>5.3返回值</h3> <p>参数eAction为eSetValueWithoutOverwrite时，如果被通知任务还没取走上一个通知，又接收到了一个通知，则这次通知值未能更新并返回pdFALSE，否则返回pdPASS。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-39088.htm">动物疫苗的发展现状和趋势论文（动物疫苗行业分析）</a></p>
+                                        <p>下一个：<a href="/news/article-39565.htm">动物打疫苗的作用是什么（动物注射疫苗）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-free-clash-subscribe.htm" title="「1月4日」最高速度19.2M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「1月4日」最高速度19.2M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-31832.htm" title="猫进屋十大预兆 猫进屋十大预兆黑色猫">猫进屋十大预兆 猫进屋十大预兆黑色猫</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-free-clash-subscribe.htm" title="「1月7日」最高速度22.5M/S，2025年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接">「1月7日」最高速度22.5M/S，2025年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-clash-windows.htm" title="「12月31日」最高速度22.6M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「12月31日」最高速度22.6M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25272.htm" title="梦见抱着别人的女婴儿是什么意思（梦见抱着别人的小女孩什么意思）">梦见抱着别人的女婴儿是什么意思（梦见抱着别人的小女孩什么意思）</a></li>
+                        <li class="py-2"><a href="/news/article-21127.htm" title="养猫需要打预防针吗,多长时间打一次?（养猫要打防疫针吗）">养猫需要打预防针吗,多长时间打一次?（养猫要打防疫针吗）</a></li>
+                        <li class="py-2"><a href="/news/article-39088.htm" title="动物疫苗的发展现状和趋势论文（动物疫苗行业分析）">动物疫苗的发展现状和趋势论文（动物疫苗行业分析）</a></li>
+                        <li class="py-2"><a href="/news/article-35923.htm" title="Python Pytorch学习之图像检索实践_python">Python Pytorch学习之图像检索实践_python</a></li>
+                        <li class="py-2"><a href="/news/article-31830.htm" title="Java 选择排序法">Java 选择排序法</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-shadowrocket-node.htm" title="「11月28日」最高速度21.9M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接">「11月28日」最高速度21.9M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
