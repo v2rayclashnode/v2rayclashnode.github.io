@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-48373.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）</title>
+        <meta name="description" content="你是不是曾经被python版本困扰？你是不是曾经被安装python的各种包吓怕？教你一个优雅的方式------anaconda 1.什么是anaconda(百度百科)？ Anaconda指的是一个开源" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayClashNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayclashnode.github.io/news/article-48373.htm" />
+    <meta property="og:site_name" content="V2rayClashNode节点订阅站" />
+    <meta property="og:title" content="Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）" />
+    <meta property="og:image" content="https://v2rayclashnode.github.io/uploads/20240531/80be07c0adeb295b60089fbe6ca6c43f.webp" />
+        <meta property="og:release_date" content="2025-01-30T06:45:11" />
+    <meta property="og:updated_time" content="2025-01-30T06:45:11" />
+        <meta property="og:description" content="你是不是曾经被python版本困扰？你是不是曾经被安装python的各种包吓怕？教你一个优雅的方式------anaconda 1.什么是anaconda(百度百科)？ Anaconda指的是一个开源" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+                        <span class="logo"><a href="/">V2ray Clash Node</a></span>
+                        <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h2>你是不是曾经被python版本困扰？你是不是曾经被安装python的各种包吓怕？教你一个优雅的方式------anaconda</h2> <h2>1.什么是anaconda(百度百科)？</h2> <p>Anaconda指的是一个开源的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://baike.baidu.com/item/Python"  rel="nofollow">Python</a>发行版本，其包含了conda、Python等<strong>180多个</strong>科学包及其依赖项</p> <p>180多个，只有你想不到，没有它包含不到的哦！！！</p> <h2>2.怎么安装anaconda？</h2> <p>推荐这篇博客：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/qq_26898461/article/details/51488326"  rel="nofollow">https://blog.csdn.net/qq_26898461/article/details/51488326</a></p> <p>同时需要配置环境变量</p> <p><img decoding="async" alt="" class="has" height="73" src="http://img.555519.xyz/uploads3/20220904/d5100dc0f0dabcfc5fd5df385bde7aae.jpg"></p> <h2>3.anaconda强大在何处？</h2> <p>可以这么说，安装完anaconda以后，几乎你将来需要用到的所有东西都在里面了。因为我最近在学习PyQt5，又涉及到安装各种依赖，各种软件的时候，顿感头皮发麻，所幸想起来了之前安装的anaconda，于是在安装目录下翻了翻，翻到了宝贝：</p> <p><img fetchpriority="high" decoding="async" alt="" class="has" height="405" src="http://img.555519.xyz/uploads3/20220904/70e5f92a4d37966ec3e5fae89ca29448.jpg"></p> <p>在该目录下找到了designer，双击打开，发现这就是qt设计师呀，同时也可以测试PyQt5也已经装好了。</p> <p>不仅仅是qt设计师，还有比如jupyter，ipython均可以在cmd里面启动，前提是系统变量要配置好</p> <h2>4.如何优雅管理多版本呢？</h2> <p>其实很简单，以python2.7和python3.6为例，我分别安装了python2.7版本的anaconda和python3.6版本的anaconda</p> <p><img decoding="async" alt="" class="has" height="114" src="http://img.555519.xyz/uploads3/20220904/e76ef2e76381651d21afbd648da1dc22.jpg"></p> <p>当使用python3.6的时候，系统变量是这样的：</p> <p><img loading="lazy" decoding="async" alt="" class="has" height="157" src="http://img.555519.xyz/uploads3/20220904/2b333c85e8a6c7acb8f8f137fee13282.jpg"></p> <p>当使用python2.7的时候，只需要调整下系统变量的顺序，改成这样既可</p> <p><img loading="lazy" decoding="async" alt="" class="has" height="149" src="http://img.555519.xyz/uploads3/20220904/65e675d77ad00c355a30ef5613b84452.jpg"></p> <h2>5.为什么说这种方式优雅呢？</h2> <p>多版本管理当然有很多种方式，比如虚拟隔离的方法，但是根据我个人经验并不推荐，因为使用python最苦恼的就是安装包或者引用包时各种报错，而安装anaconda显然是一劳永逸式方法。Window下安装软件是非常简单的，一直点下一步就ok了，再配置一个环境变量，以后各种错误都无缘和你相见，所以说用anaconda是优雅的，调整系统变量来管理python版本也是优雅的！！</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-47968.htm">宠物店一年利润怎么样直观数据怎么写文案（宠物店一年利润表）</a></p>
+                                        <p>下一个：<a href="/news/article-48375.htm">天然猫粮哪个牌子好（天然猫粮哪个牌子好吃）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-free-v2ray.htm" title="「12月26日」最高速度21.6M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「12月26日」最高速度21.6M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-44531.htm" title="springboot(十四)使用spring retry">springboot(十四)使用spring retry</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-1-shadowrocket-node.htm" title="「11月1日」最高速度19.7M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接">「11月1日」最高速度19.7M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-free-node-subscribe.htm" title="「10月7日」最高速度21.8M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「10月7日」最高速度21.8M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-35923.htm" title="Python Pytorch学习之图像检索实践_python">Python Pytorch学习之图像检索实践_python</a></li>
+                        <li class="py-2"><a href="/news/article-37111.htm" title="宠物领养的文案短句（宠物领养的文案短句怎么写）">宠物领养的文案短句（宠物领养的文案短句怎么写）</a></li>
+                        <li class="py-2"><a href="/news/article-36615.htm" title="宠物用品批发店怎么样（宠物批发用品在哪里）">宠物用品批发店怎么样（宠物批发用品在哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-31832.htm" title="猫进屋十大预兆 猫进屋十大预兆黑色猫">猫进屋十大预兆 猫进屋十大预兆黑色猫</a></li>
+                        <li class="py-2"><a href="/news/article-22045.htm" title="我所在的城市有一家宠物医院的英语作文 我所在的城市有一家宠物医院的英语作文怎么写">我所在的城市有一家宠物医院的英语作文 我所在的城市有一家宠物医院的英语作文怎么写</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-22-clash-v2ray-ss-ssr.htm" title="「12月22日」最高速度21.9M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「12月22日」最高速度21.9M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
