@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-31272.htm" />
@@ -8,14 +8,42 @@
     <title>Redis 主从同步原理解析</title>
         <meta name="description" content="文章目录    前言 增量同步 快照同步 无盘复制 Wait 指令     前言 Redis 同步支持主从同步和从从同步，从从同步功能是Redis 后续版本增加的功能，为了减轻主库的同步负担。这里我们" />
         <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayClashNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayclashnode.github.io/news/article-31272.htm" />
+    <meta property="og:site_name" content="V2rayClashNode节点订阅站" />
+    <meta property="og:title" content="Redis 主从同步原理解析" />
+    <meta property="og:image" content="https://v2rayclashnode.github.io/uploads/20240531/3c11e83fd5bb3a9d1c0665eff5c49ee7.webp" />
+        <meta property="og:release_date" content="2024-12-26T00:12:43" />
+    <meta property="og:updated_time" content="2024-12-26T00:12:43" />
+        <meta property="og:description" content="文章目录    前言 增量同步 快照同步 无盘复制 Wait 指令     前言 Redis 同步支持主从同步和从从同步，从从同步功能是Redis 后续版本增加的功能，为了减轻主库的同步负担。这里我们" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Redis 主从同步原理解析">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!-- Vendor CSS Files -->
-    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="__ADDON__/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
@@ -86,16 +114,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-7-18-free-high-speed-nodes.htm" title="「7月18日」最高速度22.6M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接">「7月18日」最高速度22.6M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-15-free-subscribe-node.htm" title="「9月15日」最高速度22.1M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「9月15日」最高速度22.1M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-25272.htm" title="梦见抱着别人的女婴儿是什么意思（梦见抱着别人的小女孩什么意思）">梦见抱着别人的女婴儿是什么意思（梦见抱着别人的小女孩什么意思）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-19-free-clash.htm" title="「7月19日」最高速度18.5M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「7月19日」最高速度18.5M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-10-shadowrocket-node.htm" title="「10月10日」最高速度20.8M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「10月10日」最高速度20.8M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-32312.htm" title="Java基础知识 29（同步代码块，同步方法，静态同步方法，Lock锁，死锁问题）">Java基础知识 29（同步代码块，同步方法，静态同步方法，Lock锁，死锁问题）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-25-clash-windows.htm" title="「9月25日」最高速度18.9M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「9月25日」最高速度18.9M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-27599.htm" title="下村给动物打疫苗的简报（下村给动物打疫苗的简报范文）">下村给动物打疫苗的简报（下村给动物打疫苗的简报范文）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-4-shadowrocket-node.htm" title="「11月4日」最高速度21.7M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「11月4日」最高速度21.7M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-13-free-ssr-node.htm" title="「8月13日」最高速度19M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「8月13日」最高速度19M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19292.htm" title="动物疫苗的生产原料有哪些呢英文（动物疫苗的种类和制备原理）">动物疫苗的生产原料有哪些呢英文（动物疫苗的种类和制备原理）</a></li>
+                        <li class="py-2"><a href="/news/article-34950.htm" title="学生没钱怎么开网店（学生没钱怎么开网店买手工活）">学生没钱怎么开网店（学生没钱怎么开网店买手工活）</a></li>
+                        <li class="py-2"><a href="/news/article-38071.htm" title="python多线程详解（超详细）">python多线程详解（超详细）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-9-clash-v2ray-ss-ssr.htm" title="「1月9日」最高速度20.2M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「1月9日」最高速度20.2M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20671.htm" title="兽医执业资格证报考条件要求（兽医资格证2021报考条件）">兽医执业资格证报考条件要求（兽医资格证2021报考条件）</a></li>
+                        <li class="py-2"><a href="/news/article-47000.htm" title="济南宠物狗领养中心 济南宠物狗领养中心地址">济南宠物狗领养中心 济南宠物狗领养中心地址</a></li>
+                        <li class="py-2"><a href="/news/article-48373.htm" title="Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）">Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）</a></li>
+                        <li class="py-2"><a href="/news/article-26674.htm" title="中国农大动物医院（中国农大动物医院官网预约）">中国农大动物医院（中国农大动物医院官网预约）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-free-clash-subscribe.htm" title="「1月5日」最高速度20.9M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「1月5日」最高速度20.9M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-shadowrocket-node.htm" title="「11月8日」最高速度22.7M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「11月8日」最高速度22.7M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -107,31 +135,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
