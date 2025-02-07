@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-52633.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Vue异步更新机制以及$nextTick原理</title>
+        <meta name="description" content="相信很多人会好奇Vue内部的更新机制，或者平时工作中遇到的一些奇怪的问题需要使用$nextTick来解决，今天我们就来聊一聊Vue中的异步更新机制以及$nextTick原理 Vue的异步更新  可能你" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayClashNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayclashnode.github.io/news/article-52633.htm" />
+    <meta property="og:site_name" content="V2rayClashNode节点订阅站" />
+    <meta property="og:title" content="Vue异步更新机制以及$nextTick原理" />
+    <meta property="og:image" content="https://v2rayclashnode.github.io/uploads/20240531/4fb3e733f4c932d7cff5ad2382855dc9.webp" />
+        <meta property="og:release_date" content="2025-02-07T07:19:44" />
+    <meta property="og:updated_time" content="2025-02-07T07:19:44" />
+        <meta property="og:description" content="相信很多人会好奇Vue内部的更新机制，或者平时工作中遇到的一些奇怪的问题需要使用$nextTick来解决，今天我们就来聊一聊Vue中的异步更新机制以及$nextTick原理 Vue的异步更新  可能你" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Vue异步更新机制以及$nextTick原理">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/">
+                        <span class="logo">V2ray Clash Node</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                        <li><a class="nav-link" href="#">关于</a></li>
+                    <li><a class="nav-link" href="#">联系</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>Vue异步更新机制以及$nextTick原理</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>相信很多人会好奇Vue内部的更新机制，或者平时工作中遇到的一些奇怪的问题需要使用<code>$nextTick</code>来解决，今天我们就来聊一聊Vue中的异步更新机制以及<code>$nextTick</code>原理</p> <h2 id="vue的异步更新">Vue的异步更新</h2> <blockquote> <p>可能你还没有注意到，Vue异步执行DOM更新。只要观察到数据变化，Vue将开启一个队列，并缓冲在同一事件循环中发生的所有数据改变。如果同一个watcher被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和DOM操作上非常重要。然后，在下一个的事件循环“tick”中，Vue刷新队列并执行实际 (已去重的) 工作。</p> </blockquote> <h3 id="dom更新是异步的">DOM更新是异步的</h3> <p>当我们在更新数据后立马去获取DOM中的内容是会发现获取的依然还是旧的内容。</p> <pre><code>&lt;template&gt;  &nbsp;&lt;div class="next_tick"&gt;  &nbsp; &nbsp; &nbsp;&lt;div ref="title" class="title"&gt;{{name}}&lt;/div&gt;  &nbsp;&lt;/div&gt; &lt;/template&gt; &lt;script&gt; export default {  &nbsp; &nbsp;data() {  &nbsp; &nbsp; &nbsp; &nbsp;return {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;name: '前端南玖'  &nbsp; &nbsp; &nbsp;  }  &nbsp;  },  &nbsp; &nbsp;mounted() {  &nbsp; &nbsp; &nbsp; &nbsp;this.name = 'front end'  &nbsp; &nbsp; &nbsp; &nbsp;console.log('sync',this.$refs.title.innerText)  &nbsp; &nbsp; &nbsp; &nbsp;this.$nextTick(() =&gt; {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;console.log('nextTick',this.$refs.title.innerText)  &nbsp; &nbsp; &nbsp;  })  &nbsp;  } } &lt;/script&gt;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/b58d91043eff030546c10b68416f3b31.jpg" alt="Vue异步更新机制以及$nextTick原理"></p> <p>从图中我们可以发现数据改变后同步获取dom元素中的内容是老的数据，而在nextTick里面获取的是更新后的数据，这是为什么呢？</p> <p>其实这里你用微任务或宏任务去获取dom元素中的内容也是更新后的数据，我们可以来试试：</p> <pre><code>mounted() {  &nbsp;this.name = 'front end'  &nbsp;console.log('sync',this.$refs.title.innerText)  &nbsp;Promise.resolve().then(() =&gt; {  &nbsp; &nbsp;console.log('微任务',this.$refs.title.innerText)   })  &nbsp;setTimeout(() =&gt; {  &nbsp; &nbsp;console.log('宏任务',this.$refs.title.innerText)   }, 0)  &nbsp;this.$nextTick(() =&gt; {  &nbsp; &nbsp;console.log('nextTick',this.$refs.title.innerText)   }) }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/910d9dcaaa63dcb150bec925abc91e55.jpg" alt="Vue异步更新机制以及$nextTick原理"></p> <p>是不是觉得有点不可思议，其实没什么奇怪的，在vue源码中它的实现原理就是利用的微任务与宏任务，慢慢往下看，后面会一一解释。</p> <h3 id="dom更新还是批量的">DOM更新还是批量的</h3> <p>没错，vue中的DOM更新还是批量处理的，这样做的好处无疑就是能够最大程度的优化性能。OK这里也有看点，别着急</p> <p>vue同时更新了多个数据，你觉得dom是更新多次还是更新一次？我们来试试</p> <pre><code>&lt;template&gt;  &nbsp;&lt;div class="next_tick"&gt;  &nbsp; &nbsp; &nbsp;&lt;div ref="title" class="title"&gt;{{name}}&lt;/div&gt;  &nbsp; &nbsp; &nbsp;&lt;div class="verse"&gt;{{verse}}&lt;/div&gt;  &nbsp;&lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default {  &nbsp; &nbsp;name: 'nextTick',  &nbsp; &nbsp;data() {  &nbsp; &nbsp; &nbsp; &nbsp;return {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;name: '前端南玖',  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;verse: '如若东山能再起，大鹏展翅上九霄',  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;count:0  &nbsp; &nbsp; &nbsp;  }  &nbsp;  },  &nbsp; &nbsp;mounted() {  &nbsp; &nbsp; &nbsp; &nbsp;this.name = 'front end'  &nbsp; &nbsp; &nbsp; &nbsp;this.verse = '世间万物都是空，功名利禄似如风'  &nbsp; &nbsp; &nbsp; &nbsp;// console.log('sync',this.$refs.title.innerText)  &nbsp; &nbsp; &nbsp; &nbsp;// Promise.resolve().then(() =&gt; {  &nbsp; &nbsp; &nbsp; &nbsp;// &nbsp; &nbsp; console.log('微任务',this.$refs.title.innerText)  &nbsp; &nbsp; &nbsp; &nbsp;// })  &nbsp; &nbsp; &nbsp; &nbsp;// setTimeout(() =&gt; {  &nbsp; &nbsp; &nbsp; &nbsp;// &nbsp; &nbsp; console.log('宏任务',this.$refs.title.innerText)  &nbsp; &nbsp; &nbsp; &nbsp;// }, 0)  &nbsp; &nbsp; &nbsp; &nbsp;// this.$nextTick(() =&gt; {  &nbsp; &nbsp; &nbsp; &nbsp;// &nbsp; &nbsp; console.log('nextTick',this.$refs.title.innerText)  &nbsp; &nbsp; &nbsp; &nbsp;// })  &nbsp;  },  &nbsp; &nbsp;updated() {  &nbsp; &nbsp; &nbsp; &nbsp;this.count++  &nbsp; &nbsp; &nbsp; &nbsp;console.log('update:',this.count)  &nbsp;  }  } &lt;/script&gt; &lt;style lang="less"&gt; .verse{  &nbsp; &nbsp;font-size: (20/@rem); } &lt;/style&gt;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/aa5c43890382ac45e7845fc038dd569a.jpg" alt="Vue异步更新机制以及$nextTick原理"></p> <p>我们可以看到updated钩子只执行了一次，说明我们<strong>同时更新了多个数据，DOM只会更新一次</strong></p> <p>再来看另一种情况，同步与异步混合，DOM会更新几次？</p> <pre><code>mounted() {  &nbsp;this.name = 'front end'  &nbsp;this.verse = '世间万物都是空，功名利禄似如风'  &nbsp;Promise.resolve().then(() =&gt; {  &nbsp; &nbsp;this.name = 'study ...'   })  &nbsp;setTimeout(() =&gt; {  &nbsp; &nbsp;this.verse = '半身风雨半身寒，一杯浊酒敬流年'   })  &nbsp;// console.log('sync',this.$refs.title.innerText)  &nbsp;// Promise.resolve().then(() =&gt; {  &nbsp;// &nbsp; &nbsp; console.log('微任务',this.$refs.title.innerText)  &nbsp;// })  &nbsp;// setTimeout(() =&gt; {  &nbsp;// &nbsp; &nbsp; console.log('宏任务',this.$refs.title.innerText)  &nbsp;// }, 0)  &nbsp;// this.$nextTick(() =&gt; {  &nbsp;// &nbsp; &nbsp; console.log('nextTick',this.$refs.title.innerText)  &nbsp;// }) },  &nbsp;updated() {  &nbsp; &nbsp;this.count++  &nbsp; &nbsp;console.log('update:',this.count)   }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/7f011a541600efbda9f2b2eb36a870f8.jpg" alt="Vue异步更新机制以及$nextTick原理"></p> <p>从图中我们会发现，DOM会渲染三次，分别是同步的一次（2个同步一起更新），微任务的一次，宏任务的一次。并且在用setTimeout更新数据时会明显看见页面数据变化的过程。（这句话是重点，记好小本本）这也就是为什么nextTick源码中setTimeout做最后兜底用的，优先使用微任务。</p> <h2 id="事件循环">事件循环</h2> <p>没错，这里跟事件循环还有很大的关系，这里稍微提一下，更详细可以看<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://juejin.cn/post/7036919281514184740"  target="_blank" rel="nofollow">探索JavaScript执行机制</a></p> <p>由于JavaScript是单线程的，这就决定了它的任务不可能只有同步任务，那些耗时很长的任务如果也按同步任务执行的话将会导致页面阻塞，所以JavaScript任务一般分为两类：同步任务与异步任务，而异步任务又分为宏任务与微任务。</p> <p><strong>宏任务：</strong> script（整体代码）、setTimeout、setInterval、setImmediate、I/O、UI rendering</p> <p><strong>微任务：</strong> promise.then、MutationObserver</p> <h3 id="执行过程">执行过程</h3> <ol> <li>同步任务直接放入到主线程执行，异步任务（点击事件，定时器，ajax等）挂在后台执行，等待I/O事件完成或行为事件被触发。</li> <li>系统后台执行异步任务，如果某个异步任务事件（或者行为事件被触发），则将该任务添加到任务队列，并且每个任务会对应一个回调函数进行处理。</li> <li>这里异步任务分为宏任务与微任务，宏任务进入到宏任务队列，微任务进入到微任务队列。</li> <li>执行任务队列中的任务具体是在执行栈中完成的，当主线程中的任务全部执行完毕后，去读取微任务队列，如果有微任务就会全部执行，然后再去读取宏任务队列</li> <li>上述过程会不断的重复进行，也就是我们常说的<strong>「事件循环（Event-Loop）」</strong>。</li> </ol> <p><strong>总的来说，在事件循环中，微任务会先于宏任务执行。而在微任务执行完后会进入浏览器更新渲染阶段，所以在更新渲染前使用微任务会比宏任务快一些，一次循环就是一次tick 。</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/0f5e71a7e7412583e66187b995120614.jpg" alt="Vue异步更新机制以及$nextTick原理"></p> <p>在一次event loop中，microtask在这一次循环中是一直取一直取，直到清空microtask队列，而macrotask则是一次循环取一次。</p> <p>如果执行事件循环的过程中又加入了异步任务，如果是macrotask，则放到macrotask末尾，等待下一轮循环再执行。如果是microtask，则放到本次event loop中的microtask任务末尾继续执行。直到microtask队列清空。</p> <h2 id="源码深入">源码深入</h2> <h3 id="异步更新队列">异步更新队列</h3> <p>在Vue中DOM更新一定是由于数据变化引起的，所以我们可以快速找到更新DOM的入口，也就是set时通过<code>dep.notify</code>通知watcher更新的时候</p> <pre><code>// watcher.js // 当依赖发生变化时，触发更新 update() {  &nbsp;if(this.lazy) {  &nbsp; &nbsp;// 懒执行会走这里, 比如computed  &nbsp; &nbsp;this.dirty = true   }else if(this.sync) {  &nbsp; &nbsp;// 同步执行会走这里，比如this.$watch() 或watch选项，传递一个sync配置{sync: true}  &nbsp; &nbsp;this.run()   }else {  &nbsp; &nbsp;// 将当前watcher放入watcher队列， 一般都是走这里  &nbsp; &nbsp;queueWatcher(this)   }  }</code></pre> <p>从这里我们可以发现vue默认就是走的异步更新机制，它会实现一个队列进行缓存当前需要更新的watcher</p> <pre><code>// scheduler.js /*将一个观察者对象push进观察者队列，在队列中已经存在相同的id则该观察者对象将被跳过，除非它是在队列被刷新时推送*/ export function queueWatcher (watcher: Watcher) {  &nbsp;/*获取watcher的id*/  &nbsp;const id = watcher.id  &nbsp;/*检验id是否存在，已经存在则直接跳过，不存在则标记在has中，用于下次检验*/  &nbsp;if (has[id] == null) {  &nbsp; &nbsp;has[id] = true  &nbsp; &nbsp;// 如果flushing为false， 表示当前watcher队列没有在被刷新，则watcher直接进入队列  &nbsp; &nbsp;if (!flushing) {  &nbsp; &nbsp; &nbsp;queue.push(watcher)  &nbsp;  } else {  &nbsp; &nbsp; &nbsp;// 如果watcher队列已经在被刷新了，这时候想要插入新的watcher就需要特殊处理  &nbsp; &nbsp; &nbsp;// 保证新入队的watcher刷新仍然是有序的  &nbsp; &nbsp; &nbsp;let i = queue.length - 1  &nbsp; &nbsp; &nbsp;while (i &gt;= 0 &amp;&amp; queue[i].id &gt; watcher.id) {  &nbsp; &nbsp; &nbsp; &nbsp;i--  &nbsp; &nbsp;  }  &nbsp; &nbsp; &nbsp;queue.splice(Math.max(i, index) + 1, 0, watcher)  &nbsp;  }  &nbsp; &nbsp;// queue the flush  &nbsp; &nbsp;if (!waiting) {  &nbsp; &nbsp; &nbsp;// wating为false，表示当前浏览器的异步任务队列中没有flushSchedulerQueue函数  &nbsp; &nbsp; &nbsp;waiting = true  &nbsp; &nbsp; &nbsp;// 这就是我们常见的this.$nextTick  &nbsp; &nbsp; &nbsp;nextTick(flushSchedulerQueue)  &nbsp;  }   } }</code></pre> <p>ok，从这里我们就能发现vue并不是跟随数据变化立即更新视图的，它而是维护了一个watcher队列，并且id重复的watcher只会推进队列一次，因为我们关心的只是最终的数据，而不是它更新多少次。等到下一个tick时，这些watcher才会从队列中取出，更新视图。</p> <h3 id="nexttick">nextTick</h3> <blockquote> <p>nextTick的目的就是产生一个回调函数加入task或者microtask中，当前栈执行完以后（可能中间还有别的排在前面的函数）调用该回调函数，起到了异步触发（即下一个tick时触发）的目的。</p> </blockquote> <pre><code>// next-tick.js const callbacks = [] let pending = false  // 批处理 function flushCallbacks () {  &nbsp;pending = false  &nbsp;const copies = callbacks.slice(0)  &nbsp;callbacks.length = 0  &nbsp;// 依次执行nextTick的方法  &nbsp;for (let i = 0; i &lt; copies.length; i++) {  &nbsp; &nbsp;copies[i]()   } }  export function nextTick (cb, ctx) {  &nbsp;let _resolve  &nbsp;callbacks.push(() =&gt; {  &nbsp; &nbsp;if (cb) {  &nbsp; &nbsp; &nbsp;try {  &nbsp; &nbsp; &nbsp; &nbsp;cb.call(ctx)  &nbsp; &nbsp;  } catch (e) {  &nbsp; &nbsp; &nbsp; &nbsp;handleError(e, ctx, 'nextTick')  &nbsp; &nbsp;  }  &nbsp;  } else if (_resolve) {  &nbsp; &nbsp; &nbsp;_resolve(ctx)  &nbsp;  }   })  &nbsp;// 因为内部会调nextTick，用户也会调nextTick，但异步只需要一次  &nbsp;if (!pending) {  &nbsp; &nbsp;pending = true  &nbsp; &nbsp;timerFunc()   }  &nbsp;// 执行完会会返回一个promise实例，这也是为什么$nextTick可以调用then方法的原因  &nbsp;if (!cb &amp;&amp; typeof Promise !== 'undefined') {  &nbsp; &nbsp;return new Promise(resolve =&gt; {  &nbsp; &nbsp; &nbsp;_resolve = resolve  &nbsp;  })   } }</code></pre> <p>兼容性处理，优先使用promise.then 优雅降级(兼容处理就是一个不断尝试的过程，谁可以就用谁。</p> <p>Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。</p> <pre><code>// timerFunc  // promise.then -&gt; MutationObserver -&gt; setImmediate -&gt; setTimeout // vue3 中不再做兼容性处理，直接使用的就是promise.then 任性  if (typeof Promise !== 'undefined' &amp;&amp; isNative(Promise)) {  &nbsp;const p = Promise.resolve()  &nbsp;timerFunc = () =&gt; {  &nbsp; &nbsp;p.then(flushCallbacks)  &nbsp; &nbsp;if (isIOS) setTimeout(noop)   }  &nbsp;isUsingMicroTask = true } else if (!isIE &amp;&amp; typeof MutationObserver !== 'undefined' &amp;&amp; (  &nbsp;isNative(MutationObserver) ||  &nbsp;// PhantomJS and iOS 7.x  &nbsp;MutationObserver.toString() === '[object MutationObserverConstructor]' )) {  &nbsp;let counter = 1  &nbsp;const observer = new MutationObserver(flushCallbacks) // 可以监听DOM变化，监听完是异步更新的  &nbsp;// 但这里并不是想用它做DOM监听，而是利用它是微任务这一特点  &nbsp;const textNode = document.createTextNode(String(counter))  &nbsp;observer.observe(textNode, {  &nbsp; &nbsp;characterData: true   })  &nbsp;timerFunc = () =&gt; {  &nbsp; &nbsp;counter = (counter + 1) % 2  &nbsp; &nbsp;textNode.data = String(counter)   }  &nbsp;isUsingMicroTask = true } else if (typeof setImmediate !== 'undefined' &amp;&amp; isNative(setImmediate)) {  &nbsp;timerFunc = () =&gt; {  &nbsp; &nbsp;setImmediate(flushCallbacks)   } } else {  &nbsp;// Fallback to setTimeout.  &nbsp;timerFunc = () =&gt; {  &nbsp; &nbsp;setTimeout(flushCallbacks, 0)   } }</code></pre> <h3 id="nexttick-1">$nextTick</h3> <p>我们平常调用的<code>$nextTick</code>其实就是上面这个方法，只不过在源码中<code>renderMixin</code>中将该方法挂在了vue的原型上方便我们使用</p> <pre><code>export function renderMixin (Vue) {   // install runtime convenience helpers   installRenderHelpers(Vue.prototype)    Vue.prototype.$nextTick = function (fn) {     return nextTick(fn, this)   }      Vue.prototype._render = function() {     //...   }   // ... }</code></pre> <h2 id="总结">总结</h2> <h3 id="一般更新dom是同步的">一般更新DOM是同步的</h3> <p>上面说了那么多，相信大家对Vue的异步更新机制以及<code>$nextTick</code>原理已经有了初步的了解。每一轮事件循环的最后会进行一次页面渲染，并且从上面我们知道渲染过程也是个宏任务，这里可能会有个误区，那就是DOM tree的修改是同步的，只有渲染过程是异步的，也就是说我们在修改完DOM后能够立即获取到更新的DOM，不信我们可以来试一下：</p> <pre><code>&lt;!DOCTYPE html&gt; &lt;html lang="en"&gt; &lt;head&gt;     &lt;meta charset="UTF-8"&gt;     &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;     &lt;title&gt;Document&lt;/title&gt; &lt;/head&gt; &lt;body&gt;     &lt;div id="title"&gt;欲试人间烟火，怎料世道沧桑&lt;/div&gt;     &lt;script&gt;         title.innerText = '万卷诗书无一用，半老雄心剩疏狂'         console.log('updated',title)     &lt;/script&gt; &lt;/body&gt; &lt;/html&gt;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/a3bd700e359fb3974a0f3859411aae94.jpg" alt="Vue异步更新机制以及$nextTick原理"></p> <h3 id="既然更新dom是个同步的过程那为什么vue却需要借用nexttick来处理呢">既然更新DOM是个同步的过程，那为什么Vue却需要借用$nextTick来处理呢？</h3> <p>答案很明显，因为Vue处于性能考虑，Vue会将用户同步修改的多次数据缓存起来，等同步代码执行完，说明这一次的数据修改就结束了，然后才会去更新对应DOM，一方面可以省去不必要的DOM操作，比如同时修改一个数据多次，只需要关心最后一次就好了，另一方面可以将DOM操作聚集，提升render性能。</p> <p>看下面这个图理解起来应该更容易一点<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/423f68e9bc35aa969f943026f835c7c9.jpg" alt="Vue异步更新机制以及$nextTick原理"></p> <h3 id="为什么优先使用微任务">为什么优先使用微任务？</h3> <p>这个应该不用多说吧，因为微任务一定比宏任务优先执行，如果nextTick是微任务，它会在当前同步任务执行完立即执行所有的微任务，也就是修改DOM的操作也会在当前tick内执行，等本轮tick任务全部执行完成，才是开始执行UI rendering。如果nextTick是宏任务，它会被推进宏任务队列，并且在本轮tick执行完之后的某一轮执行，注意，它并不一定是下一轮，因为你不确定宏任务队列中它之前还有所少个宏任务在等待着。所以为了能够尽快更新DOM，Vue中优先采用的是微任务，并且在Vue3中，它没有了兼容判断，直接使用的是<code>promise.then</code>微任务，不再考虑宏任务了。</p> <h2 id="推荐阅读">推荐阅读</h2> <ul> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://juejin.cn/post/7083744760048910366"  target="_blank" rel="nofollow">性能优化之html、css、js三者的加载顺序</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://juejin.cn/post/7079936383925616653"  target="_blank" rel="nofollow">HTTP发展史，HTTP1.1与HTTP2.0的区别</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://juejin.cn/post/7075130658820980772"  target="_blank" rel="nofollow">超全面总结Vue面试知识点，助力金三银四</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://juejin.cn/post/7073640285904830471"  target="_blank" rel="nofollow">【面试必备】前端常见的排序算法</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://juejin.cn/post/7077347573740077069"  target="_blank" rel="nofollow">CSS性能优化的几个技巧</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://juejin.cn/post/7067697624626757646"  target="_blank" rel="nofollow">前端常见的安全问题及防范措施</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://juejin.cn/post/7065123244881215518"  target="_blank" rel="nofollow">为什么大厂前端监控都在用GIF做埋点？</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://juejin.cn/post/7072174649735381029"  target="_blank" rel="nofollow">前端人员不要只知道KFC，你应该了解 BFC、IFC、GFC 和 FFC</a></li> </ul> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-52104.htm">动物疫苗价格排行榜前十的有哪些种类图片及价格（动物疫苗排名）</a></p>
+                                        <p>下一个：<a href="/news/article-52635.htm">小猫身上的跳蚤怎么彻底去除小猫体外驱虫如何去?（小猫身上有跳蚤用什么药好）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-27-free-subscribe-node.htm" title="「12月27日」最高速度19.8M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「12月27日」最高速度19.8M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-clash-node.htm" title="「2月1日」最高速度21.8M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「2月1日」最高速度21.8M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-34950.htm" title="学生没钱怎么开网店（学生没钱怎么开网店买手工活）">学生没钱怎么开网店（学生没钱怎么开网店买手工活）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-clash.htm" title="「12月2日」最高速度18.4M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「12月2日」最高速度18.4M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-free-node-subscribe.htm" title="「1月8日」最高速度22.4M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「1月8日」最高速度22.4M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25742.htm" title="为什么一屋不养二猫（为什么一屋不养二猫迷信）">为什么一屋不养二猫（为什么一屋不养二猫迷信）</a></li>
+                        <li class="py-2"><a href="/news/article-34701.htm" title="宠物粮食代工（宠物粮食代工一吨2万一贵吗知乎）">宠物粮食代工（宠物粮食代工一吨2万一贵吗知乎）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-2-shadowrocket-node.htm" title="「2月2日」最高速度22.7M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「2月2日」最高速度22.7M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21127.htm" title="养猫需要打预防针吗,多长时间打一次?（养猫要打防疫针吗）">养猫需要打预防针吗,多长时间打一次?（养猫要打防疫针吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-clash-node.htm" title="「1月22日」最高速度22.6M/S，2025年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接">「1月22日」最高速度22.6M/S，2025年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
