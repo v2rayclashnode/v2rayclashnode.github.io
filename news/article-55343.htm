@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-55343.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Java两个List＜T＞ 求交集,差集,并集,去重后的并集_java</title>
+        <meta name="description" content="目录  操作的List&lt;T&gt;声明 求交集 retainAll() 求差集 removeAll() 求并集 addAll() 求去重后的并集     操作的List&lt;T&gt;声明 o" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayClashNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayclashnode.github.io/news/article-55343.htm" />
+    <meta property="og:site_name" content="V2rayClashNode节点订阅站" />
+    <meta property="og:title" content="Java两个List＜T＞ 求交集,差集,并集,去重后的并集_java" />
+    <meta property="og:image" content="https://v2rayclashnode.github.io/uploads/20240531/d48ba79b91b9b1bcdbe22fb04e57bfbf.webp" />
+        <meta property="og:release_date" content="2025-02-12T09:08:13" />
+    <meta property="og:updated_time" content="2025-02-12T09:08:13" />
+        <meta property="og:description" content="目录  操作的List&lt;T&gt;声明 求交集 retainAll() 求差集 removeAll() 求并集 addAll() 求去重后的并集     操作的List&lt;T&gt;声明 o" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java两个List＜T＞ 求交集,差集,并集,去重后的并集_java">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/">
+                        <span class="logo">V2ray Clash Node</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>Java两个List＜T＞ 求交集,差集,并集,去重后的并集_java</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">操作的List&lt;T&gt;声明</a></li> <li><a href="#_label1" rel="nofollow">求交集 retainAll()</a></li> <li><a href="#_label2" rel="nofollow">求差集 removeAll()</a></li> <li><a href="#_label3" rel="nofollow">求并集 addAll()</a></li> <li><a href="#_label4" rel="nofollow">求去重后的并集 </a></li> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>操作的List&lt;T&gt;声明</h2> <p>oldList</p> <div class="ay1code"> <pre class="brush:java;">List&lt;String&gt; oldList = new ArrayList&lt;&gt;();  oldList.add("a");  oldList.add("b");  oldList.add("c");  System.out.println("oldList ## " + oldList);  </pre> </div> <p>newList</p> <div class="ay1code"> <pre class="brush:java;">List&lt;String&gt; newList = new ArrayList&lt;&gt;();  newList.add("a");  newList.add("1");  newList.add("2");  System.out.println("newList ## " + newList);  </pre> </div> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>求交集 retainAll()</h2> <p>1. oldList 与 newList 的交集</p> <div class="ay1code"> <pre class="brush:java;">oldList.retainAll(newList);  System.out.println("求交集 ## " + oldList);  </pre> </div> <p>响应</p> <blockquote> <p>oldList ## [a, b, c]<br />newList ## [a, 1, 2]<br />求交集 ## [a]</p> </blockquote> <p>2. newList 与 oldList 的交集</p> <div class="ay1code"> <pre class="brush:java;">newList.retainAll(oldList);  System.out.println("求交集 ## " + newList);  </pre> </div> <p>响应</p> <blockquote> <p>oldList ## [a, b, c]<br />newList ## [a, 1, 2]<br />求交集 ## [a]</p> </blockquote> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>求差集 removeAll()</h2> <p>1. oldList 与 newList 的差集</p> <div class="ay1code"> <pre class="brush:java;">oldList.removeAll(newList);  System.out.println("oldList.removeAll(newList);  --&gt; 求差集（ 在 oldList 集合中，删掉 oldList 与 newList 中都有的元素）： ## " + oldList);  </pre> </div> <p>响应</p> <blockquote> <p>oldList ## [a, b, c]<br />newList ## [a, 1, 2]<br />oldList.removeAll(newList);  --&gt; 求差集（ 在 oldList 集合中，删掉 oldList 与 newList 中都有的元素）： ## [b, c]</p> </blockquote> <p>2. newList与 oldList 的差集</p> <div class="ay1code"> <pre class="brush:java;">newList.removeAll(oldList);  System.out.println("newList.removeAll(oldList);  --&gt; 求差集（ 在 newList 集合中，删掉 oldList 与 newList 中都有的元素）： ## " + newList);  </pre> </div> <p>响应</p> <blockquote> <p>oldList ## [a, b, c]<br />newList ## [a, 1, 2]<br />newList.removeAll(oldList);  --&gt; 求差集（ 在 newList 集合中，删掉 oldList 与 newList 中都有的元素）： ## [1, 2]</p> </blockquote> <p>3. 源码解析</p> <p>removeAll() 的源码</p> <div class="ay1code"> <pre class="brush:java;">    public boolean removeAll(Collection&lt;?&gt; c) {          Objects.requireNonNull(c);          return batchRemove(c, false);      }   </pre> </div> <p>batchRemove的源码</p> <p>(如果传的第二个参数是false，保留差集;如果传的是true，保留的是交集)</p> <div class="ay1code"> <pre class="brush:java;">    private boolean batchRemove(Collection&lt;?&gt; c, boolean complement) {          final Object[] elementData = this.elementData;          int r = 0, w = 0;          boolean modified = false;          try {              for (; r &lt; size; r++)                  if (c.contains(elementData[r]) == complement)                      elementData[w++] = elementData[r];          } finally {              // Preserve behavioral compatibility with AbstractCollection,              // even if c.contains() throws.              if (r != size) {                  System.arraycopy(elementData, r,                                   elementData, w,                                   size - r);                  w += size - r;              }              if (w != size) {                  // clear to let GC do its work                  for (int i = w; i &lt; size; i++)                      elementData[i] = null;                  modCount += size - w;                  size = w;                  modified = true;              }          }          return modified;      }  </pre> </div> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>求并集 addAll()</h2> <p>1. oldList 与 newList 的并集</p> <div class="ay1code"> <pre class="brush:java;">oldList.addAll(newList);  System.out.println("求并集 ##" + oldList);  </pre> </div> <p>响应</p> <blockquote> <p>oldList ## [a, b, c]<br />newList ## [a, 1, 2]<br />求并集 ##[a, b, c, a, 1, 2]</p> </blockquote> <p>2. newList 与 oldList 的并集</p> <div class="ay1code"> <pre class="brush:java;">newList.addAll(oldList);  System.out.println("求并集 ##" + newList);  </pre> </div> <p>响应</p> <blockquote> <p>oldList ## [a, b, c]<br />newList ## [a, 1, 2]<br />求并集 ##[a, 1, 2, a, b, c]</p> </blockquote> <p class="maodian"><a name="_label4" rel="nofollow"></a></p> <h2>求去重后的并集 </h2> <p>1. oldList 与 newList 去重后的并集</p> <div class="ay1code"> <pre class="brush:java;">oldList.removeAll(newList); // 先求差集得到去除相同项后的 oldList  oldList.addAll(newList); // 再求并集  System.out.println("求并集 ## " + oldList);  </pre> </div> <p>响应</p> <blockquote> <p>oldList ## [a, b, c]<br />newList ## [a, 1, 2]<br />求并集 ## [b, c, a, 1, 2]</p> </blockquote> <p>2. newList与 oldList 去重后的并集</p> <div class="ay1code"> <pre class="brush:java;">newList.removeAll(oldList);  newList.addAll(oldList);  System.out.println("求并集 ## " + newList);  </pre> </div> <p>响应</p> <blockquote> <p>oldList ## [a, b, c]<br />newList ## [a, 1, 2]<br />求并集 ## [1, 2, a, b, c]</p> </blockquote> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-54790.htm">猫咪3针疫苗多少钱一针啊（猫咪三针疫苗都是什么多少钱）</a></p>
+                                        <p>下一个：<a href="/news/article-55344.htm">宠物粮工厂投资（宠物粮食工厂）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-43039.htm" title="疫苗玻璃瓶回收（疫苗瓶子回收）">疫苗玻璃瓶回收（疫苗瓶子回收）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-node-share-links.htm" title="「1月17日」最高速度21.5M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「1月17日」最高速度21.5M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-6-free-ssr-node.htm" title="「2月6日」最高速度19.3M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「2月6日」最高速度19.3M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-free-v2ray-subscribe.htm" title="「12月10日」最高速度18.7M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「12月10日」最高速度18.7M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-13-free-v2ray-subscribe.htm" title="「1月13日」最高速度19.6M/S，2025年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「1月13日」最高速度19.6M/S，2025年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19749.htm" title="动物防疫所 动物防疫所是干嘛的">动物防疫所 动物防疫所是干嘛的</a></li>
+                        <li class="py-2"><a href="/news/article-35464.htm" title="宠物粮市场分析论文题目（宠物粮调研）">宠物粮市场分析论文题目（宠物粮调研）</a></li>
+                        <li class="py-2"><a href="/news/article-49493.htm" title="品牌狗粮性价比高（狗粮性价比高的）">品牌狗粮性价比高（狗粮性价比高的）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-free-clash.htm" title="「12月4日」最高速度19.9M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「12月4日」最高速度19.9M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-35923.htm" title="Python Pytorch学习之图像检索实践_python">Python Pytorch学习之图像检索实践_python</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
