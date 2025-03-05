@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-67130.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>经典数据结构解决迷宫问题（Python实现）</title>
+        <meta name="description" content="首先自定义一个二维数组 maze = [ &nbsp; &nbsp; [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], &nbsp; &nbsp; [1, 0, 0, 1, 0, 0, " />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayClashNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayclashnode.github.io/news/article-67130.htm" />
+    <meta property="og:site_name" content="V2rayClashNode节点订阅站" />
+    <meta property="og:title" content="经典数据结构解决迷宫问题（Python实现）" />
+    <meta property="og:image" content="https://v2rayclashnode.github.io/uploads/20240531/4fb3e733f4c932d7cff5ad2382855dc9.webp" />
+        <meta property="og:release_date" content="2025-03-04T10:14:46" />
+    <meta property="og:updated_time" content="2025-03-04T10:14:46" />
+        <meta property="og:description" content="首先自定义一个二维数组 maze = [ &nbsp; &nbsp; [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], &nbsp; &nbsp; [1, 0, 0, 1, 0, 0, " />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="经典数据结构解决迷宫问题（Python实现）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/">
+                        <span class="logo">V2ray Clash Node</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>经典数据结构解决迷宫问题（Python实现）</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><strong>首先自定义一个二维数组</strong></p> <p><strong>maze = [<br /> &nbsp; &nbsp; [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],<br /> &nbsp; &nbsp; [1, 0, 0, 1, 0, 0, 0, 1, 0, 1],<br /> &nbsp; &nbsp; [1, 0, 0, 1, 0, 0, 0, 1, 0, 1],<br /> &nbsp; &nbsp; [1, 0, 0, 0, 0, 1, 1, 0, 0, 1],<br /> &nbsp; &nbsp; [1, 0, 1, 1, 1, 0, 0, 0, 0, 1],<br /> &nbsp; &nbsp; [1, 0, 0, 0, 1, 0, 0, 0, 0, 1],<br /> &nbsp; &nbsp; [1, 0, 1, 0, 0, 0, 1, 0, 0, 1],<br /> &nbsp; &nbsp; [1, 0, 1, 1, 1, 0, 1, 1, 0, 1],<br /> &nbsp; &nbsp; [1, 1, 0, 0, 0, 0, 0, 0, 0, 1],<br /> &nbsp; &nbsp; [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</strong></p> <p><strong>0：表示路</strong></p> <p><strong>1：表示墙体</strong></p> <p><strong>一.深度优先搜索+回溯（使用栈来存储已走过的路径）</strong></p> <p><strong>1,定义四个lambda表达式作为右左下上四个方向。</strong></p> <p><strong>2.从初始结点开始，当下一个结点可以走的时候，自己的坐标点入栈。并标记为已经走过。</strong></p> <p><strong>3.当没有下一个结点可以走的时候，出栈，说明此路不通。回溯到可以有下一个结点可以走的结点处。重新开始步骤2.</strong></p> <p><strong>4.当找到目标结点的时候，遍历栈中的元素，即为一条可以走通的路。<span style="color:#fe2c24;">不一定是最优的路线规划。</span></strong></p> <pre><code class="language-python">#使用栈来存储路径 maze = [     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],     [1, 0, 0, 1, 0, 0, 0, 1, 0, 1],     [1, 0, 0, 1, 0, 0, 0, 1, 0, 1],     [1, 0, 0, 0, 0, 1, 1, 0, 0, 1],     [1, 0, 1, 1, 1, 0, 0, 0, 0, 1],     [1, 0, 0, 0, 1, 0, 0, 0, 0, 1],     [1, 0, 1, 0, 0, 0, 1, 0, 0, 1],     [1, 0, 1, 1, 1, 0, 1, 1, 0, 1],     [1, 1, 0, 0, 0, 0, 0, 0, 0, 1],     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1] ] dirs = [     lambda x, y: (x + 1, y),     lambda x, y: (x - 1, y),     lambda x, y: (x, y - 1),     lambda x, y: (x, y + 1) ]  def maze_path(x1,y1,x2,y2):     stack = []     stack.append((x1,y1))     while len(stack)&gt;0:         curNode = stack[-1]  #当前的节点         if curNode[0] == x2 and curNode[1] == y2:             for p in stack:                 print(p)             return True          for di in dirs:             nextNode = di(curNode[0],curNode[1])  #如果下一个结点可以走             if maze[nextNode[0]][nextNode[1]] ==0:                 stack.append(nextNode)                 maze[nextNode[0]][nextNode[1]] = 2  #标记为已经走过                 break         else:             maze[nextNode[0]][nextNode[1]] = 2             stack.pop()     else:         print("没有路")         return False  maze_path(1,1,8,8)</code></pre> <p><strong>二.广度优先算法（使用队列来储存已经走过的路线）</strong></p> <p><strong>1.定义四个lambda表达式作为右左下上四个方向。</strong></p> <p><strong>2..从初始结点开始，如果有一个节点可以走的时候，自己的坐标点+自己的上一个结点入队列，并表示为已经走过。</strong></p> <p><strong>3.只要队列中铀元素就把步骤2的队列中的元素出队列存放在数组path中。</strong></p> <p><strong>4.当找到目标结点的时候，结束查找。如果找不到目标结点，即没有一条路可以到达。</strong></p> <p><strong>5.通过path数组中第三项元素指向的位置，逆序打印path中前两项元素，即为最后的路线。<span style="color:#fe2c24;">一定时最优的路线。</span></strong></p> <pre><code class="language-python">from collections import deque #使用队列 maze = [     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],     [1, 0, 0, 1, 0, 0, 0, 1, 0, 1],     [1, 0, 0, 1, 0, 0, 0, 1, 0, 1],     [1, 0, 0, 0, 0, 1, 1, 0, 0, 1],     [1, 0, 1, 1, 1, 0, 0, 0, 0, 1],     [1, 0, 0, 0, 1, 0, 0, 0, 0, 1],     [1, 0, 1, 0, 0, 0, 1, 0, 0, 1],     [1, 0, 1, 1, 1, 0, 1, 1, 0, 1],     [1, 1, 0, 0, 0, 0, 0, 0, 0, 1],     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1] ] dirs = [     lambda x, y: (x + 1, y),     lambda x, y: (x - 1, y),     lambda x, y: (x, y - 1),     lambda x, y: (x, y + 1) ]   def print_r(path):     curNode = path[-1]     print(curNode)      realpath=[]      while curNode[2] != -1:         realpath.append(curNode[0:2])         curNode = path[curNode[2]]      realpath.append(curNode[0:2])  # 起点     realpath.reverse()     for node in realpath:         print(node)   def maze_path_queue(x1, y1, x2, y2):     queue = deque()     queue.append((x1, y1, -1))   #起点     path = []     while len(queue) &gt; 0:    #只要队不为空         curNode = queue.pop()   #队首出队         path.append(curNode)         if curNode[0] == x2 and curNode[1] == y2:             print_r(path)             return True         for dir in dirs:             nextNode = dir(curNode[0], curNode[1])      #下一个节点             if maze[nextNode[0]][nextNode[1]] == 0:                 queue.append((nextNode[0], nextNode[1], len(path) - 1))  # 后续节点进队，记录哪个结点带她来的                 maze[nextNode[0]][nextNode[1]] = 2  # 标记已经走过     else:         print("没有路")         return False maze_path_queue(1,1,8,8)</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-66493.htm">双方自愿抱养协议书范本（双方自愿抱养协议书范本图片）</a></p>
+                                        <p>下一个：<a href="/news/article-67131.htm">2021公务员国考报名时间和考试时间（2021年公务员国考报考时间和考试时间）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-64012.htm" title="新疆和田哪里有宠物医院呀（和田哪里有宠物店）">新疆和田哪里有宠物医院呀（和田哪里有宠物店）</a></li>
+                        <li class="py-2"><a href="/news/article-51032.htm" title="石家庄宠物医院24小时在线咨询（石家庄24小时宠物医院电话）">石家庄宠物医院24小时在线咨询（石家庄24小时宠物医院电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-20-node-share-links.htm" title="「1月20日」最高速度19.6M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「1月20日」最高速度19.6M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-67779.htm" title="宠福鑫动物医院怎么样知乎 宠福鑫动物医院怎么样知乎">宠福鑫动物医院怎么样知乎 宠福鑫动物医院怎么样知乎</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-3-free-v2ray.htm" title="「2月3日」最高速度20.4M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「2月3日」最高速度20.4M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-55344.htm" title="宠物粮工厂投资（宠物粮食工厂）">宠物粮工厂投资（宠物粮食工厂）</a></li>
+                        <li class="py-2"><a href="/news/article-65252.htm" title="宠物买卖纠纷找哪个部门协调解决 宠物买卖纠纷找哪个部门协调解决呢">宠物买卖纠纷找哪个部门协调解决 宠物买卖纠纷找哪个部门协调解决呢</a></li>
+                        <li class="py-2"><a href="/news/article-51570.htm" title="开宠物店一天能赚多少（开宠物店赚钱吗?一般来说多久可以回本）">开宠物店一天能赚多少（开宠物店赚钱吗?一般来说多久可以回本）</a></li>
+                        <li class="py-2"><a href="/news/article-41547.htm" title="可以免费领养宠物的软件下载（可以免费领养宠物的软件叫什么）">可以免费领养宠物的软件下载（可以免费领养宠物的软件叫什么）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-free-node-subscribe.htm" title="「1月8日」最高速度22.4M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「1月8日」最高速度22.4M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
