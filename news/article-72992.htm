@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-72992.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>你不知道的Python容器</title>
+        <meta name="description" content="你不知道的Python容器  散列表  ChainMap MappingProxyType   线性表 堆 参考资料    昨天阅读了《Python Tricks: The Book》的第五章“Com" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayClashNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayclashnode.github.io/news/article-72992.htm" />
+    <meta property="og:site_name" content="V2rayClashNode节点订阅站" />
+    <meta property="og:title" content="你不知道的Python容器" />
+    <meta property="og:image" content="https://v2rayclashnode.github.io/uploads/20240531/eaf4cff3688626b8ea95766f0b4b8077.webp" />
+        <meta property="og:release_date" content="2025-03-13T09:22:16" />
+    <meta property="og:updated_time" content="2025-03-13T09:22:16" />
+        <meta property="og:description" content="你不知道的Python容器  散列表  ChainMap MappingProxyType   线性表 堆 参考资料    昨天阅读了《Python Tricks: The Book》的第五章“Com" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="你不知道的Python容器">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/">
+                        <span class="logo">V2ray Clash Node</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>你不知道的Python容器</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <ul> <li><a href="#%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84python%E5%AE%B9%E5%99%A8" rel="nofollow">你不知道的Python容器</a> <ul> <li><a href="#%E6%95%A3%E5%88%97%E8%A1%A8" rel="nofollow">散列表</a> <ul> <li><a href="#chainmap" rel="nofollow">ChainMap</a></li> <li><a href="#mappingproxytype" rel="nofollow">MappingProxyType</a></li> </ul> </li> <li><a href="#%E7%BA%BF%E6%80%A7%E8%A1%A8" rel="nofollow">线性表</a></li> <li><a href="#%E5%A0%86" rel="nofollow">堆</a></li> <li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" rel="nofollow">参考资料</a></li> </ul> </li> </ul> <p>昨天阅读了《Python Tricks: The Book》的第五章“Common Data Structures in Python”，该章节介绍了字典、数组、集合、栈、队列以及堆等数据结构的用法和注意事项，其中ChainMap、MappingProxyType等不常使用的容器类引起了我的注意。本文主要对几种不常使用的容器类进行介绍，通过示例说明这些容器的特点。</p> <h2 id="散列表">散列表</h2> <h3 id="chainmap">ChainMap</h3> <p>“collections.ChainMap”能有效整合多个字典的信息，提供一个可进行查询和更新的视图。它使用列表管理字典的引用，而非创建一个新的字典，因此时空开销比较小。当查询字典内容时，ChainMap按序遍历字典列表，直至找到给定的键；当更新（包括新增、删除）字典内容时，ChainMap只在字典列表的首项上进行操作。</p> <p>由于ChainMap是从前到后依次查找字典列表，如果有多个字典包含了相同的键，那么靠近列表起始位置的字典就会被优先匹配，而靠近列表末端的字典会被忽略。ChainMap能够为键查找操作设置优先级的特性使得它能够用于管理应用程序的配置项。具体来说，当应用程序具有多种来源（命令行、配置文件、环境变量等）的配置时，可以把优先级高的配置当作ChainMap的第一个位置参数：</p> <pre><code class="language-Python">from collections import ChainMap  cli_config = {  # 命令行参数     'batch_size': 128,  # 批次大小为128     'learning_rate': 1e-3,     'dropout': 0.2, } default_config = {  # 默认配置     'batch_size': 64,  # 这里也配置了批次大小     'num_layers': 2, }  lookup = ChainMap(cli_config, default_config) lookup['batch_size']  # 128，命令行参数优于匹配 lookup['num_layers']  # 2，默认配置也能查询  lookup.maps  # ChainMap({'batch_size': 128, 'learning_rate': 0.001, 'dropout': 0.2}, {'batch_size': 64, 'num_layers': 2})  lookup['beam_size'] = 4  # 新增键值对 del lookup['batch_size']  # 删除键值对 cli_config  # {'learning_rate': 0.001, 'dropout': 0.2, 'beam_size': 4}，cli_config是字典列表的首项，更新操作会作用到它身上</code></pre> <h3 id="mappingproxytype">MappingProxyType</h3> <p>“types.MappingProxyType”通过代理模式控制了对字典内容的访问，它接收一个字典作为参数，返回该字典的只读（Read Only）视图，任何尝试更新该视图的操作都会触发“TypeError”异常。</p> <pre><code class="language-Python">from types import MappingProxyType  meetings = {     'ACL': 'Annual Meeting of the Association for Computational Linguistics',     'CVPR': 'IEEE Conference on Computer Vision and Pattern Recognition', } mapping = MappingProxyType(meetings) mapping['ACL']  # 'Annual Meeting of...' del mapping['ACL']  # TypeError: 'mappingproxy' object does not support item deletion mapping['ACL'] = ''  # TypeError: 'mappingproxy' object does not support item assignment</code></pre> <h2 id="线性表">线性表</h2> <p>Python的内置类型“list”支持按位置插入、删除列表元素，基于它可以实现栈和队列等操作受限的线性表，但考虑到“list”本身是基于动态数组的，频繁增删列表元素会使得“list”需要时常调整占用的存储空间（扩容、缩容），最终导致程序性能的下降。</p> <p>“collections.deque”是实现栈和队列的更好选择，它基于双向链表，支持快速地从序列两端添加或删除元素。</p> <ol> <li> <p>使用deque模拟栈“后进先出”的特性</p> <pre><code class="language-Python">from collections import deque  stack = deque() stack.append('F') stack.append('E')  stack.pop()  # 'E'，首先弹出'E' stack.pop()  # 'F'，出栈顺序与入栈顺序相反 stack.pop()  # IndexError: pop from an empty deque</code></pre> </li> <li> <p>使用deque模拟队列“先进先出”的特性</p> <pre><code class="language-Python">from collections import deque  queue = deque() queue.append('F') queue.append('E')  queue.popleft()  # 'F'，'F'首先出队 queue.popleft()  # 'E'，出队顺序与入队顺序相同 queue.popleft()  # IndexError: pop from an empty deque</code></pre> </li> </ol> <h2 id="堆">堆</h2> <p>二叉堆是一棵完全二叉树，有最小堆和最大堆两种类型，其中最小堆的每个节点都小于等于它的子节点。Python的“heapq”模块提供了关于构造最小堆、插入删除元素并保持最小堆特性的接口。</p> <pre><code class="language-Python">import random import heapq  digits = [random.randrange(100) for i in range(5)]  # [75, 28, 93, 79, 57] heapq.nsmallest(2, digits)  # [28, 57]，获取列表中最小的2个元素  heapq.heapify(digits)  # 堆化，[28, 57, 93, 79, 75] heapq.heappush(digits, 10)  # 插入一个元素，[10, 57, 28, 79, 75, 93] heapq.heappop(digits)  # 10，弹出最小的元素</code></pre> <p>“queue.Priority”给出了优先队列的一种实现，它基于最小堆：</p> <pre><code class="language-Python">from queue import PriorityQueue  q.put((3, 'Sing')) q.put((1, 'Jump')) q.put((2, 'Rap'))  while not q.empty():     next_item = q.get()     print(next_item)  # (1, 'Jump'), (2, 'Rap'), (3, 'Sing')</code></pre> <h2 id="参考资料">参考资料</h2> <ol> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://realpython.com/products/python-tricks-book/"  target="_blank" rel="nofollow">Python Tricks: The Book</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://realpython.com/python-chainmap/"  target="_blank" rel="nofollow">Python's ChainMap: Manage Multiple Contexts Effectively</a></li> <li>《流畅的Python》，2.9.4节“双向队列和其他形式的队列”</li> </ol> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-72991.htm">使用 Eslint +  husky + lint-staged + Prettier 提高前端项目质量、统一项目代码风格</a></p>
+                                        <p>下一个：<a href="/news/article-73665.htm">领养宠物协议书范本图片高清 领养宠物协议书范本图片高清版</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-58471.htm" title="附近仓鼠店（附近的仓鼠用品店）">附近仓鼠店（附近的仓鼠用品店）</a></li>
+                        <li class="py-2"><a href="/news/article-65837.htm" title="领养宠物的定义是什么呢英语（领养宠物的好处）">领养宠物的定义是什么呢英语（领养宠物的好处）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-2-shadowrocket-node.htm" title="「2月2日」最高速度22.7M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「2月2日」最高速度22.7M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-28-clash-node-daily-updates.htm" title="「2月28日」最高速度20.7M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接">「2月28日」最高速度20.7M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-70350.htm" title="PHP重载">PHP重载</a></li>
+                        <li class="py-2"><a href="/news/article-54246.htm" title="swift用xib 自定义View">swift用xib 自定义View</a></li>
+                        <li class="py-2"><a href="/news/article-71005.htm" title="宠物粮行业协会投诉电话是多少（宠物粮行业协会投诉电话是多少号码）">宠物粮行业协会投诉电话是多少（宠物粮行业协会投诉电话是多少号码）</a></li>
+                        <li class="py-2"><a href="/news/article-39087.htm" title="Vue组件之间传值/调用方法的几种方式">Vue组件之间传值/调用方法的几种方式</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-11-free-high-speed-nodes.htm" title="「2月11日」最高速度22.9M/S，2025年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「2月11日」最高速度22.9M/S，2025年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-free-subscribe-node.htm" title="「1月10日」最高速度20.5M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接">「1月10日」最高速度20.5M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

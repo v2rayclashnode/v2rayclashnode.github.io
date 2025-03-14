@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-72345.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>docker-compose ports 与 expose 的区别</title>
+        <meta name="description" content="导读 这篇文章主要介绍了docker-compose ports和expose的区别详解，文中通过示例代码介绍的非常详细，对大家的学习或者工作具有一定的参考学习价值，需要的朋友们下面随着小编来一起学习" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayClashNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayclashnode.github.io/news/article-72345.htm" />
+    <meta property="og:site_name" content="V2rayClashNode节点订阅站" />
+    <meta property="og:title" content="docker-compose ports 与 expose 的区别" />
+    <meta property="og:image" content="https://v2rayclashnode.github.io/uploads/20240531/b288f868f1eb88f3b72ed7872267eb39.webp" />
+        <meta property="og:release_date" content="2025-03-12T06:08:50" />
+    <meta property="og:updated_time" content="2025-03-12T06:08:50" />
+        <meta property="og:description" content="导读 这篇文章主要介绍了docker-compose ports和expose的区别详解，文中通过示例代码介绍的非常详细，对大家的学习或者工作具有一定的参考学习价值，需要的朋友们下面随着小编来一起学习" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="docker-compose ports 与 expose 的区别">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/">
+                        <span class="logo">V2ray Clash Node</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>docker-compose ports 与 expose 的区别</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <table> <tbody> <tr> <td>导读</td> <td><strong>这篇文章主要介绍了docker-compose ports和expose的区别详解，文中通过示例代码介绍的非常详细，对大家的学习或者工作具有一定的参考学习价值，需要的朋友们下面随着小编来一起学习学习吧。</strong></td> </tr> </tbody> </table> <p>docker-compose中有两种方式可以暴露容器的端口：ports和expose。</p> <p><strong>ports</strong></p> <p>ports暴露容器端口到主机的任意端口或指定端口，用法：</p> <pre><code class="language-html hljs">ports:    - "80:80" # 绑定容器的80端口到主机的80端口    - "9000:8080" # 绑定容器的8080端口到主机的9000端口    - "443" # 绑定容器的443端口到主机的任意端口，容器启动时随机分配绑定的主机端口号</code></pre> <p>不管是否指定主机端口，使用ports都会将端口暴露给主机。</p> <p>容器中可以运行一些网络应用，要让外部也可以访问这些应用，可以通过 -P（大写） 或 -p （小写） 参数来指定端口映射。</p> <p>(1) 当使用-P标记时，Docker 会随机映射一个49000~49900的端口到内部容器开放的网络端口。</p> <p>使用docker ps可以看到，本地主机的 49155 被映射到了容器的 5000 端口。此时访问本机的 49155 端口即可访问容器内 web 应用提供的界面。</p> <pre><code class="language-html hljs">$ sudo docker run -d -P training/webapp python app.py    $ sudo docker ps -l    CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES    bc533791f3f5 training/webapp:latest python app.py 5 seconds ago Up 2 seconds 0.0.0.0:49155-&gt;5000/tcp nostalgic_morse</code></pre> <p>同样的，可以通过docker logs<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.linuxcool.com/"  rel="nofollow">命令</a>来查看应用的信息。</p> <pre><code class="language-html hljs">$ sudo docker logs -f nostalgic_morse    * Running on http://0.0.0.0:5000/    10.0.2.2 - - [23/May/2014 20:16:31] "GET / HTTP/1.1" 200 -    10.0.2.2 - - [23/May/2014 20:16:31] "GET /favicon.ico HTTP/1.1" 404 -</code></pre> <p>(2) -p（小写）则可以指定要映射的IP和端口，但是在一个指定端口上只可以绑定一个容器。支持的格式有 hostPort:containerPort、ip:hostPort:containerPort、ip::containerPort。</p> <p><strong>expose</strong></p> <p>expose暴露容器给link到当前容器的容器，用法：</p> <pre><code class="language-html hljs">expose: - "3000" - "8000"</code></pre> <p>以上指令将当前容器的端口3000和8000暴露给link到本容器的容器。</p> <p>和ports的区别是，expose不会将端口暴露给主机。</p> <p>以上就是本文的全部内容，希望对大家的学习有所帮助，也希望大家多多支持。<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.linuxprobe.com"  rel="nofollow">Linux就该这么学</a></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-71671.htm">Python 一网打尽＜排序算法＞之先从玩转冒泡排序开始</a></p>
+                                        <p>下一个：<a href="/news/article-72346.htm">MySQL 回表</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-67780.htm" title="被野猫抓出一点点血（被野猫抓破了一点点血很快就好了）">被野猫抓出一点点血（被野猫抓破了一点点血很快就好了）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-clash-node.htm" title="「2月1日」最高速度21.8M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「2月1日」最高速度21.8M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-41547.htm" title="可以免费领养宠物的软件下载（可以免费领养宠物的软件叫什么）">可以免费领养宠物的软件下载（可以免费领养宠物的软件叫什么）</a></li>
+                        <li class="py-2"><a href="/news/article-72991.htm" title="使用 Eslint +  husky + lint-staged + Prettier 提高前端项目质量、统一项目代码风格">使用 Eslint +  husky + lint-staged + Prettier 提高前端项目质量、统一项目代码风格</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-14-free-v2ray-subscribe.htm" title="「3月14日」最高速度22.9M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「3月14日」最高速度22.9M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-clash-node.htm" title="「2月18日」最高速度19.6M/S，2025年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「2月18日」最高速度19.6M/S，2025年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-59865.htm" title="k8s &#8211; 控制器（deployment）">k8s &#8211; 控制器（deployment）</a></li>
+                        <li class="py-2"><a href="/news/article-64012.htm" title="新疆和田哪里有宠物医院呀（和田哪里有宠物店）">新疆和田哪里有宠物医院呀（和田哪里有宠物店）</a></li>
+                        <li class="py-2"><a href="/news/article-38580.htm" title="Android Studio计算器 app">Android Studio计算器 app</a></li>
+                        <li class="py-2"><a href="/news/article-60429.htm" title="动物疫苗合格证怎么办理流程视频（动物疫苗证书）">动物疫苗合格证怎么办理流程视频（动物疫苗证书）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
