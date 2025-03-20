@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-76376.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Day02—Python的变量类型、变量命名、变量类型检查、变量类型转换、运算符</title>
+        <meta name="description" content="变量是存储在内存中的值，这就意味着在创建变量时会在内存中开辟一个空间。 基于变量的数据类型，解释器会分配指定内存，并决定什么数据可以被存储在内存中。 因此，变量可以指定不同的数据类型，这些变量可以存储" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayClashNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayclashnode.github.io/news/article-76376.htm" />
+    <meta property="og:site_name" content="V2rayClashNode节点订阅站" />
+    <meta property="og:title" content="Day02—Python的变量类型、变量命名、变量类型检查、变量类型转换、运算符" />
+    <meta property="og:image" content="https://v2rayclashnode.github.io/uploads/20240531/b288f868f1eb88f3b72ed7872267eb39.webp" />
+        <meta property="og:release_date" content="2025-03-18T06:13:10" />
+    <meta property="og:updated_time" content="2025-03-18T06:13:10" />
+        <meta property="og:description" content="变量是存储在内存中的值，这就意味着在创建变量时会在内存中开辟一个空间。 基于变量的数据类型，解释器会分配指定内存，并决定什么数据可以被存储在内存中。 因此，变量可以指定不同的数据类型，这些变量可以存储" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Day02—Python的变量类型、变量命名、变量类型检查、变量类型转换、运算符">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/">
+                        <span class="logo">V2ray Clash Node</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>Day02—Python的变量类型、变量命名、变量类型检查、变量类型转换、运算符</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <blockquote> <p><strong>变量</strong>是存储在内存中的值，这就意味着在创建变量时会在内存中开辟一个空间。</p> <p>基于变量的数据类型，解释器会分配指定内存，并决定什么数据可以被存储在内存中。</p> <p>因此，<strong>变量</strong>可以指定不同的数据类型，这些变量可以存储整数，小数或字符。</p> </blockquote> <p>Python中的数据类型很多，而且也允许我们自定义新的数据类型，我们先介绍几种常用的数据类型：</p> <ul> <li> <strong>整型(int)</strong>：Python中可以处理任意大小的整数（Python2.x中有int和long两种类型的整数，但这种区分对Python来说意义不大，因此在Python 3.x中整数只有int这一种了），而且支持二进制（如0b100，换算成十进制是4）、八进制（如0o100，换算成十进制是64）、十进制（100）和十六进制（0x100，换算成十进制是256）的表示法。</li> <li> <strong>浮点型(float)</strong>：浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，浮点数除了数学写法（如123.456）之外还支持科学计数法（如1.23456e2）。</li> <li> <strong>字符串型(String)</strong>：字符串是以单引号或双引号括起来的任意文本，比如’hello’和"hello",字符串还有原始字符串表示法、字节字符串表示法、Unicode字符串表示法，而且可以书写成多行的形式（用三个单引号或三个双引号开头，三个单引号或三个双引号结尾）。</li> <li> <strong>布尔型</strong>：布尔值只有<code>True</code>、<code>False</code>两种值，要么是<code>True</code>，要么是<code>False</code>，在Python中，可以直接用<code>True</code>、<code>False</code>表示布尔值（请注意大小写），也可以通过布尔运算计算出来（例如3&lt; 5会产生布尔值<code>True</code>，而2 == 1会产生布尔值<code>False</code>）。</li> <li> <strong>复数型(complex)</strong>：形如3+5j，跟数学上的复数表示一样，唯一不同的是虚部的i换成了j。实际上，这个类型并不常用，大家了解一下就可以了。</li> </ul> </h1> <p>对于每个变量我们需要给它取一个名字，就如同我们每个人都有属于自己的响亮的名字一样。在Python中，变量命名需要遵循以下这些必须遵守硬性规则和强烈建议遵守的非硬性规则。</p> <h3> <a id="_17" rel="nofollow"></a>硬性规则：</h3> <ol> <li>变量名由字母（广义的<code>Unicode</code>字符，不包括特殊字符）、数字和下划线构成，数字不能开头。</li> <li>变量命名严格区分大小写（大写的a和小写的A是两个不同的变量）。</li> <li>不要跟关键字（有特殊含义的单词，后面会讲到）和系统保留字（如函数、模块等的名字）冲突，如：<code>print</code>。</li> </ol> <h3> <a id="PEP_8_23" rel="nofollow"></a>PEP 8要求：</h3> <ol> <li>用小写字母拼写，多个单词用下划线连接。</li> <li>受保护的实例属性用单个下划线开头。</li> <li>私有的实例属性用两个下划线开头。</li> </ol> <blockquote> <p>Tip：Python关键字在<code>keyword</code>模块里。</p> </blockquote> <pre><code class="prism language-python"><span class="token keyword">import</span> keyword <span class="token keyword">print</span><span class="token punctuation">(</span>keyword<span class="token punctuation">.</span>kwlist<span class="token punctuation">)</span> </code></pre> <pre><code class="prism language-python"><span class="token punctuation">[</span><span class="token string">'False'</span><span class="token punctuation">,</span> <span class="token string">'None'</span><span class="token punctuation">,</span> <span class="token string">'True'</span><span class="token punctuation">,</span> <span class="token string">'and'</span><span class="token punctuation">,</span> <span class="token string">'as'</span><span class="token punctuation">,</span> <span class="token string">'assert'</span><span class="token punctuation">,</span> <span class="token string">'break'</span><span class="token punctuation">,</span> <span class="token string">'class'</span><span class="token punctuation">,</span> <span class="token string">'continue'</span><span class="token punctuation">,</span> <span class="token string">'def'</span><span class="token punctuation">,</span> <span class="token string">'del'</span><span class="token punctuation">,</span> <span class="token string">'elif'</span><span class="token punctuation">,</span> <span class="token string">'else'</span><span class="token punctuation">,</span> <span class="token string">'except'</span><span class="token punctuation">,</span> <span class="token string">'finally'</span><span class="token punctuation">,</span> <span class="token string">'for'</span><span class="token punctuation">,</span> <span class="token string">'from'</span><span class="token punctuation">,</span> <span class="token string">'global'</span><span class="token punctuation">,</span> <span class="token string">'if'</span><span class="token punctuation">,</span> <span class="token string">'import'</span><span class="token punctuation">,</span> <span class="token string">'in'</span><span class="token punctuation">,</span> <span class="token string">'is'</span><span class="token punctuation">,</span> <span class="token string">'lambda'</span><span class="token punctuation">,</span> <span class="token string">'nonlocal'</span><span class="token punctuation">,</span> <span class="token string">'not'</span><span class="token punctuation">,</span> <span class="token string">'or'</span><span class="token punctuation">,</span> <span class="token string">'pass'</span><span class="token punctuation">,</span> <span class="token string">'raise'</span><span class="token punctuation">,</span> <span class="token string">'return'</span><span class="token punctuation">,</span> <span class="token string">'try'</span><span class="token punctuation">,</span> <span class="token string">'while'</span><span class="token punctuation">,</span> <span class="token string">'with'</span><span class="token punctuation">,</span> <span class="token string">'yield'</span><span class="token punctuation">]</span> <span class="token comment"># 上面这些关键字都不能作为变量名。</span> </code></pre> </h1> <pre><code class="prism language-python"><span class="token comment"># 使用变量保存数据并进行加减乘除运算</span> a <span class="token operator">=</span> <span class="token number">321</span> b <span class="token operator">=</span> <span class="token number">12</span> <span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span>    <span class="token comment"># 333</span> <span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">-</span> b<span class="token punctuation">)</span>    <span class="token comment"># 309</span> <span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">*</span> b<span class="token punctuation">)</span>    <span class="token comment"># 3852</span> <span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">/</span> b<span class="token punctuation">)</span>    <span class="token comment"># 26.75</span> </code></pre> <ul> <li> <h3> <a id="_51" rel="nofollow"></a>变量类型检查</h3> </li> </ul> <p>在Python中可以使用<code>type</code>函数对变量的类型进行检查。</p> <pre><code class="prism language-python"><span class="token comment"># 使用type()检查变量的类型</span> a <span class="token operator">=</span> <span class="token number">100</span> b <span class="token operator">=</span> <span class="token number">12.345</span> c <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">5j</span> d <span class="token operator">=</span> <span class="token string">'hello, world'</span> e <span class="token operator">=</span> <span class="token boolean">True</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment"># &lt;class 'int'&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment"># &lt;class 'float'&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment"># &lt;class 'complex'&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment"># &lt;class 'str'&gt;</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment"># &lt;class 'bool'&gt;</span> </code></pre> <ul> <li> <h3> <a id="_69" rel="nofollow"></a>变量类型转换</h3> </li> </ul> <p>可以使用Python中内置的函数对变量类型进行转换。属于显式类型转换，强制转换。<br /><code>int()</code>：将一个数值或字符串转换成整数，可以指定进制。</p> <pre><code class="prism language-python">x <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>   <span class="token comment"># x 输出结果为 1</span> y <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token number">2.8</span><span class="token punctuation">)</span> <span class="token comment"># y 输出结果为 2</span> z <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token string">"3"</span><span class="token punctuation">)</span> <span class="token comment"># z 输出结果为 3</span> </code></pre> <p><code>float()</code>：将一个字符串转换成浮点数。</p> <pre><code class="prism language-python">x <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>     <span class="token comment"># x 输出结果为 1.0</span> y <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token number">2.8</span><span class="token punctuation">)</span>   <span class="token comment"># y 输出结果为 2.8</span> z <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token string">"3"</span><span class="token punctuation">)</span>   <span class="token comment"># z 输出结果为 3.0</span> w <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token string">"4.2"</span><span class="token punctuation">)</span> <span class="token comment"># w 输出结果为 4.2</span> </code></pre> <p><code>str()</code>：将指定的对象转换成字符串形式，可以指定编码。</p> <pre><code class="prism language-python">x <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token string">"s1"</span><span class="token punctuation">)</span> <span class="token comment"># x 输出结果为 's1'</span> y <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>    <span class="token comment"># y 输出结果为 '2'</span> z <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token number">3.0</span><span class="token punctuation">)</span>  <span class="token comment"># z 输出结果为 '3.0'</span> </code></pre> <p><code>chr()</code>：将整数转换成该编码对应的字符串（一个字符）。<br /><code>ord()</code>：将字符串（一个字符）转换成对应的编码（整数）。</p> <p>例：整型和字符串类型进行运算，就可以用强制类型转换来完成.</p> <pre><code class="prism language-python">num_int <span class="token operator">=</span> <span class="token number">123</span> num_str <span class="token operator">=</span> <span class="token string">"456"</span>  <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"num_int 数据类型为:"</span><span class="token punctuation">,</span><span class="token builtin">type</span><span class="token punctuation">(</span>num_int<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"类型转换前，num_str 数据类型为:"</span><span class="token punctuation">,</span><span class="token builtin">type</span><span class="token punctuation">(</span>num_str<span class="token punctuation">)</span><span class="token punctuation">)</span>  num_str <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>num_str<span class="token punctuation">)</span>    <span class="token comment"># 强制转换为整型</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"类型转换后，num_str 数据类型为:"</span><span class="token punctuation">,</span><span class="token builtin">type</span><span class="token punctuation">(</span>num_str<span class="token punctuation">)</span><span class="token punctuation">)</span>  num_sum <span class="token operator">=</span> num_int <span class="token operator">+</span> num_str  <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"num_int 与 num_str 相加结果为:"</span><span class="token punctuation">,</span>num_sum<span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"sum 数据类型为:"</span><span class="token punctuation">,</span><span class="token builtin">type</span><span class="token punctuation">(</span>num_sum<span class="token punctuation">)</span><span class="token punctuation">)</span> </code></pre> <p>输出结果为：</p> <pre><code class="prism language-bash">num_int 数据类型为: <span class="token operator">&lt;</span>class <span class="token string">'int'</span><span class="token operator">&gt;</span> 类型转换前，num_str 数据类型为: <span class="token operator">&lt;</span>class <span class="token string">'str'</span><span class="token operator">&gt;</span> 类型转换后，num_str 数据类型为: <span class="token operator">&lt;</span>class <span class="token string">'int'</span><span class="token operator">&gt;</span> num_int 与 num_str 相加结果为: <span class="token number">579</span> <span class="token function">sum</span> 数据类型为: <span class="token operator">&lt;</span>class <span class="token string">'int'</span><span class="token operator">&gt;</span> </code></pre> </h1> <ul> <li> <h3> <a id="Python_126" rel="nofollow"></a>Python算术运算符</h3> </li> </ul> <table> <thead> <tr> <th>运算符</th> <th>描述</th> </tr> </thead> <tbody> <tr> <td>+ - * /</td> <td>加、减、乘、除</td> </tr> <tr> <td>%</td> <td>取模 - 返回除法的余数</td> </tr> <tr> <td>**</td> <td>幂 - 返回x的y次幂</td> </tr> <tr> <td>//</td> <td>取整除 - 向下取接近商的整数</td> </tr> </tbody> </table> <ul> <li> <h3> <a id="Python_133" rel="nofollow"></a>Python比较运算符</h3> </li> </ul> <table> <thead> <tr> <th>运算符</th> <th>描述</th> </tr> </thead> <tbody> <tr> <td>==</td> <td>等于 - 比较对象是否相等</td> </tr> <tr> <td>!=</td> <td>不等于 - 比较两个对象是否不相等</td> </tr> <tr> <td>&gt;</td> <td>大于 - 返回x是否大于y</td> </tr> <tr> <td>&lt;</td> <td>小于 - 返回x是否小于y。所有比较运算符返回1表示真，返回0表示假。这分别与特殊的变量True和False等价。注意，这些变量名的大写。</td> </tr> <tr> <td>&gt;=</td> <td>大于等于 - 返回x是否大于等于y。</td> </tr> <tr> <td>&lt;=</td> <td>小于等于 - 返回x是否小于等于y。</td> </tr> </tbody> </table> <ul> <li> <h3> <a id="Python_142" rel="nofollow"></a>Python逻辑运算符</h3> </li> </ul> <table> <thead> <tr> <th>运算符</th> <th>逻辑表达式</th> <th>描述</th> </tr> </thead> <tbody> <tr> <td>and</td> <td>x and y</td> <td>“与” - 如果 x 为 False，x and y 返回 x 的值，否则返回 y 的计算值。</td> </tr> <tr> <td>or</td> <td>x or y</td> <td>“或” - 如果 x 是 True，它返回 x 的值，否则它返回 y 的计算值。</td> </tr> <tr> <td>no</td> <td>not x</td> <td>“非” - 如果 x 为 True，返回 False 。如果 x 为 False，它返回 True。</td> </tr> </tbody> </table> <ul> <li> <h3> <a id="Python_148" rel="nofollow"></a>Python成员运算符</h3> </li> </ul> <table> <thead> <tr> <th>运算符</th> <th>描述</th> <th>实例</th> </tr> </thead> <tbody> <tr> <td>in</td> <td>如果在指定的序列中找到值返回 True，否则返回 False。</td> <td>x 在 y 序列中 , 如果 x 在 y 序列中返回 True。</td> </tr> <tr> <td>not in</td> <td>如果在指定的序列中没有找到值返回 True，否则返回 False。</td> <td>x 不在 y 序列中 , 如果 x 不在 y 序列中返回 True。</td> </tr> </tbody> </table> <ul> <li> <h3> <a id="Python_153" rel="nofollow"></a>Python身份运算符</h3> </li> </ul> <table> <thead> <tr> <th>运算符</th> <th>描述</th> <th>实例</th> </tr> </thead> <tbody> <tr> <td>is</td> <td>is 是判断两个标识符是不是引用自一个对象</td> <td>x is y, 类似 id(x) == id(y) , 如果引用的是同一个对象则返回 True，否则返回 False</td> </tr> <tr> <td>is not</td> <td>is not 是判断两个标识符是不是引用自不同对象</td> <td>x is not y ， 类似 id(x) != id(y)。如果引用的不是同一个对象则返回结果 True，否则返回 False。</td> </tr> </tbody> </table> <pre><code class="prism language-python"><span class="token triple-quoted-string string">""" 比较运算符和逻辑运算符、成员运算符的使用 """</span> flag0 <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">==</span> <span class="token number">1</span> flag1 <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">&gt;</span> <span class="token number">2</span> flag2 <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">&lt;</span> <span class="token number">1</span> flag3 <span class="token operator">=</span> flag1 <span class="token keyword">and</span> flag2 flag4 <span class="token operator">=</span> flag1 <span class="token keyword">or</span> flag2 flag5 <span class="token operator">=</span> <span class="token keyword">not</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">!=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'flag0 ='</span><span class="token punctuation">,</span> flag0<span class="token punctuation">)</span>    <span class="token comment"># flag0 = True</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'flag1 ='</span><span class="token punctuation">,</span> flag1<span class="token punctuation">)</span>    <span class="token comment"># flag1 = True</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'flag2 ='</span><span class="token punctuation">,</span> flag2<span class="token punctuation">)</span>    <span class="token comment"># flag2 = False</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'flag3 ='</span><span class="token punctuation">,</span> flag3<span class="token punctuation">)</span>    <span class="token comment"># flag3 = False</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'flag4 ='</span><span class="token punctuation">,</span> flag4<span class="token punctuation">)</span>    <span class="token comment"># flag4 = True</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'flag5 ='</span><span class="token punctuation">,</span> flag5<span class="token punctuation">)</span>    <span class="token comment"># flag5 = False</span> </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-75698.htm">setTimeout、Promise、Async/Await 的区别</a></p>
+                                        <p>下一个：<a href="/news/article-76379.htm">动物疫苗官网首页网站 动物疫苗官网首页网站查询</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-9-clash-v2ray-ss-ssr.htm" title="「1月9日」最高速度20.2M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「1月9日」最高速度20.2M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-62207.htm" title="动物医院取什么名字好听一点（动物医院牌子）">动物医院取什么名字好听一点（动物医院牌子）</a></li>
+                        <li class="py-2"><a href="/news/article-57577.htm" title="动物防疫中心可以给猫打疫苗吗（动物防疫中心可以给猫打疫苗吗）">动物防疫中心可以给猫打疫苗吗（动物防疫中心可以给猫打疫苗吗）</a></li>
+                        <li class="py-2"><a href="/news/article-64623.htm" title="迅德宠物医院管理系统（迅德宠物医院管理系统多少钱）">迅德宠物医院管理系统（迅德宠物医院管理系统多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-55893.htm" title="鲜湿面条生产线视频(湿面条生产工艺流程图)">鲜湿面条生产线视频(湿面条生产工艺流程图)</a></li>
+                        <li class="py-2"><a href="/news/article-38074.htm" title="狗最忌讳的三个属相（狗忌讳什么属相）">狗最忌讳的三个属相（狗忌讳什么属相）</a></li>
+                        <li class="py-2"><a href="/news/article-75697.htm" title="什么是MySQL ENUM数据类型？使用ENUM数据类型有什么优势？">什么是MySQL ENUM数据类型？使用ENUM数据类型有什么优势？</a></li>
+                        <li class="py-2"><a href="/news/article-73667.htm" title="被猫抓伤了怎么判断没事图片（被猫抓伤了怎么判断没事图片真实一点）">被猫抓伤了怎么判断没事图片（被猫抓伤了怎么判断没事图片真实一点）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-5-node-share-links.htm" title="「3月5日」最高速度19.9M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「3月5日」最高速度19.9M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-51032.htm" title="石家庄宠物医院24小时在线咨询（石家庄24小时宠物医院电话）">石家庄宠物医院24小时在线咨询（石家庄24小时宠物医院电话）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
