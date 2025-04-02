@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-85415.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Java调用ffmpeg处理视频，并记录下遇到的坑</title>
+        <meta name="description" content="目录  需求 基于JavaCV跨平台执行ffmpeg命令[^1] 坑一 内存不足 坑二 多个ffmpeg进程并行导致IO负载大，进而导致io error? 坑三 使用Java操作ffmpeg时，有时会" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayClashNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayclashnode.github.io/news/article-85415.htm" />
+    <meta property="og:site_name" content="V2rayClashNode节点订阅站" />
+    <meta property="og:title" content="Java调用ffmpeg处理视频，并记录下遇到的坑" />
+    <meta property="og:image" content="https://v2rayclashnode.github.io/uploads/20240531/caf7a91aed77f5ad83080f7bd4b9aef0.webp" />
+        <meta property="og:release_date" content="2025-03-31T08:41:37" />
+    <meta property="og:updated_time" content="2025-03-31T08:41:37" />
+        <meta property="og:description" content="目录  需求 基于JavaCV跨平台执行ffmpeg命令[^1] 坑一 内存不足 坑二 多个ffmpeg进程并行导致IO负载大，进而导致io error? 坑三 使用Java操作ffmpeg时，有时会" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java调用ffmpeg处理视频，并记录下遇到的坑">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/">
+                        <span class="logo">V2ray Clash Node</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>Java调用ffmpeg处理视频，并记录下遇到的坑</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>目录</h3> <ul> <li><a href="#_1" rel="nofollow">需求</a></li> <li><a href="#JavaCVffmpeg1_4" rel="nofollow">基于JavaCV跨平台执行ffmpeg命令[^1]</a></li> <li><a href="#___27" rel="nofollow">坑一 内存不足</a></li> <li><a href="#_ffmpegIOio_error_31" rel="nofollow">坑二 多个ffmpeg进程并行导致IO负载大，进而导致io error?</a></li> <li><a href="#_Javaffmpeg_34" rel="nofollow">坑三 使用Java操作ffmpeg时，有时会卡死</a></li> <li><a href="#_ProcesswaitFor_37" rel="nofollow">坑四 Process的waitFor死锁问题及解决办法</a></li> </ul> </div> </h1> <p>给透明背景的视频自动叠加一张背景图片</p> </h1> <p>我测试发现的本需求的最小依赖：</p> <pre><code class="prism language-xml"><span class="token comment">&lt;!-- Optional GPL builds with (almost) everything enabled --&gt;</span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.bytedeco<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>ffmpeg-platform-gpl<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>5.0-1.5.7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span> </code></pre> <p>核心代码：</p> <pre><code class="prism language-java">  <span class="token class-name">String</span> ffmpeg <span class="token operator">=</span> <span class="token class-name">Loader</span><span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>org<span class="token punctuation">.</span>bytedeco<span class="token punctuation">.</span>ffmpeg<span class="token punctuation">.</span>ffmpeg<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token class-name">String</span> tempFilePath <span class="token operator">=</span> newVideoName<span class="token punctuation">;</span>   <span class="token class-name">ProcessBuilder</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProcessBuilder</span><span class="token punctuation">(</span>ffmpeg<span class="token punctuation">,</span>       <span class="token string">"-y"</span><span class="token punctuation">,</span> <span class="token string">"-i"</span><span class="token punctuation">,</span> BACKGROUND_PNG<span class="token punctuation">,</span> <span class="token string">"-c:v"</span><span class="token punctuation">,</span> <span class="token string">"libvpx-vp9"</span><span class="token punctuation">,</span> <span class="token string">"-i"</span><span class="token punctuation">,</span> aliVideoUrl<span class="token punctuation">,</span> <span class="token string">"-filter_complex"</span><span class="token punctuation">,</span>       <span class="token string">"[0][1]overlay=0:0[video2];[video2]select=between(n\\,1\\,54000)"</span><span class="token punctuation">,</span> <span class="token string">"-b:v"</span><span class="token punctuation">,</span> <span class="token string">"2m"</span><span class="token punctuation">,</span> <span class="token string">"-r"</span><span class="token punctuation">,</span>       <span class="token string">"30"</span><span class="token punctuation">,</span> <span class="token string">"-c:v"</span><span class="token punctuation">,</span> <span class="token string">"libx264"</span><span class="token punctuation">,</span> <span class="token string">"-pix_fmt"</span><span class="token punctuation">,</span> <span class="token string">"yuv420p"</span><span class="token punctuation">,</span> <span class="token string">"-profile:v"</span><span class="token punctuation">,</span> <span class="token string">"high"</span><span class="token punctuation">,</span> <span class="token string">"-preset:v"</span><span class="token punctuation">,</span>       <span class="token string">"veryslow"</span><span class="token punctuation">,</span> <span class="token string">"-tune"</span><span class="token punctuation">,</span> <span class="token string">"film"</span><span class="token punctuation">,</span> <span class="token string">"-level"</span><span class="token punctuation">,</span> <span class="token string">"4.2"</span><span class="token punctuation">,</span> tempFilePath<span class="token punctuation">)</span><span class="token punctuation">;</span>   pb<span class="token punctuation">.</span><span class="token function">inheritIO</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">waitFor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token class-name">File</span> tempFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>tempFilePath<span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre> </h1> <p>服务器内存不足导致合成视频实际失败，许多的合成文件只有48B，但是没有与之相关的错误日志。<br /> 每个服务器节点原来只有2G内存，扩容后解决。</p> </h1> <p>这只是一种推测。现象是我会有多个Java线程，每个线程都来调用ffmpeg命令。合成的视频有概率缺失后面一段，并可以在日志中观察到io error, read error。源视频越大，Java线程数越多，出现这种情况的概率越大。当我把Java程序改为单线程，就没有这种问题了。但当我尝试用iostat命令去服务器节点观察IO状态时，并没有观察到所谓IO负载大的证据。<sup class="footnote-ref"><a href="#fn2" id="fnref2" rel="nofollow">2</a></sup></p> </h1> <p>只发生在我本地Mac，在服务器没有出现过。我找了很久原因，最后发现是我的Mac跑了一段时间后自动休眠了。。不过也记录下很多人都遇到过的这个坑吧：</p> </h1> <p>大意是：当Runtime对象调用exec(cmd)后，JVM会启动一个子进程，该进程会与JVM进程建立三个管道连接：标准输入，标准输出和标准错误流。假设该程序不断在向标准输出流和标准错误流写数据，而JVM不读取的话，当缓冲区满之后将无法继续写入数据，而Java的waitfor()是阻塞等待子进程完成的。所以会最终造成阻塞在waitfor()这里。解决的主要思路是Java要及时消费这个缓冲区的io流，或者直接不让ffmpeg输出日志。一些参考：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/psyduck/p/14085657.html"  rel="nofollow">使用Procees+Runtime操作ffmpeg时，执行比较大的文件操作会卡死，但cmd打开ffmpeg能正常执行</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/qq_16504067/article/details/114962498?app_version=5.8.1&amp;code=app_1562916241&amp;csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22114962498%22,%22source%22:%22qq_23204557%22%7D&amp;uLinkId=usr1mkqgl919blen&amp;utm_source=app"  rel="nofollow">Java process.waitFor() 卡死问题</a>里提到了，也可以直接给ffmpeg命令加上<code>-loglevel quiet</code>参数来不让输出日志。</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/qq_34680444/article/details/109642653"  rel="nofollow">Process的waitFor死锁问题及解决办法</a></p> <hr class="footnotes-sep"/> <section class="footnotes"> <ol class="footnotes-list"> <li id="fn1" class="footnote-item"> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.51cto.com/eguid/4894370"  rel="nofollow">如何跨平台调用ffmpeg？史上最简单基于JavaCV跨平台执行ffmpeg命令</a> <a href="#fnref1" class="footnote-backref" rel="nofollow">↩︎</a></p> </li> <li id="fn2" class="footnote-item"> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/ggjucheng/archive/2013/01/13/2858810.html"  rel="nofollow">Linux IO实时监控iostat命令详解</a> <a href="#fnref2" class="footnote-backref" rel="nofollow">↩︎</a></p> </li> </ol> </section> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-84711.htm">宠物打疫苗前注意事项（宠物打疫苗前要注意什么）</a></p>
+                                        <p>下一个：<a href="/news/article-85416.htm">分享MongoDB修改oplog大小的4种方法_MongoDB_</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-70350.htm" title="PHP重载">PHP重载</a></li>
+                        <li class="py-2"><a href="/news/article-81824.htm" title="养猫的人容易得15种病怎么预防传染（养猫的人容易得15种病怎么预防传染病）">养猫的人容易得15种病怎么预防传染（养猫的人容易得15种病怎么预防传染病）</a></li>
+                        <li class="py-2"><a href="/news/article-79788.htm" title="动物免疫接种的意义（动物免疫接种的注意事项有哪些?）">动物免疫接种的意义（动物免疫接种的注意事项有哪些?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-free-node-subscribe.htm" title="「3月8日」最高速度19.2M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「3月8日」最高速度19.2M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-26-clash-node.htm" title="「3月26日」最高速度19.1M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「3月26日」最高速度19.1M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-80453.htm" title="动物疫苗检测中心上班时间（动物疫苗检测中心上班时间是几点）">动物疫苗检测中心上班时间（动物疫苗检测中心上班时间是几点）</a></li>
+                        <li class="py-2"><a href="/news/article-65838.htm" title="中牧的疫苗质量怎么样（中牧疫苗好用吗）">中牧的疫苗质量怎么样（中牧疫苗好用吗）</a></li>
+                        <li class="py-2"><a href="/news/article-84710.htm" title="吉泰宠物医院电话多少（吉康宠物医院）">吉泰宠物医院电话多少（吉康宠物医院）</a></li>
+                        <li class="py-2"><a href="/news/article-69696.htm" title="中国兽药采购网下载安装app（中国兽药商城）">中国兽药采购网下载安装app（中国兽药商城）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-12-shadowrocket-node.htm" title="「3月12日」最高速度21.7M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「3月12日」最高速度21.7M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

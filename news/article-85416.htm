@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2rayclashnode.github.io/news/article-85416.htm" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>分享MongoDB修改oplog大小的4种方法_MongoDB_</title>
+        <meta name="description" content="目录  方法一 方法二 方法三  1.关闭mongod 2.修改配置文件 3.启动mongod实例，并备份oplog 4.重建oplog 5.插入前面保存的oplog时间点记录 6.关闭mongod实" />
+        <link rel="icon" href="/assets/website/img/v2rayclashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="V2rayClashNode节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2rayclashnode.github.io/news/article-85416.htm" />
+    <meta property="og:site_name" content="V2rayClashNode节点订阅站" />
+    <meta property="og:title" content="分享MongoDB修改oplog大小的4种方法_MongoDB_" />
+    <meta property="og:image" content="https://v2rayclashnode.github.io/uploads/20240531/594d055325ef93e46b4e7bae840d27a7.webp" />
+        <meta property="og:release_date" content="2025-03-31T08:41:37" />
+    <meta property="og:updated_time" content="2025-03-31T08:41:37" />
+        <meta property="og:description" content="目录  方法一 方法二 方法三  1.关闭mongod 2.修改配置文件 3.启动mongod实例，并备份oplog 4.重建oplog 5.插入前面保存的oplog时间点记录 6.关闭mongod实" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="分享MongoDB修改oplog大小的4种方法_MongoDB_">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/assets/website/css/v2rayclashnode/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4BEYC2CJF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4BEYC2CJF');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/">
+                        <span class="logo">V2ray Clash Node</span>
+                        </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                                        <li><a class="nav-link" href="/">首页</a></li>
+                                        <li><a class="nav-link" href="/free-nodes/">免费节点</a></li>
+                                        <li><a class="nav-link" href="/paid-subscribe/">推荐机场</a></li>
+                                        <li><a class="nav-link" href="/client.htm">客户端</a></li>
+                                        <li><a class="nav-link" href="/news/">新闻资讯</a></li>
+                                    </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="row">
+                        <h1>分享MongoDB修改oplog大小的4种方法_MongoDB_</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/news/">新闻资讯</a></li>
+                    <li>正文</li>
+                </ol>
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">方法一</a></li> <li><a href="#_label1" rel="nofollow">方法二</a></li> <li><a href="#_label2" rel="nofollow">方法三</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_2_0" rel="nofollow">1.关闭mongod</a></li> <li><a href="#_lab2_2_1" rel="nofollow">2.修改配置文件</a></li> <li><a href="#_lab2_2_2" rel="nofollow">3.启动mongod实例，并备份oplog</a></li> <li><a href="#_lab2_2_3" rel="nofollow">4.重建oplog</a></li> <li><a href="#_lab2_2_4" rel="nofollow">5.插入前面保存的oplog时间点记录</a></li> <li><a href="#_lab2_2_5" rel="nofollow">6.关闭mongod实例</a></li> </ul> <li><a href="#_label3" rel="nofollow">方法四</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_3_6" rel="nofollow">1.查看oplog大小</a></li> <li><a href="#_lab2_3_7" rel="nofollow">2.修改oplog大小</a></li> <li><a href="#_lab2_3_8" rel="nofollow">3.验证oplog大小</a></li> <li><a href="#_lab2_3_9" rel="nofollow">4.整理碎片，回收空间（可选）</a></li> </ul> </ul> </div> <p><strong>修改oplog有四种方法：</strong></p> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>方法一</h2> <p><strong>步骤如下：</strong></p> <ul> <li>停掉所有secondary节点</li> <li>主节点删除local目录下文件，副本节点删除数据目录下所有文件</li> <li>修改所有节点的配置文件，如：oplogSize=1000</li> <li>重启所有节点，包括主节点和副本节点</li> <li>重新配置replca set，副本节点会重新同步数据（initial sync）</li> </ul> <blockquote> <p><strong>优点</strong>：操作简单。<br /><strong>缺点</strong>：需要停服务，若数据量大，数据同步代价高。</p> </blockquote> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>方法二</h2> <p><strong>步骤如下：</strong></p> <ul> <li>remove其中一个secondary节点，并关闭mongod服务，删除数据目录下所有文件</li> <li>修改此节点的参数文件，如：oplogSize=1000，并启动mongod服务</li> <li>在primary节点执行rs.add()将此节点加入到replica set</li> <li>循环1-3步骤，将所有副本节点全部改完</li> <li>primary节点执行rs.stepDown()将主节点降级为副本节点</li> <li>从新的主节点remove掉此节点，并进行步骤1-3<br />这样逐个修改每个节点，完成oplog修改。</li> </ul> <blockquote> <p><strong>优点</strong>：解决了方法一中的停机问题。<br /><strong>缺点</strong>：每个节点都要逐个重新同步，时间代价更高。</p> </blockquote> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>方法三</h2> <p>The oplog exists internally as a capped collection, so you cannot modify its size in the course of normal operations.另：改变oplog大小，需要在每个节点上执行维护模式。（官方推荐）</p> <p class="maodian"><a name="_lab2_2_0" rel="nofollow"></a></p> <h3>1.关闭mongod</h3> <p><strong>关闭mongod实例，如果是primary节点，执行rs.stepDown() 降级</strong></p> <div class="ay1code"> <pre class="brush:plain;">handong1:PRIMARY&gt; rs.stepDown()  {  	"ok" : 1,  	"$clusterTime" : {  		"clusterTime" : Timestamp(1619693040, 1),  		"signature" : {  			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),  			"keyId" : NumberLong(0)  		}  	},  	"operationTime" : Timestamp(1619693040, 1)  }  handong1:SECONDARY&gt;   handong1:SECONDARY&gt;   handong1:SECONDARY&gt;   handong1:SECONDARY&gt; use admin  switched to db admin  handong1:SECONDARY&gt; db.shutdownServer()  2021-04-29T18:44:33.947+0800 I  NETWORK  [js] DBClientConnection failed to receive message from 127.0.0.1:27017 - HostUnreachable: Connection closed by peer  server should be down...  2021-04-29T18:44:33.950+0800 I  NETWORK  [js] trying reconnect to 127.0.0.1:27017 failed  2021-04-29T18:44:33.967+0800 I  NETWORK  [js] reconnect 127.0.0.1:27017 failed failed     </pre> </div> <p class="maodian"><a name="_lab2_2_1" rel="nofollow"></a></p> <h3>2.修改配置文件</h3> <p><strong>修改配置文件，修改端口，注释掉replSet和认证相关的设置</strong></p> <div class="ay1code"> <pre class="brush:plain;">port=27018  fork=true  journal = true  maxConns=500  logappend=true  directoryperdb=true  dbpath=/mongodb/data  logpath=/mongodb/logs/mongodb.log  </pre> </div> <p class="maodian"><a name="_lab2_2_2" rel="nofollow"></a></p> <h3>3.启动mongod实例，并备份oplog</h3> <div class="ay1code"> <pre class="brush:plain;">mongod -f /mongodb/conf/mongodb.conf   about to fork child process, waiting until server is ready for connections.  forked process: 31553  child process started successfully, parent exiting  </pre> </div> <div class="ay1code"> <pre class="brush:plain;">mongodump -d local -c oplog.rs --port 27018 -h 172.16.254.134 -o /mongodb/backup  2021-04-29T18:55:18.167+0800	writing local.oplog.rs to /mongodb/backup/local/oplog.rs.bson  2021-04-29T18:55:18.170+0800	done dumping local.oplog.rs (798 documents)  </pre> </div> <p class="maodian"><a name="_lab2_2_3" rel="nofollow"></a></p> <h3>4.重建oplog</h3> <p>保存oplog最新时间点</p> <div class="ay1code"> <pre class="brush:plain;">&gt; use local  switched to db local  &gt; db.temp.save( db.oplog.rs.find( { }, { ts: 1, h: 1 } ).sort( {$natural : -1} ).limit(1).next() )  WriteResult({ "nInserted" : 1 })    </pre> </div> <div class="ay1code"> <pre class="brush:plain;">&gt; db.temp.find()  { "_id" : ObjectId("608a914089abaa981f14e888"), "ts" : Timestamp(1619693066, 1), "h" : NumberLong(0) }    </pre> </div> <p>删除旧的oplog</p> <div class="ay1code"> <pre class="brush:plain;">db.oplog.rs.drop()  </pre> </div> <p>重建新的oplog，大小为2GB</p> <div class="ay1code"> <pre class="brush:plain;">&gt; db.runCommand( { create: "oplog.rs", capped: true, size: (2 * 1024 * 1024 * 1024) } )    </pre> </div> <p class="maodian"><a name="_lab2_2_4" rel="nofollow"></a></p> <h3>5.插入前面保存的oplog时间点记录</h3> <div class="ay1code"> <pre class="brush:plain;">&gt; db.oplog.rs.save( db.temp.findOne() )  &gt; db.oplog.rs.find()  </pre> </div> <p class="maodian"><a name="_lab2_2_5" rel="nofollow"></a></p> <h3>6.关闭mongod实例</h3> <div class="ay1code"> <pre class="brush:plain;">&gt; use admin  switched to db admin  &gt; db.shutdownServer()  2021-04-29T19:06:53.745+0800 I  NETWORK  [js] DBClientConnection failed to receive message from 127.0.0.1:27018 - HostUnreachable: Connection closed by peer  server should be down...  2021-04-29T19:06:53.749+0800 I  NETWORK  [js] trying reconnect to 127.0.0.1:27018 failed  2021-04-29T19:06:53.749+0800 I  NETWORK  [js] reconnect 127.0.0.1:27018 failed failed  </pre> </div> <p>最后恢复mongodb.conf到初始状态，启动</p> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>方法四</h2> <p>如果你的MongoDB版本为4.0以后的版本，可以直接使用replSetResizeOplog修改。</p> <p class="maodian"><a name="_lab2_3_6" rel="nofollow"></a></p> <h3>1.查看oplog大小</h3> <div class="ay1code"> <pre class="brush:plain;">handong1:SECONDARY&gt; db.getReplicationInfo()  {  	"logSizeMB" : 1000,  	"usedMB" : 0.17,  	"timeDiff" : 6736,  	"timeDiffHours" : 1.87,  	"tFirst" : "Thu Apr 29 2021 17:19:14 GMT+0800 (CST)",  	"tLast" : "Thu Apr 29 2021 19:11:30 GMT+0800 (CST)",  	"now" : "Thu Apr 29 2021 19:11:42 GMT+0800 (CST)"  }    </pre> </div> <p class="maodian"><a name="_lab2_3_7" rel="nofollow"></a></p> <h3>2.修改oplog大小</h3> <div class="ay1code"> <pre class="brush:plain;">handong1:SECONDARY&gt; db.adminCommand({replSetResizeOplog:1,size:2000})  {  	"ok" : 1,  	"$clusterTime" : {  		"clusterTime" : Timestamp(1619694744, 14),  		"signature" : {  			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),  			"keyId" : NumberLong(0)  		}  	},  	"operationTime" : Timestamp(1619694744, 14)  }    </pre> </div> <p class="maodian"><a name="_lab2_3_8" rel="nofollow"></a></p> <h3>3.验证oplog大小</h3> <div class="ay1code"> <pre class="brush:plain;">handong1:SECONDARY&gt; db.getReplicationInfo()  {  	"logSizeMB" : 2000,  	"usedMB" : 0.18,  	"timeDiff" : 6852,  	"timeDiffHours" : 1.9,  	"tFirst" : "Thu Apr 29 2021 17:19:14 GMT+0800 (CST)",  	"tLast" : "Thu Apr 29 2021 19:13:26 GMT+0800 (CST)",  	"now" : "Thu Apr 29 2021 19:13:28 GMT+0800 (CST)"  }    </pre> </div> <p class="maodian"><a name="_lab2_3_9" rel="nofollow"></a></p> <h3>4.整理碎片，回收空间（可选）</h3> <div class="ay1code"> <pre class="brush:plain;">handong1:SECONDARY&gt; use local  switched to db local  handong1:SECONDARY&gt; db.runCommand({"compact" : "oplog.rs"})  {  	"ok" : 1,  	"$clusterTime" : {  		"clusterTime" : Timestamp(1619694840, 1),  		"signature" : {  			"hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),  			"keyId" : NumberLong(0)  		}  	},  	"operationTime" : Timestamp(1619694840, 1)  }  </pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-85415.htm">Java调用ffmpeg处理视频，并记录下遇到的坑</a></p>
+                                        <p>下一个：<a href="/news/article-86141.htm">厦门宠物狗领养中心电话 厦门宠物狗领养中心电话号码</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-79108.htm" title="动物疫苗管理法律法规最新版本是什么样的（动物疫苗政策）">动物疫苗管理法律法规最新版本是什么样的（动物疫苗政策）</a></li>
+                        <li class="py-2"><a href="/news/article-66492.htm" title="win11系统字体显示不全怎么办">win11系统字体显示不全怎么办</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-26-clash-node.htm" title="「3月26日」最高速度19.1M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「3月26日」最高速度19.1M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-16-free-shadowrocket-node.htm" title="「3月16日」最高速度22.5M/S，2025年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接">「3月16日」最高速度22.5M/S，2025年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-70350.htm" title="PHP重载">PHP重载</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-25-free-node-subscribe.htm" title="「3月25日」最高速度18.3M/S，2025年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接">「3月25日」最高速度18.3M/S，2025年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-75697.htm" title="什么是MySQL ENUM数据类型？使用ENUM数据类型有什么优势？">什么是MySQL ENUM数据类型？使用ENUM数据类型有什么优势？</a></li>
+                        <li class="py-2"><a href="/news/article-77722.htm" title="安泰宠物诊所电话地址查询（安泰养殖有限公司）">安泰宠物诊所电话地址查询（安泰养殖有限公司）</a></li>
+                        <li class="py-2"><a href="/news/article-82578.htm" title="Java时间 之 Instant">Java时间 之 Instant</a></li>
+                        <li class="py-2"><a href="/news/article-67130.htm" title="经典数据结构解决迷宫问题（Python实现）">经典数据结构解决迷宫问题（Python实现）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+    </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                V2rayClashNode节点订阅站 版权所有
+                <br />
+                Powered by WordPress
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/php-email-form/validate.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/purecounter/purecounter.js"></script>
+    <script src="/assets/website/js/frontend/v2rayclashnode/swiper/swiper-bundle.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assets/website/js/frontend/v2rayclashnode/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
