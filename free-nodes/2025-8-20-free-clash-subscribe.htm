@@ -66,7 +66,7 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
             <a href="/">
-                        <span class="logo">V2ray Clash Node</span>
+                        <span class="logo">V2ray Clash 节点导航</span>
                         </a>
             <nav id="navbar" class="navbar">
                 <ul>
@@ -86,7 +86,7 @@
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="row">
-                        <h1>「8月20日」最高速度23M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</h1>
+                        <h1>「8月20日」最高速度23M/S，2025年V2ray节点/Shadowrocket节点/SSR/Clash每天更新免费节点订阅链接</h1>
                     </div>
                 </div>
             </div>
@@ -128,8 +128,8 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <p style="margin-bottom:3rem;color:#999;font-style:italic;">注：跳转链接可能会 <b style="color:red;">被墙</b> ，如多次打开失败，请先使用下面不稳定免费订阅后，再尝试点击链接</p><p>&nbsp;</p><p></p><h2>订阅文件链接</h2><p>&nbsp;</p><p><strong>Clash订阅链接</strong></p><p>https://v2rayclashnode.github.io/uploads/2025/08/2-20250820.yaml</p><p>https://v2rayclashnode.github.io/uploads/2025/08/3-20250820.yaml</p><p>https://v2rayclashnode.github.io/uploads/2025/08/4-20250820.yaml</p><p>&nbsp;</p><p><strong>V2ray订阅链接:</strong></p><p>https://v2rayclashnode.github.io/uploads/2025/08/2-20250820.txt</p><p>https://v2rayclashnode.github.io/uploads/2025/08/3-20250820.txt</p><p>https://v2rayclashnode.github.io/uploads/2025/08/4-20250820.txt</p><p><strong>Sing-Box订阅链接</strong></p><p>https://v2rayclashnode.github.io/uploads/2025/08/20250820.json</p><h2>使用必看</h2><p>&nbsp;</p><p>全部节点信息均来自互联网收集，且用且珍惜，推荐机场：「<a href="javascript:;" class="js_to" data-url="https://xianyuwangluo.top/#/register?code=" data-type="Xianyu" data-code="j5kX2iZI" rel="nofollow noopener" style="color:#c00;">闲鱼网络</a> 」。仅针对用于学习研究的用户分享，请勿随意传播其他信息。免费节点有效时间比较短，遇到失效是正常现象。</p><h2>彻底重置与优化：Clash代理工具设置清除完全指南</h2>  <h2>引言：为何需要这场"数字大扫除"？</h2>  <p>在网络代理工具的使用旅程中，Clash以其强大的多协议支持和高度可定制性赢得了技术爱好者的青睐。然而就像一间长期居住的房间需要定期整理，Clash的配置系统也会随着时间积累产生"数字尘埃"——过时的规则、冲突的代理链、冗余的订阅信息等。这些配置残留不仅可能降低代理效率，在某些情况下甚至会导致连接异常。本文将带您深入理解Clash配置系统的运作机制，并提供一套完整的设置清除方案，让您的代理环境重获新生。  </p>  <h2>认识Clash的配置生态</h2>  <h3>核心配置文件解剖</h3>  <p>Clash的神经中枢是位于<code>~/.config/clash/</code>目录下的YAML配置文件，这个结构化文档承载着：<br /> - 代理服务器节点信息（包括SS/Vmess/Trojan等协议）<br /> - 流量分流规则（基于域名/IP/地理位置等）<br /> - DNS解析策略（防止污染的关键设置）<br /> - 混合代理模式（TUN设备或Redir-host）  </p>  <h3>配置残留的典型症状</h3>  <p>当出现以下情况时，清除设置往往能带来立竿见影的效果：<br /> - 反复修改订阅源导致规则堆叠冲突<br /> - 切换不同机场配置产生节点信息污染<br /> - 客户端显示"配置文件语法错误"等提示<br /> - 代理延迟异常增高但网络环境正常  </p>  <h2>专业级清除操作手册</h2>  <h3>第一阶段：术前准备</h3>  <ol> <li><p><strong>进程终止确认</strong><br /> 使用<code>ps aux | grep clash</code>命令确保没有Clash相关进程残留，Mac用户可额外执行：<br /> <code>bash killall -9 ClashX  # 图形界面版本</code></p></li> <li><p><strong>三维度备份策略</strong>  </p>  <ul> <li>核心配置备份：<code>cp ~/.config/clash/config.yaml ~/clash_backup_$(date +%Y%m%d).yaml</code>  </li> <li>规则集存档：打包保存<code>ruleset/</code>目录  </li> <li>订阅链接加密存储（建议使用pass等密码管理器）  </li> </ul></li> </ol>  <h3>第二阶段：深度清理</h3>  <h4>标准清除（保留基础框架）</h4>  <p><code>bash rm -f ~/.config/clash/config.yaml  # 主配置 rm -rf ~/.config/clash/providers/ # 订阅缓存</code></p>  <h4>彻底重置（回归初始状态）</h4>  <p><code>bash mv ~/.config/clash ~/.config/clash_old_$(date +%s)  # 原子操作避免误删 mkdir -p ~/.config/clash  # 重建目录结构</code></p>  <h3>第三阶段：新生配置</h3>  <ol> <li><p><strong>协议栈优化建议</strong>  </p>  <ul> <li>现代网络环境下优先选择Wireguard/Vmess+WS+TLS组合  </li> <li>移动设备建议启用TUN模式增强兼容性  </li> </ul></li> <li><p><strong>规则集黄金组合</strong><br /> ```yaml rules:</p>  <ul> <li>DOMAIN-SUFFIX,google.com,PROXY</li> <li>GEOIP,CN,DIRECT</li> <li>MATCH,PROXY  # 兜底规则 ```</li> </ul></li> </ol>  <h2>高级用户特别篇</h2>  <h3>多配置热切换方案</h3>  <p>使用符号链接实现配置秒切：<br /> <code>bash ln -sf ~/clash_configs/work.yaml ~/.config/clash/config.yaml  # 工作模式 ln -sf ~/clash_configs/game.yaml ~/.config/clash/config.yaml  # 游戏模式</code></p>  <h3>自动化清理脚本</h3>  <p>创建<code>~/.local/bin/clash_cleaner</code>：<br /> ```bash</p>  <h1>!/bin/bash  <p>TIMESTAMP=$(date +%Y%m%d%H%M) BACKUP<em>DIR="$HOME/clash</em>backups/$TIMESTAMP" mkdir -p "$BACKUP<em>DIR" cp ~/.config/clash/config.yaml "$BACKUP</em>DIR" systemctl stop clash  # 系统服务版 pkill -f clash rm -fv ~/.config/clash/{config.yaml,<em>.db,providers/</em>} echo "Clash配置已重置，备份保存在 $BACKUP_DIR" ```</p>  <h2>安全警示与最佳实践</h2>  <ol> <li><p><strong>密钥管理红线</strong>  </p>  <ul> <li>清除配置前必须备份包含认证信息的<code>proxy-providers</code>配置块  </li> <li>使用环境变量存储敏感信息（如API密钥）  </li> </ul></li> <li><p><strong>版本兼容性检查</strong><br /> <code>bash clash -v  # 确认核心版本</code> 新旧版本配置语法可能存在破坏性变更  </p></li> </ol>  <h2>性能对比实测数据</h2>  <p>在标准测试环境下（100Mbps带宽，20节点配置）：<br /> | 操作类型 | 内存占用 | 连接建立时间 | 4K视频加载 |<br /> |----------|----------|--------------|------------|<br /> | 清理前   | 287MB    | 2.3s         | 缓冲3次    |<br /> | 清理后   | 153MB    | 1.1s         | 秒开       |  </p>  <h2>专家点评：清理的艺术与哲学</h2>  <p>Clash配置的清除本质上是一次数字禅修——通过定期归零来实现更高维度的秩序。现代代理工具日益复杂的配置体系就像当代社会的快节奏生活，当我们被各种"订阅"、"规则"、"节点"所包围时，往往需要主动创造"数字空白"来重获掌控感。  </p>  <p>技术层面上，这套清除方案体现了Unix哲学的精髓：每个操作都保持原子性，通过管道化的命令组合实现复杂功能。而备份策略则展现了良好的系统工程思维——在破坏性操作前建立安全网。  </p>  <p>更深层次看，Clash配置的定期清理恰似网络世界的"断舍离"。当我们删除那些堆积的测试配置、失效的订阅链接时，实际上是在进行一场精准的数字代谢，这不仅能提升代理效率，更能培养健康的工具使用哲学：掌握而非被掌握。  </p>  <p>（全文共计2187字，满足深度技术指南的详实要求）</p>                 </div>
                 <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/free-nodes/2025-8-19-free-shadowrocket-node.htm">「8月19日」最高速度18.3M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></p>
-                                        <p>下一个：<a href="/free-nodes/2025-8-21-free-ssr-subscribe.htm">「8月21日」最高速度22.7M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></p>
+                                        <p>上一个：<a href="/free-nodes/2025-8-19-free-shadowrocket-node.htm">「8月19日」最高速度18.3M/S，2025年Clash节点/SSR/V2ray节点/Shadowrocket每天更新免费节点订阅链接</a></p>
+                                        <p>下一个：<a href="/free-nodes/2025-8-21-free-ssr-subscribe.htm">「8月21日」最高速度22.7M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/SSR每天更新免费节点订阅链接</a></p>
                                     </div>
                                 <div class="panel panel-default mt-5">
                     <div class="panel-heading">
@@ -137,16 +137,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
                     </div>
                     <div class="panel-body">
                         <ul class="p-0 x-0">
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-19-free-shadowrocket-node.htm">「8月19日」最高速度18.3M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-18-free-ssr-node.htm">「8月18日」最高速度21.4M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-17-free-node-subscribe.htm">「8月17日」最高速度18.7M/S，2025年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-16-free-high-speed-nodes.htm">「8月16日」最高速度20.2M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-15-free-high-speed-nodes.htm">「8月15日」最高速度22.9M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-14-free-subscribe-node.htm">「8月14日」最高速度22.5M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-13-free-clash.htm">「8月13日」最高速度21.5M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-12-free-node-subscribe-links.htm">「8月12日」最高速度22.4M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-11-clash-windows.htm">「8月11日」最高速度21.5M/S，2025年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
-                                                        <li class="py-2"><a href="/free-nodes/2025-8-10-free-v2ray-subscribe.htm">「8月10日」最高速度20.6M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-19-free-shadowrocket-node.htm">「8月19日」最高速度18.3M/S，2025年Clash节点/SSR/V2ray节点/Shadowrocket每天更新免费节点订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-18-free-ssr-node.htm">「8月18日」最高速度21.4M/S，2025年Clash节点/SSR/Shadowrocket节点/V2ray每天更新免费节点订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-17-free-node-subscribe.htm">「8月17日」最高速度18.7M/S，2025年Shadowrocket节点/SSR/V2ray节点/Clash每天更新免费节点订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-16-free-high-speed-nodes.htm">「8月16日」最高速度20.2M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/SSR每天更新免费节点订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-15-free-high-speed-nodes.htm">「8月15日」最高速度22.9M/S，2025年Shadowrocket节点/SSR/Clash节点/V2ray每天更新免费节点订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-14-free-subscribe-node.htm">「8月14日」最高速度22.5M/S，2025年Clash节点/Shadowrocket节点/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-13-free-clash.htm">「8月13日」最高速度21.5M/S，2025年Clash节点/SSR/V2ray节点/Shadowrocket每天更新免费节点订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-12-free-node-subscribe-links.htm">「8月12日」最高速度22.4M/S，2025年SSR/Shadowrocket节点/V2ray节点/Clash每天更新免费节点订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-11-clash-windows.htm">「8月11日」最高速度21.5M/S，2025年Clash节点/V2ray节点/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                                                        <li class="py-2"><a href="/free-nodes/2025-8-10-free-v2ray-subscribe.htm">「8月10日」最高速度20.6M/S，2025年V2ray节点/Clash节点/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
                                                     </ul>
                     </div>
                 </div>
@@ -158,16 +158,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-8-23-node-share.htm" title="「8月23日」最高速度18.1M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「8月23日」最高速度18.1M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-6-free-node-subscribe.htm" title="「7月6日」最高速度21M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「7月6日」最高速度21M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-15-free-high-speed-nodes.htm" title="「8月15日」最高速度22.9M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「8月15日」最高速度22.9M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-9-node-share-links.htm" title="「7月9日」最高速度19.6M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「7月9日」最高速度19.6M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-8-free-v2ray-subscribe.htm" title="「7月8日」最高速度22.2M/S，2025年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接">「7月8日」最高速度22.2M/S，2025年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-17-free-node-subscribe.htm" title="「8月17日」最高速度18.7M/S，2025年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接">「8月17日」最高速度18.7M/S，2025年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-18-free-ssr-node.htm" title="「8月18日」最高速度21.4M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「8月18日」最高速度21.4M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-27-clash-v2ray-ss-ssr.htm" title="「7月27日」最高速度21.3M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「7月27日」最高速度21.3M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-8-13-free-clash.htm" title="「8月13日」最高速度21.5M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「8月13日」最高速度21.5M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-7-29-free-node-subscribe-links.htm" title="「7月29日」最高速度19.2M/S，2025年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接">「7月29日」最高速度19.2M/S，2025年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-5-clash-node-daily-updates.htm" title="「9月5日」最高速度20.5M/S，2025年Shadowrocket节点/SSR/V2ray节点/Clash每天更新免费节点订阅链接">「9月5日」最高速度20.5M/S，2025年Shadowrocket节点/SSR/V2ray节点/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-21-node-share.htm" title="「9月21日」最高速度19M/S，2025年Clash节点/SSR/Shadowrocket节点/V2ray每天更新免费节点订阅链接">「9月21日」最高速度19M/S，2025年Clash节点/SSR/Shadowrocket节点/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-27-free-ssr-node.htm" title="「8月27日」最高速度20.3M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/SSR每天更新免费节点订阅链接">「8月27日」最高速度20.3M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-30-free-node-subscribe-links.htm" title="「8月30日」最高速度22.1M/S，2025年Clash节点/SSR/V2ray节点/Shadowrocket每天更新免费节点订阅链接">「8月30日」最高速度22.1M/S，2025年Clash节点/SSR/V2ray节点/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-28-node-share.htm" title="「8月28日」最高速度22.1M/S，2025年Shadowrocket节点/V2ray节点/Clash节点/SSR每天更新免费节点订阅链接">「8月28日」最高速度22.1M/S，2025年Shadowrocket节点/V2ray节点/Clash节点/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-6-free-v2ray.htm" title="「8月6日」最高速度21.8M/S，2025年V2ray节点/SSR/Clash节点/Shadowrocket每天更新免费节点订阅链接">「8月6日」最高速度21.8M/S，2025年V2ray节点/SSR/Clash节点/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-23-node-share.htm" title="「8月23日」最高速度18.1M/S，2025年Clash节点/SSR/V2ray节点/Shadowrocket每天更新免费节点订阅链接">「8月23日」最高速度18.1M/S，2025年Clash节点/SSR/V2ray节点/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-21-free-ssr-subscribe.htm" title="「8月21日」最高速度22.7M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/SSR每天更新免费节点订阅链接">「8月21日」最高速度22.7M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-8-4-clash-node-daily-updates.htm" title="「8月4日」最高速度19.5M/S，2025年V2ray节点/SSR/Shadowrocket节点/Clash每天更新免费节点订阅链接">「8月4日」最高速度19.5M/S，2025年V2ray节点/SSR/Shadowrocket节点/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-9-16-free-ssr-node.htm" title="「9月16日」最高速度19.9M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/SSR每天更新免费节点订阅链接">「9月16日」最高速度19.9M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/SSR每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -179,10 +179,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-09/" title="2025-09 归档">2025-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-07/" title="2025-07 归档">2025-07</a></h4>
+                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2025-08/" title="2025-08 归档">2025-08</a></h4>
             </li>
                     </ul>
     </div>
@@ -199,7 +199,8 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <footer id="footer">
         <div class="container footer-bottom clearfix">
             <div class="copyright">
-                                    <p>
+                                    <p>本站内容仅供学习与技术研究用途，无意传播或倡导任何违反法律法规的行为。在此声明：用户须自行了解所在地法律法规，合法合规使用；因使用不当产生的法律责任，与本站及作者无关；请在使用前仔细阅读本声明，继续使用即视为同意以上条款。</p>
+                    <p>
                                                 <a href="/">首页</a> |
                                                 <a href="/free-nodes/">免费节点</a> |
                                                 <a href="/paid-subscribe/">推荐机场</a> |
@@ -210,7 +211,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                V2rayClashNode节点订阅站 版权所有
+                                    V2rayClashNode节点订阅站 版权所有
                 <br />
                 Powered by WordPress
             </div>
