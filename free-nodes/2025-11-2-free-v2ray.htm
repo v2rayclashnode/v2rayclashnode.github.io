@@ -317,9 +317,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 支持按应用分流流量吗？</h5></div>
+    <div class="panel-heading"><h5>Surfboard 与 Clash 有什么关系？</h5></div>
     <div class="panel-body">
-        支持。Surfboard 可通过策略组和规则文件将不同应用的流量分配到指定节点，保证游戏、视频和浏览器流量走最优节点，提高访问速度和网络稳定性。<hr />    </div>
+        Surfboard 是一款基于 Clash 核心的 iOS 应用，专为苹果用户设计。它通过友好的界面实现分流管理、节点切换和延迟测试等功能。与 Clash 类似，Surfboard 也支持订阅更新和多种代理协议，兼容性非常好。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 全局代理与规则代理的区别是什么？</h5></div>
@@ -337,19 +337,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         TCP + TLS 模式可模拟 HTTPS 流量，增强抗封锁能力。适合网络封锁严格的环境，通过策略组选择最佳节点，可保证访问速度和连接稳定性，尤其适用于网页浏览和视频播放。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何在 Clash for Android 中导入订阅链接？</h5></div>
-    <div class="panel-body">
-        Clash for Android 支持通过订阅链接快速导入节点。用户只需在配置界面中点击“新建配置”，选择“URL 导入”并粘贴订阅地址即可，程序会自动下载并解析所有节点配置。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 的 ws+tls 传输模式有什么优点？</h5></div>
     <div class="panel-body">
         ws+tls 模式利用 WebSocket 伪装成普通 HTTPS 流量，使得防火墙难以区分代理与正常访问。该模式兼容性强，适合部署在支持 Nginx 或 Caddy 的 Web 服务器上。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 与 Clash 有什么关系？</h5></div>
-    <div class="panel-body">
-        Surfboard 是一款基于 Clash 核心的 iOS 应用，专为苹果用户设计。它通过友好的界面实现分流管理、节点切换和延迟测试等功能。与 Clash 类似，Surfboard 也支持订阅更新和多种代理协议，兼容性非常好。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Trojan 使用自签名证书会带来哪些问题？</h5></div>
@@ -357,14 +347,24 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         自签名证书无法被客户端默认信任，可能导致连接失败或需要手动安装证书。它也容易被中间人伪造识别，不利于长期生产环境安全部署，建议使用可信 CA 证书以获得更好兼容性与安全性。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 显示证书错误，如何修复？</h5></div>
+    <div class="panel-body">
+        证书错误通常由域名与证书不匹配或证书链不完整引起。请检查服务器证书是否为有效域名签发并包含完整链，如果使用 Let's Encrypt，请确保证书未过期并已正确安装到反向代理或服务端。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 支持按应用分流流量吗？</h5></div>
+    <div class="panel-body">
+        支持。Surfboard 可通过策略组和规则文件将不同应用的流量分配到指定节点，保证游戏、视频和浏览器流量走最优节点，提高访问速度和网络稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Hysteria2 的多路复用在短连接场景下有什么优势？</h5></div>
     <div class="panel-body">
         多路复用允许多个短连接共享同一通道，减少握手延迟和资源消耗。适合高频短连接应用，如游戏和即时通讯，能提高吞吐量和连接稳定性，优化网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 显示证书错误，如何修复？</h5></div>
+    <div class="panel-heading"><h5>如何在 Clash for Android 中导入订阅链接？</h5></div>
     <div class="panel-body">
-        证书错误通常由域名与证书不匹配或证书链不完整引起。请检查服务器证书是否为有效域名签发并包含完整链，如果使用 Let's Encrypt，请确保证书未过期并已正确安装到反向代理或服务端。    </div>
+        Clash for Android 支持通过订阅链接快速导入节点。用户只需在配置界面中点击“新建配置”，选择“URL 导入”并粘贴订阅地址即可，程序会自动下载并解析所有节点配置。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -393,16 +393,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-11-2-free-v2ray.htm" title="「11月2日」最高速度22.4M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点每天更新免费节点订阅链接">「11月2日」最高速度22.4M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-4-free-subscribe-node.htm" title="「11月4日」最高速度20.4M/S，2025年V2ray节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接">「11月4日」最高速度20.4M/S，2025年V2ray节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-5-free-node-subscribe.htm" title="「11月5日」最高速度18.4M/S，2025年Shadowrocket节点/V2ray节点/Clash节点/SSR节点/Singbox节点每天更新免费节点订阅链接">「11月5日」最高速度18.4M/S，2025年Shadowrocket节点/V2ray节点/Clash节点/SSR节点/Singbox节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-25-free-node-subscribe.htm" title="「10月25日」最高速度19.7M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/SSR节点每天更新免费节点订阅链接">「10月25日」最高速度19.7M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/SSR节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-27-free-ssr-subscribe.htm" title="「10月27日」最高速度20.3M/S，2025年V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费节点订阅链接">「10月27日」最高速度20.3M/S，2025年V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-11-clash-node-daily-updates.htm" title="「10月11日」最高速度21.9M/S，2025年V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费节点订阅链接">「10月11日」最高速度21.9M/S，2025年V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-17-free-node-subscribe.htm" title="「10月17日」最高速度22.8M/S，2025年Singbox节点/V2ray节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接">「10月17日」最高速度22.8M/S，2025年Singbox节点/V2ray节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-10-18-free-shadowrocket-node.htm" title="「10月18日」最高速度19.1M/S，2025年V2ray节点/Shadowrocket节点/SSR节点/Singbox节点/Clash节点每天更新免费节点订阅链接">「10月18日」最高速度19.1M/S，2025年V2ray节点/Shadowrocket节点/SSR节点/Singbox节点/Clash节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-8-free-high-speed-nodes.htm" title="「10月8日」最高速度19.6M/S，2025年Singbox节点/Clash节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费节点订阅链接">「10月8日」最高速度19.6M/S，2025年Singbox节点/Clash节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-16-clash-node-daily-updates.htm" title="「10月16日」最高速度18.2M/S，2025年Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接">「10月16日」最高速度18.2M/S，2025年Singbox节点/SSR节点/Clash节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-3-free-ssr-subscribe.htm" title="「10月3日」最高速度22.8M/S，2025年Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接">「10月3日」最高速度22.8M/S，2025年Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-21-node-share.htm" title="「10月21日」最高速度21.7M/S，2025年Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Clash节点每天更新免费节点订阅链接">「10月21日」最高速度21.7M/S，2025年Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Clash节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-19-shadowrocket-node.htm" title="「10月19日」最高速度20M/S，2025年Singbox节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点每天更新免费节点订阅链接">「10月19日」最高速度20M/S，2025年Singbox节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-10-5-free-subscribe-node.htm" title="「10月5日」最高速度21.8M/S，2025年Clash节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点每天更新免费节点订阅链接">「10月5日」最高速度21.8M/S，2025年Clash节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-6-shadowrocket-node.htm" title="「10月6日」最高速度18.5M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Singbox节点每天更新免费节点订阅链接">「10月6日」最高速度18.5M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/SSR节点/Singbox节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-13-free-v2ray.htm" title="「10月13日」最高速度20.7M/S，2025年Shadowrocket节点/SSR节点/Clash节点/Singbox节点/V2ray节点每天更新免费节点订阅链接">「10月13日」最高速度20.7M/S，2025年Shadowrocket节点/SSR节点/Clash节点/Singbox节点/V2ray节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-9-node-share-links.htm" title="「10月9日」最高速度18.4M/S，2025年Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Clash节点每天更新免费节点订阅链接">「10月9日」最高速度18.4M/S，2025年Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Clash节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-2-free-v2ray.htm" title="「11月2日」最高速度22.4M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点每天更新免费节点订阅链接">「11月2日」最高速度22.4M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/SSR节点/V2ray节点每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -414,7 +414,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">5</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">11</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
