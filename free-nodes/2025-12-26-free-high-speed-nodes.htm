@@ -231,9 +231,19 @@ A：优先启用SSL/TLS加密协议，合理设置规则避免漏网流量，定
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowrocket 节点延迟排序如何提高稳定性？</h5></div>
+    <div class="panel-heading"><h5>Matsuri 如何结合 Xray 内核实现多协议支持？</h5></div>
     <div class="panel-body">
-        Shadowrocket 测试节点延迟和丢包率，将低延迟节点优先使用。结合策略组和规则文件，可保证网页、视频和游戏流量通过最优节点，提高连接稳定性和访问速度。<hr />    </div>
+        Matsuri 可加载 Xray 核心，通过配置多 inbound/outbound 模块实现 VMess、VLess、Trojan 等协议共存。用户可在单一服务端配置文件中同时支持多客户端访问，便于统一管理。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan-Go 的多路复用（mux）如何开启？</h5></div>
+    <div class="panel-body">
+        Trojan-Go 在配置文件中通过启用 mux 参数即可实现多路复用。此功能允许多个连接共享同一隧道，减少握手延迟并提升整体传输效率，尤其在移动网络中表现出色。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 的主要特性有哪些？</h5></div>
+    <div class="panel-body">
+        PassWall2 是基于 OpenWRT 的代理管理面板，支持多种协议（V2Ray、Trojan、Shadowsocks 等），拥有图形化界面和分流规则设置功能。它能帮助路由器实现全局代理和智能分流。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 的多策略组能带来什么优势？</h5></div>
@@ -241,14 +251,24 @@ A：优先启用SSL/TLS加密协议，合理设置规则避免漏网流量，定
         多策略组可将节点按用途或地域分类，结合路由规则实现精准分流。用户无需频繁切换节点即可自动使用最佳线路，提高网络访问效率和稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Shadowrocket 节点延迟排序如何提高稳定性？</h5></div>
+    <div class="panel-body">
+        Shadowrocket 测试节点延迟和丢包率，将低延迟节点优先使用。结合策略组和规则文件，可保证网页、视频和游戏流量通过最优节点，提高连接稳定性和访问速度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 支持按 IP 段分流吗？</h5></div>
+    <div class="panel-body">
+        支持。Sing-box 可根据 IP 段将国内流量直连，国外流量走代理，结合策略组实现智能分流。这样可保证访问速度和稳定性，同时优化节点使用效率，提高网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Netch 如何在 Windows 上加速游戏？</h5></div>
+    <div class="panel-body">
+        Netch 使用 TUN/TAP 模式将特定进程流量通过代理转发，常用于游戏加速。用户只需将游戏进程添加到列表，选择合适的代理节点，即可降低延迟并绕过地理限制。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Trojan 节点如何正确配置证书？</h5></div>
     <div class="panel-body">
         TLS 证书必须有效且域名匹配，否则客户端无法建立连接。建议使用受信任证书并确保证书链完整，可保证节点安全和长期可用性，同时提高伪装效果和抗封锁能力。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan-Go 的多路复用（mux）如何开启？</h5></div>
-    <div class="panel-body">
-        Trojan-Go 在配置文件中通过启用 mux 参数即可实现多路复用。此功能允许多个连接共享同一隧道，减少握手延迟并提升整体传输效率，尤其在移动网络中表现出色。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Potatso Lite 支持节点手动导入和修改吗？</h5></div>
@@ -258,27 +278,7 @@ A：优先启用SSL/TLS加密协议，合理设置规则避免漏网流量，定
 <div class="panel panel-default">
     <div class="panel-heading"><h5>如何在路由器上使用 PassWall2 为不同设备设置不同策略？</h5></div>
     <div class="panel-body">
-        在 PassWall2 的规则或策略组中为固定 IP 或 MAC 地址创建特定路由条目，将其映射到不同的策略组（如工作机走直连、游戏机走低延迟节点），并保存规则后重载以生效。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 的主要特性有哪些？</h5></div>
-    <div class="panel-body">
-        PassWall2 是基于 OpenWRT 的代理管理面板，支持多种协议（V2Ray、Trojan、Shadowsocks 等），拥有图形化界面和分流规则设置功能。它能帮助路由器实现全局代理和智能分流。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 如何在 Windows 上加速游戏？</h5></div>
-    <div class="panel-body">
-        Netch 使用 TUN/TAP 模式将特定进程流量通过代理转发，常用于游戏加速。用户只需将游戏进程添加到列表，选择合适的代理节点，即可降低延迟并绕过地理限制。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 支持按 IP 段分流吗？</h5></div>
-    <div class="panel-body">
-        支持。Sing-box 可根据 IP 段将国内流量直连，国外流量走代理，结合策略组实现智能分流。这样可保证访问速度和稳定性，同时优化节点使用效率，提高网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 如何结合 Xray 内核实现多协议支持？</h5></div>
-    <div class="panel-body">
-        Matsuri 可加载 Xray 核心，通过配置多 inbound/outbound 模块实现 VMess、VLess、Trojan 等协议共存。用户可在单一服务端配置文件中同时支持多客户端访问，便于统一管理。    </div>
+        在 PassWall2 的规则或策略组中为固定 IP 或 MAC 地址创建特定路由条目，将其映射到不同的策略组（如工作机走直连、游戏机走低延迟节点），并保存规则后重载以生效。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -307,16 +307,16 @@ A：优先启用SSL/TLS加密协议，合理设置规则避免漏网流量，定
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-11-11-free-v2ray.htm" title="「11月11日」最高速度20M/S，2025年Singbox节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点每天更新免费节点订阅链接">「11月11日」最高速度20M/S，2025年Singbox节点/V2ray节点/SSR节点/Clash节点/Shadowrocket节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-6-free-subscribe-node.htm" title="「11月6日」最高速度22.3M/S，2025年V2ray节点/SSR节点/Shadowrocket节点/Singbox节点/Clash节点每天更新免费节点订阅链接">「11月6日」最高速度22.3M/S，2025年V2ray节点/SSR节点/Shadowrocket节点/Singbox节点/Clash节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-2-free-v2ray.htm" title="「12月2日」最高速度22.1M/S，2025年Singbox节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点每天更新免费节点订阅链接">「12月2日」最高速度22.1M/S，2025年Singbox节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-26-free-high-speed-nodes.htm" title="「12月26日」最高速度18.3M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点每天更新免费节点订阅链接">「12月26日」最高速度18.3M/S，2025年V2ray节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-25-free-node-subscribe-links.htm" title="「12月25日」最高速度22.8M/S，2025年Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Singbox节点每天更新免费节点订阅链接">「12月25日」最高速度22.8M/S，2025年Clash节点/V2ray节点/SSR节点/Shadowrocket节点/Singbox节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-9-free-clash-subscribe.htm" title="「12月9日」最高速度21.9M/S，2025年Singbox节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点每天更新免费节点订阅链接">「12月9日」最高速度21.9M/S，2025年Singbox节点/Shadowrocket节点/SSR节点/V2ray节点/Clash节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-6-free-v2ray.htm" title="「1月6日」最高速度20.9M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/Singbox节点/SSR节点每天更新免费节点订阅链接">「1月6日」最高速度20.9M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/Singbox节点/SSR节点每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-12-20-clash-node-daily-updates.htm" title="「12月20日」最高速度22.4M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点每天更新免费节点订阅链接">「12月20日」最高速度22.4M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-9-free-node-subscribe-links.htm" title="「11月9日」最高速度21M/S，2025年V2ray节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点每天更新免费节点订阅链接">「11月9日」最高速度21M/S，2025年V2ray节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-7-free-ssr-subscribe.htm" title="「12月7日」最高速度21M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/Singbox节点/SSR节点每天更新免费节点订阅链接">「12月7日」最高速度21M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/Singbox节点/SSR节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-1-clash-node-daily-updates.htm" title="「1月1日」最高速度19.2M/S，2025年Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/SSR节点每天更新免费节点订阅链接">「1月1日」最高速度19.2M/S，2025年Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/SSR节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-14-node-share-links.htm" title="「12月14日」最高速度22.9M/S，2025年Singbox节点/Clash节点/Shadowrocket节点/SSR节点/V2ray节点每天更新免费节点订阅链接">「12月14日」最高速度22.9M/S，2025年Singbox节点/Clash节点/Shadowrocket节点/SSR节点/V2ray节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-18-clash-windows.htm" title="「11月18日」最高速度19.7M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/SSR节点每天更新免费节点订阅链接">「11月18日」最高速度19.7M/S，2025年Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/SSR节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-14-free-v2ray-subscribe.htm" title="「11月14日」最高速度18.9M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点每天更新免费节点订阅链接">「11月14日」最高速度18.9M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-19-shadowrocket-node.htm" title="「12月19日」最高速度18.6M/S，2025年V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费节点订阅链接">「12月19日」最高速度18.6M/S，2025年V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-1-5-free-node-subscribe.htm" title="「1月5日」最高速度19.1M/S，2025年Clash节点/SSR节点/V2ray节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接">「1月5日」最高速度19.1M/S，2025年Clash节点/SSR节点/V2ray节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-24-free-shadowrocket-node.htm" title="「12月24日」最高速度19.9M/S，2025年Clash节点/SSR节点/Shadowrocket节点/V2ray节点/Singbox节点每天更新免费节点订阅链接">「12月24日」最高速度19.9M/S，2025年Clash节点/SSR节点/Shadowrocket节点/V2ray节点/Singbox节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-18-free-clash-subscribe.htm" title="「12月18日」最高速度22.2M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/Singbox节点/SSR节点每天更新免费节点订阅链接">「12月18日」最高速度22.2M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/Singbox节点/SSR节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-21-free-high-speed-nodes.htm" title="「12月21日」最高速度19.3M/S，2025年Clash节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接">「12月21日」最高速度19.3M/S，2025年Clash节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -328,13 +328,10 @@ A：优先启用SSL/TLS加密协议，合理设置规则避免漏网流量，定
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">2</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
+                <h4><span class="badge" style="float: right;">7</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                     </ul>
     </div>
