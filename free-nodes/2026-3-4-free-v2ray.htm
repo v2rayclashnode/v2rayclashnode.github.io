@@ -128,10 +128,49 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <p style="margin-bottom:3rem;color:#999;font-style:italic;">注：跳转链接可能会 <b style="color:red;">被墙</b> ，如多次打开失败，请先使用下面不稳定免费订阅后，再尝试点击链接</p><p>&nbsp;</p><p></p><h2>订阅文件链接</h2><p>&nbsp;</p><p><strong>Clash订阅链接</strong></p><p>https://v2rayclashnode.github.io/uploads/2026/03/0-20260304.yaml</p><p>https://v2rayclashnode.github.io/uploads/2026/03/1-20260304.yaml</p><p>https://v2rayclashnode.github.io/uploads/2026/03/3-20260304.yaml</p><p>https://v2rayclashnode.github.io/uploads/2026/03/4-20260304.yaml</p><p>&nbsp;</p><p><strong>V2ray订阅链接:</strong></p><p>https://v2rayclashnode.github.io/uploads/2026/03/2-20260304.txt</p><p>https://v2rayclashnode.github.io/uploads/2026/03/3-20260304.txt</p><p>https://v2rayclashnode.github.io/uploads/2026/03/4-20260304.txt</p><p><strong>Sing-Box订阅链接</strong></p><p>https://v2rayclashnode.github.io/uploads/2026/03/20260304.json</p><h2>使用必看</h2><p>&nbsp;</p><p>全部节点信息均来自互联网收集，且用且珍惜，推荐机场：「<a href="javascript:;" class="js_to" data-url="https://muguacloud.top/#/register?code=" data-type="Mugua" data-code="vyGmgr86" rel="nofollow noopener" style="color:#c00;">木瓜云</a> 」。仅针对用于学习研究的用户分享，请勿随意传播其他信息。免费节点有效时间比较短，遇到失效是正常现象。</p><h2>深入解析V2RayNG PAC设置：解锁高效安全上网的终极指南</h2>  <p>在当今互联网环境下，网络自由与隐私保护已成为全球网民的基本需求。作为Android平台上最强大的代理工具之一，V2RayNG凭借其出色的性能和灵活的配置选项赢得了众多技术爱好者的青睐。而其中PAC（Proxy Auto-Config）文件作为V2RayNG的核心功能组件，能够智能分流网络请求，在保障安全性的同时优化访问速度。本文将全面剖析V2RayNG中PAC文件的原理、配置方法及高级应用技巧，带您掌握这一强大工具的方方面面。</p>  <h2>PAC文件：网络代理的智能交通指挥系统</h2>  <p>PAC文件本质上是一个JavaScript脚本，它如同网络世界的智能交通信号灯，精确指挥着每一个数据包的流向。当您发起一个网络请求时，PAC文件会实时判断这个请求应该通过代理服务器转发还是直接连接目标网站。这种智能分流机制不仅提升了上网效率，还大幅降低了代理服务器的负载压力。</p>  <p>与传统全局代理模式相比，PAC模式具有显著优势。全局代理会强制所有网络流量都经过代理服务器，这既浪费带宽资源，又可能导致本地网络服务（如局域网打印机、文件共享）无法正常工作。而PAC模式则能够智能识别内外网请求，让国内网站直连以获取最佳速度，同时确保境外受限资源通过代理安全访问。</p>  <p>一个精心设计的PAC文件通常包含三个关键要素：高效的路由判断逻辑、清晰易读的代码结构以及完善的错误处理机制。它通过分析请求的目标域名、IP地址甚至URL路径，做出最优的代理决策。例如，您可以设置让所有".google.com"域名的请求走代理，而".baidu.com"则直接连接，实现精准分流。</p>  <h2>V2RayNG中PAC文件的获取与配置全攻略</h2>  <h3>获取PAC文件的三大途径</h3>  <ol> <li><p><strong>使用公共PAC资源</strong>：互联网上有许多维护良好的公共PAC项目，如gfwlist2pac等。这些项目定期更新被封锁网站列表，用户只需复制其提供的PAC文件URL即可使用。但需注意公共资源可能存在延迟或安全风险。</p></li> <li><p><strong>自定义PAC文件</strong>：对于有编程基础的用户，完全可以编写个性化的PAC脚本。典型的PAC文件包含一个FindProxyForURL函数，通过返回"DIRECT"或"PROXY 127.0.0.1:10809"等指令控制代理行为。例如： <code>javascript function FindProxyForURL(url, host) {    if (shExpMatch(host, "*.google.com")) {        return "PROXY 127.0.0.1:10809";    }    return "DIRECT"; }</code></p></li> <li><p><strong>在线生成工具</strong>：一些网站提供可视化PAC生成器，用户只需勾选需要代理的网站分类，系统就会自动生成对应的PAC文件代码，适合非技术用户使用。</p></li> </ol>  <h3>V2RayNG PAC配置详细步骤</h3>  <ol> <li><p><strong>基础配置流程</strong>：</p>  <ul> <li>打开V2RayNG应用，进入设置界面</li> <li>选择"路由设置"→"PAC模式"</li> <li>输入PAC文件URL或选择本地存储的PAC文件</li> <li>保存设置并重启代理服务</li> </ul></li> <li><p><strong>高级配置技巧</strong>：</p>  <ul> <li><strong>多代理切换</strong>：在PAC文件中可以配置多个备用代理服务器，当主代理不可用时自动切换</li> <li><strong>时段分流</strong>：通过JavaScript日期函数实现不同时间段使用不同代理策略</li> <li><strong>地理位置路由</strong>：结合IP地理位置数据库，实现国内外流量的智能识别</li> </ul></li> <li><p><strong>验证与调试</strong>：</p>  <ul> <li>使用浏览器开发者工具查看网络请求是否按预期分流</li> <li>通过命令行工具如curl测试特定URL的代理行为</li> <li>检查V2RayNG日志文件中的路由决策记录</li> </ul></li> </ol>  <h2>PAC文件优化与疑难排解</h2>  <h3>性能优化策略</h3>  <p>一个高效的PAC文件应当遵循"快速失败"原则，即尽可能在最开始就确定请求的路由方向。常见的优化方法包括：</p>  <ul> <li>将高频访问的域名检查放在脚本前端</li> <li>使用哈希表存储需要代理的域名列表</li> <li>避免在PAC文件中进行复杂的字符串操作</li> <li>定期清理不再使用的规则条目</li> </ul>  <p>实测表明，经过优化的PAC脚本可以将路由决策时间从毫秒级降低到微秒级，对整体网络体验有明显提升。</p>  <h3>常见问题解决方案</h3>  <ol> <li><p><strong>PAC文件不生效</strong>：</p>  <ul> <li>检查URL是否可访问（尝试在浏览器中直接打开）</li> <li>确认V2RayNG有权限访问网络和存储</li> <li>查看Android系统代理设置是否正确</li> </ul></li> <li><p><strong>规则冲突导致访问异常</strong>：</p>  <ul> <li>使用二分法逐步排查问题规则</li> <li>为特定域名添加白名单例外</li> <li>检查是否有通配符规则覆盖了特殊情况</li> </ul></li> <li><p><strong>代理性能下降</strong>：</p>  <ul> <li>减少PAC文件体积，删除冗余规则</li> <li>考虑将静态规则转换为本地列表模式</li> <li>启用V2RayNG的DNS缓存功能</li> </ul></li> </ol>  <h2>PAC安全实践与进阶应用</h2>  <h3>安全防护措施</h3>  <p>PAC文件作为网络流量的"守门人"，其安全性不容忽视。建议采取以下防护措施：</p>  <ul> <li>定期审计PAC文件内容，防止恶意规则注入</li> <li>对自定义PAC文件进行代码签名验证</li> <li>避免使用HTTP明文传输PAC文件，优先选择HTTPS链接</li> <li>设置PAC文件自动更新检查机制</li> </ul>  <h3>创新应用场景</h3>  <p>突破传统代理范畴，PAC文件还能实现许多有趣功能：</p>  <ul> <li><strong>广告过滤</strong>：将广告域名路由到虚假代理，实现去广告效果</li> <li><strong>家长控制</strong>：限制特定类型网站的访问</li> <li><strong>流量统计</strong>：通过代理记录分析网络使用习惯</li> <li><strong>多账号管理</strong>：为不同网站分配不同的代理出口IP</li> </ul>  <h2>技术点评：PAC文件的现代意义与发展趋势</h2>  <p>从技术演进视角看，PAC协议虽然诞生于1996年，但其设计理念至今仍不过时。在V2RayNG这类现代代理工具中，PAC文件展现出惊人的适应能力：</p>  <ol> <li><p><strong>轻量级与高效性</strong>：相比复杂的路由表或防火墙规则，PAC基于JavaScript的特性使其既强大又灵活，能够在资源有限的移动设备上高效运行。</p></li> <li><p><strong>跨平台兼容</strong>：同样的PAC文件可以无缝应用于桌面浏览器、移动设备甚至路由器系统，这种一致性大大降低了多设备管理的复杂度。</p></li> <li><p><strong>隐私保护优势</strong>：与VPN等全局加密方案不同，PAC模式允许敏感数据（如网银交易）直接连接，避免不必要的代理环节，既提升速度又降低隐私泄露风险。</p></li> </ol>  <p>然而，PAC技术也面临新的挑战。随着QUIC等新型传输协议的普及，传统的基于域名的分流策略可能不再足够。未来的PAC系统可能需要深度集成TLS SNI解析、机器学习流量分类等先进技术，以应对日益复杂的网络环境。</p>  <h2>结语：掌握PAC，驾驭数字自由</h2>  <p>V2RayNG配合精心调校的PAC文件，如同为您的网络体验装上了智能导航系统。它不仅能帮助您绕过不合理的网络限制，更能优化整体上网效率，在自由与性能之间找到完美平衡点。</p>  <p>无论您是注重隐私的技术极客，还是追求流畅体验的普通用户，深入理解PAC机制都将大幅提升您的网络使用水平。记住，真正的网络自由不在于无限制的访问，而在于精准控制的权力——这正是V2RayNG PAC设置赋予我们的宝贵能力。</p>  <p>在这个数据流动决定一切的时代，愿每位读者都能成为自己网络命运的主宰者。从今天开始，定制属于您的PAC规则，开启高效、安全、智能的上网新纪元！</p> </div>
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
-        <p>上一个：<a href="/free-nodes/2026-3-3-free-ssr-subscribe.htm">「3月3日」最高速度19.5M/S，2025年Clash节点/Trojan节点/V2ray节点/Singbox节点/SSR节点/Shadowrocket节点每天更新免费节点订阅链接</a></p>
         <p>下一个：<a href="/free-nodes/2026-3-5-node-share-links.htm">「3月5日」最高速度20.1M/S，2025年Singbox节点/V2ray节点/Clash节点/Trojan节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接</a></p>
     </div>
 <h4>FAQ</h4>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekoray 支持 Trojan 吗？</h5></div>
+    <div class="panel-body">
+        支持。Nekoray 基于 sing-box 核心，能兼容 Trojan、Vmess、Vless、Hysteria2 等多种协议。用户可在同一界面中管理和切换不同类型节点，非常方便。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 的多路复用如何提高传输效率？</h5></div>
+    <div class="panel-body">
+        Hysteria2 利用 QUIC 的多路复用功能，将多个请求共享单个 UDP 连接，减少握手次数和延迟，提升整体吞吐量。尤其在高并发场景中效果显著。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何实现精确端口分流？</h5></div>
+    <div class="panel-body">
+        Sing-box 支持按端口匹配流量，将不同类型应用流量分配到指定节点。结合策略组，可提高访问速度和网络稳定性，实现精准分流和优化用户体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>QuantumultX 分流规则如何优化游戏体验？</h5></div>
+    <div class="panel-body">
+        QuantumultX 可按端口、协议或应用设置分流规则，将游戏流量走低延迟节点。结合策略组自动切换，可保证游戏连接稳定，减少掉线和延迟，提高流畅度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 的主要用途是什么？</h5></div>
+    <div class="panel-body">
+        Hiddify Next 是 Hiddify 系列的新版本，集成了 VLESS、Trojan、Reality 等新型协议支持。它为用户提供一站式代理配置与分享功能，适合初学者快速上手使用。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS + XTLS 模式适合高并发环境吗？</h5></div>
+    <div class="panel-body">
+        适合。XTLS 去除冗余加密，提高 CPU 使用效率，降低延迟。结合策略组和多出口节点，可在高并发或多连接场景下保持稳定、高速的网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 策略组如何提升在线视频体验？</h5></div>
+    <div class="panel-body">
+        Surfboard 可通过策略组将视频流量分配到低延迟、高带宽节点，自动切换到最佳节点，减少缓冲和卡顿，提高在线视频播放的流畅性和整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Netch 的全局代理与规则代理有何不同？</h5></div>
+    <div class="panel-body">
+        全局代理将所有流量都通过节点转发，而规则代理只针对指定 IP、端口或应用。全局代理适合游戏和全局科学上网，规则代理适合优化带宽和分流特定流量。<hr />    </div>
+</div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的配置文件是 YAML 格式吗？</h5></div>
     <div class="panel-body">
@@ -140,47 +179,7 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 如何结合策略组实现多节点优化？</h5></div>
     <div class="panel-body">
-        Netch 可按应用和协议设置策略组，将流量分配到最优节点。结合节点延迟检测和自动切换功能，可提高网页浏览、视频播放和游戏访问速度及稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + XTLS 模式适合高并发环境吗？</h5></div>
-    <div class="panel-body">
-        适合。XTLS 去除冗余加密，提高 CPU 使用效率，降低延迟。结合策略组和多出口节点，可在高并发或多连接场景下保持稳定、高速的网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 的全局代理与规则代理有何不同？</h5></div>
-    <div class="panel-body">
-        全局代理将所有流量都通过节点转发，而规则代理只针对指定 IP、端口或应用。全局代理适合游戏和全局科学上网，规则代理适合优化带宽和分流特定流量。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 的主要用途是什么？</h5></div>
-    <div class="panel-body">
-        Hiddify Next 是 Hiddify 系列的新版本，集成了 VLESS、Trojan、Reality 等新型协议支持。它为用户提供一站式代理配置与分享功能，适合初学者快速上手使用。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 分流规则如何优化游戏体验？</h5></div>
-    <div class="panel-body">
-        QuantumultX 可按端口、协议或应用设置分流规则，将游戏流量走低延迟节点。结合策略组自动切换，可保证游戏连接稳定，减少掉线和延迟，提高流畅度。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 策略组如何提升在线视频体验？</h5></div>
-    <div class="panel-body">
-        Surfboard 可通过策略组将视频流量分配到低延迟、高带宽节点，自动切换到最佳节点，减少缓冲和卡顿，提高在线视频播放的流畅性和整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 的多路复用如何提高传输效率？</h5></div>
-    <div class="panel-body">
-        Hysteria2 利用 QUIC 的多路复用功能，将多个请求共享单个 UDP 连接，减少握手次数和延迟，提升整体吞吐量。尤其在高并发场景中效果显著。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 支持 Trojan 吗？</h5></div>
-    <div class="panel-body">
-        支持。Nekoray 基于 sing-box 核心，能兼容 Trojan、Vmess、Vless、Hysteria2 等多种协议。用户可在同一界面中管理和切换不同类型节点，非常方便。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何实现精确端口分流？</h5></div>
-    <div class="panel-body">
-        Sing-box 支持按端口匹配流量，将不同类型应用流量分配到指定节点。结合策略组，可提高访问速度和网络稳定性，实现精准分流和优化用户体验。    </div>
+        Netch 可按应用和协议设置策略组，将流量分配到最优节点。结合节点延迟检测和自动切换功能，可提高网页浏览、视频播放和游戏访问速度及稳定性。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -209,16 +208,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-2-16-free-clash-subscribe.htm" title="「2月16日」最高速度21.6M/S，2025年V2ray节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点/Trojan节点每天更新免费节点订阅链接">「2月16日」最高速度21.6M/S，2025年V2ray节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点/Trojan节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-16-free-clash.htm" title="「1月16日」最高速度22.7M/S，2025年SSR节点/Shadowrocket节点/Singbox节点/V2ray节点/Clash节点每天更新免费节点订阅链接">「1月16日」最高速度22.7M/S，2025年SSR节点/Shadowrocket节点/Singbox节点/V2ray节点/Clash节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-1-15-free-ssr-subscribe.htm" title="「1月15日」最高速度18.7M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/SSR节点/Singbox节点每天更新免费节点订阅链接">「1月15日」最高速度18.7M/S，2025年Clash节点/Shadowrocket节点/V2ray节点/SSR节点/Singbox节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-4-free-v2ray.htm" title="「3月4日」最高速度20.1M/S，2025年Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接">「3月4日」最高速度20.1M/S，2025年Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-1-shadowrocket-node.htm" title="「2月1日」最高速度20.5M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/SSR节点/Trojan节点每天更新免费节点订阅链接">「2月1日」最高速度20.5M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/SSR节点/Trojan节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-5-node-share-links.htm" title="「3月5日」最高速度20.1M/S，2025年Singbox节点/V2ray节点/Clash节点/Trojan节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接">「3月5日」最高速度20.1M/S，2025年Singbox节点/V2ray节点/Clash节点/Trojan节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-17-node-share-links.htm" title="「3月17日」最高速度21.8M/S，2025年SSR节点/Trojan节点/V2ray节点/Shadowrocket节点/Singbox节点/Clash节点每天更新免费节点订阅链接">「3月17日」最高速度21.8M/S，2025年SSR节点/Trojan节点/V2ray节点/Shadowrocket节点/Singbox节点/Clash节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-16-free-ssr-node.htm" title="「3月16日」最高速度20.1M/S，2025年Trojan节点/V2ray节点/Shadowrocket节点/Singbox节点/Clash节点/SSR节点每天更新免费节点订阅链接">「3月16日」最高速度20.1M/S，2025年Trojan节点/V2ray节点/Shadowrocket节点/Singbox节点/Clash节点/SSR节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-11-clash-v2ray-ss-ssr.htm" title="「3月11日」最高速度18.1M/S，2025年Trojan节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Clash节点每天更新免费节点订阅链接">「3月11日」最高速度18.1M/S，2025年Trojan节点/Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Clash节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-15-free-subscribe-node.htm" title="「3月15日」最高速度18.6M/S，2025年Singbox节点/Clash节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点每天更新免费节点订阅链接">「3月15日」最高速度18.6M/S，2025年Singbox节点/Clash节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-21-shadowrocket-node.htm" title="「3月21日」最高速度22M/S，2025年Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/SSR节点/V2ray节点每天更新免费节点订阅链接">「3月21日」最高速度22M/S，2025年Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/SSR节点/V2ray节点每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-3-12-free-subscribe-node.htm" title="「3月12日」最高速度18M/S，2025年Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/SSR节点/Trojan节点每天更新免费节点订阅链接">「3月12日」最高速度18M/S，2025年Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/SSR节点/Trojan节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-9-free-ssr-subscribe.htm" title="「3月9日」最高速度20.7M/S，2025年Trojan节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点每天更新免费节点订阅链接">「3月9日」最高速度20.7M/S，2025年Trojan节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-20-free-v2ray-subscribe.htm" title="「2月20日」最高速度18M/S，2025年SSR节点/Trojan节点/Singbox节点/Clash节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接">「2月20日」最高速度18M/S，2025年SSR节点/Trojan节点/Singbox节点/Clash节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-9-node-share-links.htm" title="「2月9日」最高速度19.6M/S，2025年Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/V2ray节点/SSR节点每天更新免费节点订阅链接">「2月9日」最高速度19.6M/S，2025年Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/V2ray节点/SSR节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-2-11-free-subscribe-node.htm" title="「2月11日」最高速度20M/S，2025年Shadowrocket节点/Trojan节点/V2ray节点/SSR节点/Clash节点/Singbox节点每天更新免费节点订阅链接">「2月11日」最高速度20M/S，2025年Shadowrocket节点/Trojan节点/V2ray节点/SSR节点/Clash节点/Singbox节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-22-free-high-speed-nodes.htm" title="「3月22日」最高速度21.2M/S，2025年Shadowrocket节点/SSR节点/Clash节点/V2ray节点/Singbox节点/Trojan节点每天更新免费节点订阅链接">「3月22日」最高速度21.2M/S，2025年Shadowrocket节点/SSR节点/Clash节点/V2ray节点/Singbox节点/Trojan节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-4-free-v2ray.htm" title="「3月4日」最高速度20.1M/S，2025年Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接">「3月4日」最高速度20.1M/S，2025年Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-27-free-v2ray-subscribe.htm" title="「3月27日」最高速度23M/S，2025年Trojan节点/SSR节点/Singbox节点/V2ray节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接">「3月27日」最高速度23M/S，2025年Trojan节点/SSR节点/Singbox节点/V2ray节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -230,13 +229,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
+                <h4><span class="badge" style="float: right;">1</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2026-02/" title="2026-02 归档">2026-02</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2026-01/" title="2026-01 归档">2026-01</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
             </li>
                     </ul>
     </div>
