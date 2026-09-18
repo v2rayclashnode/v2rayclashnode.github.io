@@ -1,4 +1,4 @@
-# 「9月11日」最高速度22.4M/S，2025年SSR节点/Singbox节点/V2ray节点/Clash节点/Shadowrocket节点每天更新免费节点订阅链接  更新时间 2026-09-11 09:26:41
+# 「9月18日」最高速度21.3M/S，2025年V2ray节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接  更新时间 2026-09-18 10:07:03
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://v2rayclashnode.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://v2rayclashnode.github.io/uploads/2026/09/0-20260911.yaml
-- https://v2rayclashnode.github.io/uploads/2026/09/1-20260911.yaml
-- https://v2rayclashnode.github.io/uploads/2026/09/2-20260911.yaml
-- https://v2rayclashnode.github.io/uploads/2026/09/3-20260911.yaml
-- https://v2rayclashnode.github.io/uploads/2026/09/4-20260911.yaml
+- https://v2rayclashnode.github.io/uploads/2026/09/0-20260918.yaml
+- https://v2rayclashnode.github.io/uploads/2026/09/1-20260918.yaml
+- https://v2rayclashnode.github.io/uploads/2026/09/2-20260918.yaml
+- https://v2rayclashnode.github.io/uploads/2026/09/3-20260918.yaml
+- https://v2rayclashnode.github.io/uploads/2026/09/4-20260918.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://v2rayclashnode.github.io/uploads/2026/09/0-20260911.txt
-- https://v2rayclashnode.github.io/uploads/2026/09/1-20260911.txt
-- https://v2rayclashnode.github.io/uploads/2026/09/2-20260911.txt
-- https://v2rayclashnode.github.io/uploads/2026/09/3-20260911.txt
-- https://v2rayclashnode.github.io/uploads/2026/09/4-20260911.txt
+- https://v2rayclashnode.github.io/uploads/2026/09/0-20260918.txt
+- https://v2rayclashnode.github.io/uploads/2026/09/1-20260918.txt
+- https://v2rayclashnode.github.io/uploads/2026/09/2-20260918.txt
+- https://v2rayclashnode.github.io/uploads/2026/09/3-20260918.txt
+- https://v2rayclashnode.github.io/uploads/2026/09/4-20260918.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://v2rayclashnode.github.io/uploads/2026/09/20260911.json
+- https://v2rayclashnode.github.io/uploads/2026/09/20260918.json
 
 ## 更多Clash节点订阅 ：
 
