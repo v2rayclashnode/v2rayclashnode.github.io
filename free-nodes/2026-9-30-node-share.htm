@@ -215,44 +215,14 @@ A4：目前多为订阅制，需按年续费，保障软件和服务的持续更
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 是否支持应用分流？</h5></div>
-    <div class="panel-body">
-        支持。Surfboard 可通过策略组和规则文件将不同应用流量分配到指定节点，保证游戏、视频和浏览器流量走最优节点，提高访问速度和网络稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowrocket 节点延迟排序如何提高稳定性？</h5></div>
-    <div class="panel-body">
-        Shadowrocket 测试节点延迟和丢包率，将低延迟节点优先使用。结合策略组和规则文件，可保证网页、视频和游戏流量通过最优节点，提高连接稳定性和访问速度。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的多节点分流如何设置？</h5></div>
-    <div class="panel-body">
-        可通过策略组定义不同节点用途和优先级，结合规则文件将特定域名、IP 或端口流量分流至相应节点，实现游戏、视频或网页加速，并优化整体网络性能和稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 支持节点批量更新吗？</h5></div>
-    <div class="panel-body">
-        支持。Nekoray 可通过订阅 URL 批量下载最新节点并替换旧节点。结合定时更新功能，可保持节点列表最新，减少手动维护和配置工作。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 在丢包环境下如何配置更稳？</h5></div>
-    <div class="panel-body">
-        可调整 Hysteria2 的拥塞控制与重传参数，启用 FEC（前向纠错）并合理设置 MTU 与窗口大小以适应链路特性。还可尝试切换 QUIC 参数或更换中转以减少丢包影响。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray QUIC 模式适合哪些网络环境？</h5></div>
-    <div class="panel-body">
-        QUIC 基于 UDP 协议，支持多路复用和零握手，适合高丢包和不稳定网络环境。可提升视频、游戏和即时通讯流量的稳定性和访问速度，提高网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 如何使用 WebSocket 传输？</h5></div>
-    <div class="panel-body">
-        在 V2Ray 配置文件中将传输方式设置为 ws，即启用 WebSocket 模式。结合 CDN 和 TLS，可实现安全高速的代理链路。WebSocket 常用于伪装成 HTTPS 流量，从而降低被识别风险。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 如何选择全局代理与规则代理模式？</h5></div>
     <div class="panel-body">
         全局代理适合所有流量走节点，如游戏和全局科学上网；规则代理仅针对指定应用、IP 或端口走节点，可优化带宽使用和访问效率，根据使用场景选择模式。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 如何手动设置某应用直连？</h5></div>
+    <div class="panel-body">
+        在 Clash 的规则文件中添加 PROCESS-NAME 规则，如 `PROCESS-NAME,chrome.exe,DIRECT`。保存并重启后，该应用的流量将绕过代理直连。适用于游戏或内网程序等特殊场景。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 运行在低配设备上卡顿，如何减轻资源占用？</h5></div>
@@ -260,9 +230,39 @@ A4：目前多为订阅制，需按年续费，保障软件和服务的持续更
         减少 rule-provider 数量、关闭不必要的日志与统计、降低 DNS 轮询频率并禁用内置测速；若使用 TUN 模式，可改为代理模式减少内核负担。必要时升级到更高性能的设备或使用更轻量内核。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 如何手动设置某应用直连？</h5></div>
+    <div class="panel-heading"><h5>Nekoray 支持节点批量更新吗？</h5></div>
     <div class="panel-body">
-        在 Clash 的规则文件中添加 PROCESS-NAME 规则，如 `PROCESS-NAME,chrome.exe,DIRECT`。保存并重启后，该应用的流量将绕过代理直连。适用于游戏或内网程序等特殊场景。    </div>
+        支持。Nekoray 可通过订阅 URL 批量下载最新节点并替换旧节点。结合定时更新功能，可保持节点列表最新，减少手动维护和配置工作。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 如何使用 WebSocket 传输？</h5></div>
+    <div class="panel-body">
+        在 V2Ray 配置文件中将传输方式设置为 ws，即启用 WebSocket 模式。结合 CDN 和 TLS，可实现安全高速的代理链路。WebSocket 常用于伪装成 HTTPS 流量，从而降低被识别风险。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 的多节点分流如何设置？</h5></div>
+    <div class="panel-body">
+        可通过策略组定义不同节点用途和优先级，结合规则文件将特定域名、IP 或端口流量分流至相应节点，实现游戏、视频或网页加速，并优化整体网络性能和稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 是否支持应用分流？</h5></div>
+    <div class="panel-body">
+        支持。Surfboard 可通过策略组和规则文件将不同应用流量分配到指定节点，保证游戏、视频和浏览器流量走最优节点，提高访问速度和网络稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray QUIC 模式适合哪些网络环境？</h5></div>
+    <div class="panel-body">
+        QUIC 基于 UDP 协议，支持多路复用和零握手，适合高丢包和不稳定网络环境。可提升视频、游戏和即时通讯流量的稳定性和访问速度，提高网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hysteria2 在丢包环境下如何配置更稳？</h5></div>
+    <div class="panel-body">
+        可调整 Hysteria2 的拥塞控制与重传参数，启用 FEC（前向纠错）并合理设置 MTU 与窗口大小以适应链路特性。还可尝试切换 QUIC 参数或更换中转以减少丢包影响。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Shadowrocket 节点延迟排序如何提高稳定性？</h5></div>
+    <div class="panel-body">
+        Shadowrocket 测试节点延迟和丢包率，将低延迟节点优先使用。结合策略组和规则文件，可保证网页、视频和游戏流量通过最优节点，提高连接稳定性和访问速度。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -310,16 +310,16 @@ A4：目前多为订阅制，需按年续费，保障软件和服务的持续更
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-9-25.htm" title="「9月25日」最高速度20.4M/S，2025年SSR节点/Singbox节点/V2ray节点/Trojan节点/Clash节点/Shadowrocket节点每天更新免费节点订阅链接">「9月25日」最高速度20.4M/S，2025年SSR节点/Singbox节点/V2ray节点/Trojan节点/Clash节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-10-9.htm" title="「10月9日」最高速度19.2M/S，2025年V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接">「10月9日」最高速度19.2M/S，2025年V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-9-6-node-share.htm" title="「9月6日」最高速度19.1M/S，2025年V2ray节点/Trojan节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接">「9月6日」最高速度19.1M/S，2025年V2ray节点/Trojan节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-27.htm" title="「9月27日」最高速度19.6M/S，2025年Clash节点/V2ray节点/Trojan节点/Singbox节点/SSR节点/Shadowrocket节点每天更新免费节点订阅链接">「9月27日」最高速度19.6M/S，2025年Clash节点/V2ray节点/Trojan节点/Singbox节点/SSR节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-14-free-shadowrocket-node.htm" title="「9月14日」最高速度21.8M/S，2025年Trojan节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点/V2ray节点每天更新免费节点订阅链接">「9月14日」最高速度21.8M/S，2025年Trojan节点/Shadowrocket节点/Clash节点/SSR节点/Singbox节点/V2ray节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/clash-windows-2026-9-7.htm" title="「9月7日」最高速度19.3M/S，2025年Singbox节点/Clash节点/V2ray节点/Shadowrocket节点/Trojan节点/SSR节点每天更新免费节点订阅链接">「9月7日」最高速度19.3M/S，2025年Singbox节点/Clash节点/V2ray节点/Shadowrocket节点/Trojan节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-2-free-v2ray.htm" title="「10月2日」最高速度19.7M/S，2025年Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点每天更新免费节点订阅链接">「10月2日」最高速度19.7M/S，2025年Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点/Clash节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-9-28-node-share.htm" title="「9月28日」最高速度18.7M/S，2025年SSR节点/V2ray节点/Singbox节点/Clash节点/Trojan节点/Shadowrocket节点每天更新免费节点订阅链接">「9月28日」最高速度18.7M/S，2025年SSR节点/V2ray节点/Singbox节点/Clash节点/Trojan节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-18-node-share.htm" title="「9月18日」最高速度18.4M/S，2025年Shadowrocket节点/Trojan节点/Singbox节点/Clash节点/SSR节点/V2ray节点每天更新免费节点订阅链接">「9月18日」最高速度18.4M/S，2025年Shadowrocket节点/Trojan节点/Singbox节点/Clash节点/SSR节点/V2ray节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/clash-windows-2026-9-5.htm" title="「9月5日」最高速度20.4M/S，2025年Shadowrocket节点/Clash节点/Singbox节点/Trojan节点/SSR节点/V2ray节点每天更新免费节点订阅链接">「9月5日」最高速度20.4M/S，2025年Shadowrocket节点/Clash节点/Singbox节点/Trojan节点/SSR节点/V2ray节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-22-free-ssr-subscribe.htm" title="「9月22日」最高速度22.8M/S，2025年V2ray节点/Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/SSR节点每天更新免费节点订阅链接">「9月22日」最高速度22.8M/S，2025年V2ray节点/Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-10-3.htm" title="「10月3日」最高速度22.6M/S，2025年Clash节点/Singbox节点/Shadowrocket节点/Trojan节点/V2ray节点/SSR节点每天更新免费节点订阅链接">「10月3日」最高速度22.6M/S，2025年Clash节点/Singbox节点/Shadowrocket节点/Trojan节点/V2ray节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-9-11.htm" title="「9月11日」最高速度21M/S，2025年Shadowrocket节点/Singbox节点/SSR节点/V2ray节点/Clash节点/Trojan节点每天更新免费节点订阅链接">「9月11日」最高速度21M/S，2025年Shadowrocket节点/Singbox节点/SSR节点/V2ray节点/Clash节点/Trojan节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-24-free-v2ray.htm" title="「9月24日」最高速度19.9M/S，2025年Trojan节点/V2ray节点/SSR节点/Clash节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接">「9月24日」最高速度19.9M/S，2025年Trojan节点/V2ray节点/SSR节点/Clash节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-8-free-node-subscribe.htm" title="「10月8日」最高速度19.1M/S，2025年Shadowrocket节点/Singbox节点/V2ray节点/Clash节点/SSR节点/Trojan节点每天更新免费节点订阅链接">「10月8日」最高速度19.1M/S，2025年Shadowrocket节点/Singbox节点/V2ray节点/Clash节点/SSR节点/Trojan节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-9-21.htm" title="「9月21日」最高速度23M/S，2025年Shadowrocket节点/SSR节点/V2ray节点/Singbox节点/Clash节点/Trojan节点每天更新免费节点订阅链接">「9月21日」最高速度23M/S，2025年Shadowrocket节点/SSR节点/V2ray节点/Singbox节点/Clash节点/Trojan节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-10-free-ssr-subscribe.htm" title="「9月10日」最高速度19.5M/S，2025年Trojan节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Singbox节点每天更新免费节点订阅链接">「9月10日」最高速度19.5M/S，2025年Trojan节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Singbox节点每天更新免费节点订阅链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -331,7 +331,7 @@ A4：目前多为订阅制，需按年续费，保障软件和服务的持续更
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">2</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>

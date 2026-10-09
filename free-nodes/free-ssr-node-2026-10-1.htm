@@ -316,14 +316,9 @@ Clash在多并发连接及大规模代理请求场景中表现稳定，连接速
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hysteria2 的多路复用功能有哪些好处？</h5></div>
+    <div class="panel-heading"><h5>Hiddify Next 用户带宽限制如何配置？</h5></div>
     <div class="panel-body">
-        多路复用允许多个短连接共享同一 QUIC 通道，减少握手延迟和资源消耗。在高并发或频繁短连接场景下，能显著提升吞吐量和稳定性，尤其适合游戏或即时通讯应用。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>何为 multiplex (mux)，启用后会有哪些利弊？</h5></div>
-    <div class="panel-body">
-        mux 是多路复用技术，可在单一连接上传输多路流量，从而减少握手次数与连接开销。优点是提升短连接并发效率，缺点是在丢包或单连接异常时可能影响多条会话并增加调试复杂度。<hr />    </div>
+        管理员可设置每个用户上传、下载和总流量上限，超出限制可自动降速或阻止访问。保证服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 的混淆和协议设置如何选择才能绕过封锁？</h5></div>
@@ -331,24 +326,19 @@ Clash在多并发连接及大规模代理请求场景中表现稳定，连接速
         选择模拟 HTTPS 的混淆方式如 tls1.2_ticket_auth，并搭配 AEAD 或协议插件，可以有效隐藏流量特征，降低被封锁风险。不同网络环境需测试选择最优组合。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 是否支持多配置文件切换？</h5></div>
-    <div class="panel-body">
-        支持。Nekobox 允许用户创建多个配置文件并快速切换，适合在不同网络环境下使用不同规则。例如家用网络与移动数据可使用独立的配置方案。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Potatso Lite 是否支持多节点手动管理？</h5></div>
     <div class="panel-body">
         支持。用户可以手动输入节点参数或扫描二维码导入节点，并可进行修改或删除。虽然不支持订阅自动更新，但足够满足轻量用户对节点管理和分流的基本需求。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>何为 fake-ip 模式，它的优缺点是什么？</h5></div>
+    <div class="panel-heading"><h5>Nekobox 是否支持多配置文件切换？</h5></div>
     <div class="panel-body">
-        fake-ip 是通过伪造 DNS 返回的 IP 地址让客户端透明代理流量，优点是兼容性好、无需修改应用代理设置；缺点是可能导致某些证书校验或 SNI 伪装失效，需要配合 DNS 与证书策略谨慎使用。<hr />    </div>
+        支持。Nekobox 允许用户创建多个配置文件并快速切换，适合在不同网络环境下使用不同规则。例如家用网络与移动数据可使用独立的配置方案。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 协议如何配置优化抗封锁？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 的 TCP + TLS 模式适合什么场景？</h5></div>
     <div class="panel-body">
-        SSR 可通过选择合适协议、混淆方式和端口来降低被检测风险。合理配置可增强节点隐蔽性，提高长期稳定性，确保科学上网体验顺畅且可靠。<hr />    </div>
+        TCP + TLS 模式可模拟 HTTPS 流量，增强抗封锁能力。适合网络封锁严格的环境，通过策略组选择最佳节点，可保证访问速度和连接稳定性，尤其适用于网页浏览和视频播放。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 策略组如何实现节点优先级切换？</h5></div>
@@ -356,14 +346,24 @@ Clash在多并发连接及大规模代理请求场景中表现稳定，连接速
         用户可以在 Clash 策略组中设置节点优先级，结合规则文件，自动选择延迟低、稳定性高的节点处理流量。优化网页浏览、视频播放和游戏访问速度，提高整体网络效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 用户带宽限制如何配置？</h5></div>
+    <div class="panel-heading"><h5>SSR 协议如何配置优化抗封锁？</h5></div>
     <div class="panel-body">
-        管理员可设置每个用户上传、下载和总流量上限，超出限制可自动降速或阻止访问。保证服务器资源合理分配，避免单用户占用过多带宽，提高整体网络公平性。<hr />    </div>
+        SSR 可通过选择合适协议、混淆方式和端口来降低被检测风险。合理配置可增强节点隐蔽性，提高长期稳定性，确保科学上网体验顺畅且可靠。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 TCP + TLS 模式适合什么场景？</h5></div>
+    <div class="panel-heading"><h5>Hysteria2 的多路复用功能有哪些好处？</h5></div>
     <div class="panel-body">
-        TCP + TLS 模式可模拟 HTTPS 流量，增强抗封锁能力。适合网络封锁严格的环境，通过策略组选择最佳节点，可保证访问速度和连接稳定性，尤其适用于网页浏览和视频播放。    </div>
+        多路复用允许多个短连接共享同一 QUIC 通道，减少握手延迟和资源消耗。在高并发或频繁短连接场景下，能显著提升吞吐量和稳定性，尤其适合游戏或即时通讯应用。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>何为 fake-ip 模式，它的优缺点是什么？</h5></div>
+    <div class="panel-body">
+        fake-ip 是通过伪造 DNS 返回的 IP 地址让客户端透明代理流量，优点是兼容性好、无需修改应用代理设置；缺点是可能导致某些证书校验或 SNI 伪装失效，需要配合 DNS 与证书策略谨慎使用。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>何为 multiplex (mux)，启用后会有哪些利弊？</h5></div>
+    <div class="panel-body">
+        mux 是多路复用技术，可在单一连接上传输多路流量，从而减少握手次数与连接开销。优点是提升短连接并发效率，缺点是在丢包或单连接异常时可能影响多条会话并增加调试复杂度。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -411,16 +411,16 @@ Clash在多并发连接及大规模代理请求场景中表现稳定，连接速
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-9-8-free-node-subscribe.htm" title="「9月8日」最高速度18.5M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/Trojan节点/V2ray节点/SSR节点每天更新免费节点订阅链接">「9月8日」最高速度18.5M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/Trojan节点/V2ray节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-12-free-ssr-subscribe.htm" title="「9月12日」最高速度18.2M/S，2025年SSR节点/Trojan节点/Clash节点/Shadowrocket节点/V2ray节点/Singbox节点每天更新免费节点订阅链接">「9月12日」最高速度18.2M/S，2025年SSR节点/Trojan节点/Clash节点/Shadowrocket节点/V2ray节点/Singbox节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-26-free-ssr-subscribe.htm" title="「9月26日」最高速度20.9M/S，2025年Trojan节点/SSR节点/V2ray节点/Clash节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接">「9月26日」最高速度20.9M/S，2025年Trojan节点/SSR节点/V2ray节点/Clash节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-27.htm" title="「9月27日」最高速度19.6M/S，2025年Clash节点/V2ray节点/Trojan节点/Singbox节点/SSR节点/Shadowrocket节点每天更新免费节点订阅链接">「9月27日」最高速度19.6M/S，2025年Clash节点/V2ray节点/Trojan节点/Singbox节点/SSR节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/clash-windows-2026-9-5.htm" title="「9月5日」最高速度20.4M/S，2025年Shadowrocket节点/Clash节点/Singbox节点/Trojan节点/SSR节点/V2ray节点每天更新免费节点订阅链接">「9月5日」最高速度20.4M/S，2025年Shadowrocket节点/Clash节点/Singbox节点/Trojan节点/SSR节点/V2ray节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-2-node-share.htm" title="「9月2日」最高速度18.4M/S，2025年Clash节点/Shadowrocket节点/Singbox节点/Trojan节点/V2ray节点/SSR节点每天更新免费节点订阅链接">「9月2日」最高速度18.4M/S，2025年Clash节点/Shadowrocket节点/Singbox节点/Trojan节点/V2ray节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-9-13.htm" title="「9月13日」最高速度20.4M/S，2025年Shadowrocket节点/SSR节点/Singbox节点/Trojan节点/Clash节点/V2ray节点每天更新免费节点订阅链接">「9月13日」最高速度20.4M/S，2025年Shadowrocket节点/SSR节点/Singbox节点/Trojan节点/Clash节点/V2ray节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-28-node-share.htm" title="「9月28日」最高速度18.7M/S，2025年SSR节点/V2ray节点/Singbox节点/Clash节点/Trojan节点/Shadowrocket节点每天更新免费节点订阅链接">「9月28日」最高速度18.7M/S，2025年SSR节点/V2ray节点/Singbox节点/Clash节点/Trojan节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-9-30-node-share.htm" title="「9月30日」最高速度19.2M/S，2025年Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点每天更新免费节点订阅链接">「9月30日」最高速度19.2M/S，2025年Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-10-1.htm" title="「10月1日」最高速度21.2M/S，2025年Shadowrocket节点/SSR节点/Singbox节点/Trojan节点/V2ray节点/Clash节点每天更新免费节点订阅链接">「10月1日」最高速度21.2M/S，2025年Shadowrocket节点/SSR节点/Singbox节点/Trojan节点/V2ray节点/Clash节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/clash-windows-2026-9-7.htm" title="「9月7日」最高速度19.3M/S，2025年Singbox节点/Clash节点/V2ray节点/Shadowrocket节点/Trojan节点/SSR节点每天更新免费节点订阅链接">「9月7日」最高速度19.3M/S，2025年Singbox节点/Clash节点/V2ray节点/Shadowrocket节点/Trojan节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-22-free-ssr-subscribe.htm" title="「9月22日」最高速度22.8M/S，2025年V2ray节点/Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/SSR节点每天更新免费节点订阅链接">「9月22日」最高速度22.8M/S，2025年V2ray节点/Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-29.htm" title="「9月29日」最高速度19.6M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/Trojan节点每天更新免费节点订阅链接">「9月29日」最高速度19.6M/S，2025年SSR节点/Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/Trojan节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-9-3.htm" title="「9月3日」最高速度19.9M/S，2025年V2ray节点/Trojan节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点每天更新免费节点订阅链接">「9月3日」最高速度19.9M/S，2025年V2ray节点/Trojan节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-9-11.htm" title="「9月11日」最高速度21M/S，2025年Shadowrocket节点/Singbox节点/SSR节点/V2ray节点/Clash节点/Trojan节点每天更新免费节点订阅链接">「9月11日」最高速度21M/S，2025年Shadowrocket节点/Singbox节点/SSR节点/V2ray节点/Clash节点/Trojan节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-27.htm" title="「9月27日」最高速度19.6M/S，2025年Clash节点/V2ray节点/Trojan节点/Singbox节点/SSR节点/Shadowrocket节点每天更新免费节点订阅链接">「9月27日」最高速度19.6M/S，2025年Clash节点/V2ray节点/Trojan节点/Singbox节点/SSR节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-9-13.htm" title="「9月13日」最高速度20.4M/S，2025年Shadowrocket节点/SSR节点/Singbox节点/Trojan节点/Clash节点/V2ray节点每天更新免费节点订阅链接">「9月13日」最高速度20.4M/S，2025年Shadowrocket节点/SSR节点/Singbox节点/Trojan节点/Clash节点/V2ray节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-6-node-share.htm" title="「9月6日」最高速度19.1M/S，2025年V2ray节点/Trojan节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接">「9月6日」最高速度19.1M/S，2025年V2ray节点/Trojan节点/Singbox节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-20-node-share.htm" title="「9月20日」最高速度20.8M/S，2025年Clash节点/Trojan节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费节点订阅链接">「9月20日」最高速度20.8M/S，2025年Clash节点/Trojan节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -432,7 +432,7 @@ Clash在多并发连接及大规模代理请求场景中表现稳定，连接速
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">2</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
