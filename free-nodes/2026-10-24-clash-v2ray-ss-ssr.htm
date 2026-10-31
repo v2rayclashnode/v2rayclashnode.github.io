@@ -267,6 +267,7 @@
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
         <p>上一个：<a href="/free-nodes/clash-windows-2026-10-23.htm">「10月23日」最高速度21.6M/S，2025年Singbox节点/Trojan节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点每天更新免费节点订阅链接</a></p>
+        <p>下一个：<a href="/free-nodes/clash-windows-2026-10-25.htm">「10月25日」最高速度19.1M/S，2025年Trojan节点/SSR节点/Singbox节点/V2ray节点/Clash节点/Shadowrocket节点每天更新免费节点订阅链接</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
@@ -275,19 +276,9 @@
         XTLS 降低加密开销，减少握手次数，适合高延迟或不稳定的移动网络。结合策略组和多出口节点，可提升访问速度和连接稳定性，确保用户体验流畅。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的 PAC 模式适合什么场景？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 如何实现分流规则？</h5></div>
     <div class="panel-body">
-        PAC 模式通过 JavaScript 文件动态判断哪些流量走代理，哪些直连。适合访问国内外混合网站环境，用户无需手动切换节点即可根据规则自动分流。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何在 Clash Premium 中使用 TUN 模式加速游戏？</h5></div>
-    <div class="panel-body">
-        Clash Premium 版本支持系统级 TUN 模式，可将所有 UDP 流量转发至代理节点。启用该模式后需管理员权限，并在配置文件中添加 dns 与 tun 模块，选择低延迟节点即可实现游戏加速。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 节点延迟排序可以自动切换吗？</h5></div>
-    <div class="panel-body">
-        Matsuri 会定期测速节点延迟，结合策略组，可自动选择延迟最低的节点处理流量。这样用户无需手动切换节点，就能保持访问速度和稳定性，优化网络体验。<hr />    </div>
+        V2Ray 使用 routing 模块实现分流，可根据目标域名、IP、端口或协议类型决定流量走向。用户可自定义多个 outbound，并通过规则实现国内直连、国外代理等智能路由功能。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 如何实现端口与流量的精确分流？</h5></div>
@@ -295,9 +286,9 @@
         Sing-box 支持按端口匹配流量，将不同类型应用的流量分配到指定节点。结合策略组使用，可提高访问速度和网络稳定性，实现精准分流和优化用户体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 如何实现分流规则？</h5></div>
+    <div class="panel-heading"><h5>PassWall2 的分组策略可以自动切换节点吗？</h5></div>
     <div class="panel-body">
-        V2Ray 使用 routing 模块实现分流，可根据目标域名、IP、端口或协议类型决定流量走向。用户可自定义多个 outbound，并通过规则实现国内直连、国外代理等智能路由功能。<hr />    </div>
+        可以。用户可以设置策略组，PassWall2 会定期测速并根据延迟或成功率自动选择最优节点，实现智能节点切换，保证网络稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 的规则订阅更新机制是怎样的？</h5></div>
@@ -305,19 +296,29 @@
         Sing-box 支持远程规则订阅 URL，可自动下载并更新节点和分流规则。用户可设置更新频率，如每天或每小时，确保规则和节点始终保持最新状态，提高网络管理效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 的规则优先级如何设置？</h5></div>
+    <div class="panel-heading"><h5>Matsuri 节点延迟排序可以自动切换吗？</h5></div>
     <div class="panel-body">
-        在 PassWall2 中，规则的匹配顺序按配置文件自上而下执行。建议将精确规则放在前面，通用规则放后面，以确保高优先级的流量优先被正确分流到指定出口。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 的分组策略可以自动切换节点吗？</h5></div>
-    <div class="panel-body">
-        可以。用户可以设置策略组，PassWall2 会定期测速并根据延迟或成功率自动选择最优节点，实现智能节点切换，保证网络稳定性。<hr />    </div>
+        Matsuri 会定期测速节点延迟，结合策略组，可自动选择延迟最低的节点处理流量。这样用户无需手动切换节点，就能保持访问速度和稳定性，优化网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 节点延迟检测如何优化网络访问？</h5></div>
     <div class="panel-body">
-        Clash 会定期测试节点延迟，并结合策略组自动选择最优节点。避免访问高延迟或失效节点，提升网页浏览、视频播放和游戏速度及稳定性，提高整体网络体验。    </div>
+        Clash 会定期测试节点延迟，并结合策略组自动选择最优节点。避免访问高延迟或失效节点，提升网页浏览、视频播放和游戏速度及稳定性，提高整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何在 Clash Premium 中使用 TUN 模式加速游戏？</h5></div>
+    <div class="panel-body">
+        Clash Premium 版本支持系统级 TUN 模式，可将所有 UDP 流量转发至代理节点。启用该模式后需管理员权限，并在配置文件中添加 dns 与 tun 模块，选择低延迟节点即可实现游戏加速。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 的 PAC 模式适合什么场景？</h5></div>
+    <div class="panel-body">
+        PAC 模式通过 JavaScript 文件动态判断哪些流量走代理，哪些直连。适合访问国内外混合网站环境，用户无需手动切换节点即可根据规则自动分流。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 的规则优先级如何设置？</h5></div>
+    <div class="panel-body">
+        在 PassWall2 中，规则的匹配顺序按配置文件自上而下执行。建议将精确规则放在前面，通用规则放后面，以确保高优先级的流量优先被正确分流到指定出口。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -347,11 +348,11 @@
     <div class="panel-body">
         <div class="row">
             <div class="text-center">
-                <a href="javascript:;" class="js_to" data-url="https://c.kilxs.cn/?path=register&code=" data-type="Xingchen" data-code="tlc6gYYx" target="_blank">
+                <a href="javascript:;" class="js_to" data-url="https://xc1.luniu8.com/?code=" data-type="Xingchen" data-code="tlc6gYYx" target="_blank">
                     <img src="/assets/website/img/G/xingchen.webp" class="avatar" alt="星辰机场">
                 </a>
                 <dl>
-                    <dt><a href="javascript:;" class="js_to" data-url="https://c.kilxs.cn/?path=register&code=" data-type="Xingchen" data-code="tlc6gYYx" target="_blank">星辰机场</a></dt>
+                    <dt><a href="javascript:;" class="js_to" data-url="https://xc1.luniu8.com/?code=" data-type="Xingchen" data-code="tlc6gYYx" target="_blank">星辰机场</a></dt>
                     <dd>
                         <p>【包年送2个月】</p><p>1、购买入门版年付套餐额外送2个月，共14个月，只要99元！！！</p><p>2、购买“至尊天皇”年付套餐，额外送2个月，只要299元！！！</p><p>3、购买其他包月类套餐中的年付，同样送2个月！！！</p><p>错过要再等一年！！</p>                    </dd>
                 </dl>
@@ -365,16 +366,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-9-4-free-v2ray.htm" title="「9月4日」最高速度21.9M/S，2025年Trojan节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点/Clash节点每天更新免费节点订阅链接">「9月4日」最高速度21.9M/S，2025年Trojan节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点/Clash节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-30-node-share.htm" title="「9月30日」最高速度19.2M/S，2025年Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点每天更新免费节点订阅链接">「9月30日」最高速度19.2M/S，2025年Clash节点/V2ray节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-10-19.htm" title="「10月19日」最高速度22M/S，2025年Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/SSR节点/V2ray节点每天更新免费节点订阅链接">「10月19日」最高速度22M/S，2025年Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/SSR节点/V2ray节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-16-free-node-subscribe.htm" title="「10月16日」最高速度20.1M/S，2025年Trojan节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/SSR节点每天更新免费节点订阅链接">「10月16日」最高速度20.1M/S，2025年Trojan节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-10-9.htm" title="「10月9日」最高速度19.2M/S，2025年V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接">「10月9日」最高速度19.2M/S，2025年V2ray节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-20-node-share.htm" title="「9月20日」最高速度20.8M/S，2025年Clash节点/Trojan节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费节点订阅链接">「9月20日」最高速度20.8M/S，2025年Clash节点/Trojan节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-12-free-ssr-subscribe.htm" title="「9月12日」最高速度18.2M/S，2025年SSR节点/Trojan节点/Clash节点/Shadowrocket节点/V2ray节点/Singbox节点每天更新免费节点订阅链接">「9月12日」最高速度18.2M/S，2025年SSR节点/Trojan节点/Clash节点/Shadowrocket节点/V2ray节点/Singbox节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-10-free-ssr-subscribe.htm" title="「9月10日」最高速度19.5M/S，2025年Trojan节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Singbox节点每天更新免费节点订阅链接">「9月10日」最高速度19.5M/S，2025年Trojan节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Singbox节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-8-free-node-subscribe.htm" title="「9月8日」最高速度18.5M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/Trojan节点/V2ray节点/SSR节点每天更新免费节点订阅链接">「9月8日」最高速度18.5M/S，2025年Shadowrocket节点/Singbox节点/Clash节点/Trojan节点/V2ray节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-10-13.htm" title="「10月13日」最高速度22.5M/S，2025年Trojan节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接">「10月13日」最高速度22.5M/S，2025年Trojan节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-9-25.htm" title="「9月25日」最高速度20.4M/S，2025年SSR节点/Singbox节点/V2ray节点/Trojan节点/Clash节点/Shadowrocket节点每天更新免费节点订阅链接">「9月25日」最高速度20.4M/S，2025年SSR节点/Singbox节点/V2ray节点/Trojan节点/Clash节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-10-17.htm" title="「10月17日」最高速度19.9M/S，2025年SSR节点/Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/Trojan节点每天更新免费节点订阅链接">「10月17日」最高速度19.9M/S，2025年SSR节点/Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/Trojan节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-10-7.htm" title="「10月7日」最高速度22.1M/S，2025年Shadowrocket节点/V2ray节点/Clash节点/Singbox节点/Trojan节点/SSR节点每天更新免费节点订阅链接">「10月7日」最高速度22.1M/S，2025年Shadowrocket节点/V2ray节点/Clash节点/Singbox节点/Trojan节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-28-free-clash.htm" title="「10月28日」最高速度22M/S，2025年Singbox节点/V2ray节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接">「10月28日」最高速度22M/S，2025年Singbox节点/V2ray节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-16-clash-node-daily-updates.htm" title="「9月16日」最高速度21.8M/S，2025年Trojan节点/Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点每天更新免费节点订阅链接">「9月16日」最高速度21.8M/S，2025年Trojan节点/Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-30-node-share.htm" title="「10月30日」最高速度22.5M/S，2025年Singbox节点/SSR节点/V2ray节点/Clash节点/Shadowrocket节点/Trojan节点每天更新免费节点订阅链接">「10月30日」最高速度22.5M/S，2025年Singbox节点/SSR节点/V2ray节点/Clash节点/Shadowrocket节点/Trojan节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-18-free-clash.htm" title="「10月18日」最高速度19.8M/S，2025年SSR节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点每天更新免费节点订阅链接">「10月18日」最高速度19.8M/S，2025年SSR节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点/Trojan节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-9.htm" title="「9月9日」最高速度18.4M/S，2025年Singbox节点/V2ray节点/Shadowrocket节点/Trojan节点/SSR节点/Clash节点每天更新免费节点订阅链接">「9月9日」最高速度18.4M/S，2025年Singbox节点/V2ray节点/Shadowrocket节点/Trojan节点/SSR节点/Clash节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-24-clash-v2ray-ss-ssr.htm" title="「10月24日」最高速度18M/S，2025年SSR节点/Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接">「10月24日」最高速度18M/S，2025年SSR节点/Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -386,7 +387,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
@@ -416,7 +417,7 @@
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                                        <div>特别推荐：<b><a href="javascript:;" class="js_to" data-url="https://c.kilxs.cn/?path=register&code=" data-type="Xingchen" data-code="tlc6gYYx" target="_blank">星辰机场</a></b> <p>【包年送2个月】</p><p>1、购买入门版年付套餐额外送2个月，共14个月，只要99元！！！</p><p>2、购买“至尊天皇”年付套餐，额外送2个月，只要299元！！！</p><p>3、购买其他包月类套餐中的年付，同样送2个月！！！</p><p>错过要再等一年！！</p></div>
+                                        <div>特别推荐：<b><a href="javascript:;" class="js_to" data-url="https://xc1.luniu8.com/?code=" data-type="Xingchen" data-code="tlc6gYYx" target="_blank">星辰机场</a></b> <p>【包年送2个月】</p><p>1、购买入门版年付套餐额外送2个月，共14个月，只要99元！！！</p><p>2、购买“至尊天皇”年付套餐，额外送2个月，只要299元！！！</p><p>3、购买其他包月类套餐中的年付，同样送2个月！！！</p><p>错过要再等一年！！</p></div>
                                     V2rayClashNode节点订阅站 版权所有
                 <br />
                 Powered by WordPress
